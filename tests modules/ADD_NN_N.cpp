@@ -67,11 +67,6 @@ int main()
 			cout<<"Ошибка в тесте "<<n<<":\n";
 			for(register unsigned char i=0;comment[i];i++)
 				cout<<comment[i];
-			for(register unsigned short i=result.count-1;i>=0 && i<result.count;i--)
-				cout<<result.digits[i];
-			cout<<endl;
-			for(register unsigned short i=z.count-1;i>=0 && i<z.count;i--)
-				cout<<z.digits[i];
 			return n;
 		};
 		DELN_N(x);

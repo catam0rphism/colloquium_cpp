@@ -5,31 +5,36 @@ natural ADD_NN_N(const natural n1, const natural n2)
 	y=DELZ_N_N(n2);
 	if (COM_NN_D(x,y)==2)
 	{
-		natural z;
-		z=x;
+		natural z=x;
 		x=y;
 		y=z;
 	};
 	for(register unsigned short i=0;i<y.count;i++)
 	{
 		x.digits[i]+=y.digits[i];
-		if (x.digits[i]>9 && i+1<x.count)
+		register unsigned short j=i;
+		while (x.digits[j]>9 && j+1<x.count)
 		{
-			x.digits[i]%=10;
-			x.digits[i+1]++;
+			x.digits[j]%=10;
+			x.digits[j+1]++;
+			j++;
 		};
 	};
-	DELN_N(y);
-	y.count=x.count;
-	if (x.digits[x.count-1]>9) y.count++;
-	y=NEWN_N_N(y);
 	if (x.digits[x.count-1]>9)
 	{
-		y.digits[x.count]=x.digits[x.count-1]/10;
-		x.digits[x.count-1]%=10;
+		DELN_N(y);
+		y.count=x.count+1;
+		NEWN_N_N(y);
+		for(register unsigned short i=0;i<x.count-1;i++)
+			y.digits[i]=x.digits[i];
+		y.digits[x.count-1]=x.digits[x.count-1]%10;
+		y.digits[x.count]=1;
+		DELN_N(x);
+		return y;
+	}
+	else
+	{
+		DELN_N(y);
+		return x;
 	};
-	for(register unsigned short i=0;i<x.count;i++)
-		y.digits[i]=x.digits[i];
-	DELN_N(x);
-	return y;
 };
