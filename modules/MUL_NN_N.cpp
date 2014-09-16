@@ -17,7 +17,6 @@ natural MUL_NN_N(const natural n1, const natural n2)
 		natural z=MUL_Nk_N(p,i);
 		DELN_N(p);
 		p=ADD_NN_N(sum,z);
-		std::cout<<'x\n';
 		DELN_N(sum);
 		sum=p;
 	};
