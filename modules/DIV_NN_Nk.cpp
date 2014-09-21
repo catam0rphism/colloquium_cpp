@@ -25,9 +25,11 @@ natural DIV_NN_Nk(const natural n1, const natural n2)
 			return x;
 		break;
 		case 2:
-			z=x;
-			x=y;
-			y=z;
+			DELN_N(x);
+			DELN_N(y);
+			x.count=0;
+			x=NEWN_N_N(x);
+			return x;
 		break;
 	};
 	unsigned short k=0,d=0;
@@ -38,12 +40,9 @@ natural DIV_NN_Nk(const natural n1, const natural n2)
 		DELN_N(z);
 		z=MUL_Nk_N(y,k);
 	} while (COM_NN_D(x,z)<2);
-	if (COM_NN_D(x,z)==2)
-	{
-		k--;
-		DELN_N(z);
-		z=MUL_Nk_N(y,k);
-	};
+	k--;
+	DELN_N(z);
+	z=MUL_Nk_N(y,k);
 	DELN_N(y);
 	while (COM_NN_D(x,z)<2)
 	{
