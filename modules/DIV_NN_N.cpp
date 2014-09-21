@@ -23,12 +23,15 @@ natural DIV_NN_N(const natural n1, const natural n2)
 			x.count=1;
 			x=NEWN_N_N(x);
 			x.digits[0]=1;
+			DELN_N(y);
 			return x;
 		break;
 		case 2:
-			z=x;
-			x=y;
-			y=z;
+			DELN_N(x);
+			DELN_N(y);
+			x.count=0;
+			x=NEWN_N_N(x);
+			return x;
 		break;
 	};
 	sum.count=0;

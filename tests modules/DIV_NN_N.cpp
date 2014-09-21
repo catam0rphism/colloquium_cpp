@@ -1,4 +1,5 @@
 #include <fstream>
+#include <iostream>
 #include "../struct.h"
 natural DIV_NN_N(const natural, const natural); //user function
 natural MUL_NN_N(const natural, const natural); //для user function
@@ -14,32 +15,37 @@ natural ADD_1N_N(const natural); //для DIV_NN_Nk
 natural MUL_ND_N(const natural, const unsigned short); //для MUL_NN_N
 natural ADD_NN_N(const natural, const natural); //для MUL_ND_N
 bool test(const natural, const natural); //для проверки
-#include "../Модули/DIV_NN_N.cpp" //user function
-#include "../Модули/MUL_NN_N.cpp" //для user function
-#include "../Модули/DIV_NN_Nk.cpp" //для user function
-#include "../Модули/SUB_NN_N.cpp" //для DIV_NN_Nk
-#include "../Модули/MUL_Nk_N.cpp" //для DIV_NN_Nk
-#include "../Модули/COM_NN_D.cpp" //для SUB_NN_N
-#include "../Модули/NZER_N_B.cpp" //для COM_NN_D
-#include "../Модули/DELZ_N_N.cpp" //для NZER_N_B
-#include "../Модули/NEWN_N_N.cpp" //для DELZ_N_N
-#include "../Модули/DELN_N.cpp" //для DELZ_N_N
-#include "../Модули/ADD_1N_N.cpp" //для DIV_NN_Nk
-#include "../Модули/MUL_ND_N.cpp" //для MUL_NN_N
-#include "../Модули/ADD_NN_N.cpp" //для MUL_ND_N
+#include "../modules/DIV_NN_N.cpp" //user function
+#include "../modules/MUL_NN_N.cpp" //для user function
+#include "../modules/DIV_NN_Nk.cpp" //для user function
+#include "../modules/SUB_NN_N.cpp" //для DIV_NN_Nk
+#include "../modules/MUL_Nk_N.cpp" //для DIV_NN_Nk
+#include "../modules/COM_NN_D.cpp" //для SUB_NN_N
+#include "../modules/NZER_N_B.cpp" //для COM_NN_D
+#include "../modules/DELZ_N_N.cpp" //для NZER_N_B
+#include "../modules/NEWN_N_N.cpp" //для DELZ_N_N
+#include "../modules/DELN_N.cpp" //для DELZ_N_N
+#include "../modules/ADD_1N_N.cpp" //для DIV_NN_Nk
+#include "../modules/MUL_ND_N.cpp" //для MUL_NN_N
+#include "../modules/ADD_NN_N.cpp" //для MUL_ND_N
 #include "test.cpp" //для проверки
 using namespace std;
 
 int main()
 {
-	unsigned short n;
-	fstream file("../Тесты/DIV_NN_N",ios::in);
-	if (!file) return 254; //Проверка на существование тестов
-	file>>n;
-	for(register unsigned short i=1;i<=n;i++)
+	unsigned short n=1;
+	char comment[256];
+	fstream file("../tests/DIV_NN_N",ios::in);
+	if (!file) //Проверка на существование тестов
+	{
+		cout<<"Проверяющие тесты не найдены!\n";
+		return 255;
+	};
+	while (!file.eof())
 	{
 		natural x,y,_x,_y,z,result; //Копируем x в _x, y в _y
 		file>>x.count;
+		if (file.eof()) return 0;
 		_x.count=x.count;
 		x=NEWN_N_N(x);
 		_x=NEWN_N_N(_x);
@@ -61,15 +67,29 @@ int main()
 		result=NEWN_N_N(result);
 		for(register unsigned short j=0;j<result.count;j++)
 			file>>result.digits[j];
+		file.ignore();
+		file.getline(comment,256);
+		file.clear();
 		z=DIV_NN_N(x,y);//user function
-		if (!test(x,_x) || !test(y,_y)) return 255; //Проверка на сохранность данных
-		if (!test(z/*user function*/,result)) return i;
+		if (!test(x,_x) || !test(y,_y)) //Проверка на сохранность данных
+		{
+			cout<<"Ошибка! Данные, переданные в модуль, были изменены!";
+			return 254;
+		};
+		if (!test(z/*user function*/,result))
+		{
+			cout<<"Ошибка в тесте "<<n<<":\n";
+			for(register unsigned char i=0;comment[i];i++)
+				cout<<comment[i];
+			return n;
+		};
 		DELN_N(x);
 		DELN_N(_x);
 		DELN_N(y);
 		DELN_N(_y);
 		DELN_N(z);
 		DELN_N(result);
+		n++;
 	};
 	return 0;
 };
