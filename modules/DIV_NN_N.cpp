@@ -9,9 +9,7 @@ natural DIV_NN_N(const natural n1, const natural n2)
 	};
 	if (NZER_N_B(n2))
 	{
-		x=DELZ_N_N(n1);
-		y=ADD_1N_N(x);
-		DELN_N(x);
+		y=ADD_1N_N(n1);
 		return y;
 	};
 	x=DELZ_N_N(n1);
