@@ -8,10 +8,7 @@ natural SUB_NDN_N(const natural n1, const unsigned short d, const natural n2)
 		return x;
 	};
 	if (NZER_N_B(n2) || !d)
-	{
-		x=DELZ_N_N(n1);
-		return x;
-	};
+		return DELZ_N_N(n1);
 	x=DELZ_N_N(n1);
 	y=DELZ_N_N(n2);
 	p=MUL_ND_N(y,d);

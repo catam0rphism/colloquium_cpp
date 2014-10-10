@@ -16,6 +16,7 @@ void DEL_N(natural); //для DELZ_N_N
 natural ADD_1N_N(const natural); //для DIV_NN_Nk
 natural MUL_ND_N(const natural, const unsigned short); //для MUL_NN_N
 natural ADD_NN_N(const natural, const natural); //для MUL_ND_N
+natural COPY_N_N(const natural); //для ADD_NN_N
 bool test(const natural, const natural); //для проверки
 #include "../modules/MOD_NN_N.cpp" //user function
 #include "../modules/DIV_NN_N.cpp" //для user function
@@ -31,6 +32,7 @@ bool test(const natural, const natural); //для проверки
 #include "../modules/ADD_1N_N.cpp" //для DIV_NN_Nk
 #include "../modules/MUL_ND_N.cpp" //для MUL_NN_N
 #include "../modules/ADD_NN_N.cpp" //для MUL_ND_N
+#include "../modules/COPY_N_N.cpp" //для ADD_NN_N
 #include "test.cpp" //для проверки
 
 int main()
@@ -48,23 +50,15 @@ int main()
 		natural x,y,_x,_y,z,result; //Копируем x в _x, y в _y
 		file>>x.count;
 		if (file.eof()) return 0;
-		_x.count=x.count;
 		x=NEW_N_N(x);
-		_x=NEW_N_N(_x);
 		for(register unsigned short j=0;j<x.count;j++)
-		{
 			file>>x.digits[j];
-			_x.digits[j]=x.digits[j];
-		};
+		_x=COPY_N_N(x);
 		file>>y.count;
-		_y.count=y.count;
 		y=NEW_N_N(y);
-		_y=NEW_N_N(_y);
 		for(register unsigned short j=0;j<y.count;j++)
-		{
 			file>>y.digits[j];
-			_y.digits[j]=y.digits[j];
-		};
+		_y=COPY_N_N(y);
 		file>>result.count;
 		result=NEW_N_N(result);
 		for(register unsigned short j=0;j<result.count;j++)

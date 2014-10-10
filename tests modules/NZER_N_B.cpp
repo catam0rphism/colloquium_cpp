@@ -6,10 +6,12 @@ natural NEW_N_N(const natural); //для DELZ_N_N
 natural DELZ_N_N(natural); //для user function
 void DEL_N(natural); //для DELZ_N_N
 bool test(const bool, const bool); //для проверки
+natural COPY_N_N(const natural); //для проверки
 #include "../modules/NZER_N_B.cpp" //user function
 #include "../modules/NEW_N_N.cpp" //для DELZ_N_N
 #include "../modules/DEL_N.cpp" //для DELZ_N_N
 #include "../modules/DELZ_N_N.cpp" //для user function
+#include "../modules/COPY_N_N.cpp" //для проверки
 #include "test.cpp" //для проверки
 using namespace std;
 
@@ -29,14 +31,10 @@ int main()
 		char comment[256];
 		file>>x.count;
 		if (file.eof()) return 0;
-		_x.count=x.count;
 		x=NEW_N_N(x);
-		_x=NEW_N_N(_x);
 		for(register unsigned short i=0;i<x.count;i++)
-		{
 			file>>x.digits[i];
-			_x.digits[i]=x.digits[i];
-		};
+		_x=COPY_N_N(x);
 		file>>result;
 		file.ignore();
 		file.getline(comment,255);

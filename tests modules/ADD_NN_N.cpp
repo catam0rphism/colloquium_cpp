@@ -8,12 +8,14 @@ natural DELZ_N_N(const natural); //для NZER_N_B
 natural NEW_N_N(natural); //для DELZ_N_N
 void DEL_N(natural); //для DELZ_N_N
 bool test(const natural, const natural); //для проверки
+natural COPY_N_N(const natural); //для user function
 #include "../modules/ADD_NN_N.cpp" //user function
 #include "../modules/COM_NN_D.cpp" //для user function
 #include "../modules/NZER_N_B.cpp" //для COM_NN_D
 #include "../modules/DELZ_N_N.cpp" //для NZER_N_B
 #include "../modules/NEW_N_N.cpp" //для DELZ_N_N
 #include "../modules/DEL_N.cpp" //для DELZ_N_N
+#include "../modules/COPY_N_N.cpp" //для user function
 #include "test.cpp" //для проверки
 using namespace std;
 
@@ -32,23 +34,15 @@ int main()
 		char comment[256];
 		file>>x.count;
 		if (file.eof()) return 0;
-		_x.count=x.count;
 		x=NEW_N_N(x);
-		_x=NEW_N_N(_x);
 		for(register unsigned short j=0;j<x.count;j++)
-		{
 			file>>x.digits[j];
-			_x.digits[j]=x.digits[j];
-		};
+		_x=COPY_N_N(x);
 		file>>y.count;
-		_y.count=y.count;
 		y=NEW_N_N(y);
-		_y=NEW_N_N(_y);
 		for(register unsigned short j=0;j<y.count;j++)
-		{
 			file>>y.digits[j];
-			_y.digits[j]=y.digits[j];
-		};
+		_y=COPY_N_N(y);
 		file>>result.count;
 		result=NEW_N_N(result);
 		for(register unsigned short j=0;j<result.count;j++)
