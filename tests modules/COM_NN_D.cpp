@@ -2,14 +2,14 @@
 #include <iostream>
 #include "../struct.h"
 natural DELZ_N_N(const natural, const natural); //для NZER_N_B
-void DELN_N(natural); //для DELZ_N_N
-natural NEWN_N_N(natural); //для DELZ_N_N
+void DEL_N(natural); //для DELZ_N_N
+natural NEW_N_N(natural); //для DELZ_N_N
 unsigned short COM_NN_D(const natural, const natural); //user function
 bool test(const unsigned short, const unsigned short); //для проверки
 bool NZER_N_B(const natural); //для user function
 #include "../modules/DELZ_N_N.cpp" //для NZER_N_B
-#include "../modules/DELN_N.cpp" //для DELZ_N_N
-#include "../modules/NEWN_N_N.cpp" //для DELZ_N_N
+#include "../modules/DEL_N.cpp" //для DELZ_N_N
+#include "../modules/NEW_N_N.cpp" //для DELZ_N_N
 #include "../modules/COM_NN_D.cpp" //user function
 #include "../modules/NZER_N_B.cpp" //для user function
 #include "test.cpp" //для проверки
@@ -32,8 +32,8 @@ int main()
 		file>>x.count;
 		if (file.eof()) return 0;
 		_x.count=x.count;
-		x=NEWN_N_N(x);
-		_x=NEWN_N_N(_x);
+		x=NEW_N_N(x);
+		_x=NEW_N_N(_x);
 		for(register unsigned short j=0;j<x.count;j++)
 		{
 			file>>x.digits[j];
@@ -41,8 +41,8 @@ int main()
 		};
 		file>>y.count;
 		_y.count=y.count;
-		y=NEWN_N_N(y);
-		_y=NEWN_N_N(_y);
+		y=NEW_N_N(y);
+		_y=NEW_N_N(_y);
 		for(register unsigned short j=0;j<y.count;j++)
 		{
 			file>>y.digits[j];
@@ -65,10 +65,10 @@ int main()
 				cout<<comment[i];
 			return n;
 		};
-		DELN_N(x);
-		DELN_N(y);
-		DELN_N(_x);
-		DELN_N(_y);
+		DEL_N(x);
+		DEL_N(y);
+		DEL_N(_x);
+		DEL_N(_y);
 		n++;
 	};
 	return 0;

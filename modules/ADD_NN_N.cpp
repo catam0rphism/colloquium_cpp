@@ -22,19 +22,19 @@ natural ADD_NN_N(const natural n1, const natural n2)
 	};
 	if (x.digits[x.count-1]>9)
 	{
-		DELN_N(y);
+		DEL_N(y);
 		y.count=x.count+1;
-		NEWN_N_N(y);
+		NEW_N_N(y);
 		for(register unsigned short i=0;i<x.count-1;i++)
 			y.digits[i]=x.digits[i];
 		y.digits[x.count-1]=x.digits[x.count-1]%10;
 		y.digits[x.count]=1;
-		DELN_N(x);
+		DEL_N(x);
 		return y;
 	}
 	else
 	{
-		DELN_N(y);
+		DEL_N(y);
 		return x;
 	};
 };

@@ -5,10 +5,10 @@ natural SUB_NN_N(const natural n1, const natural n2)
 	y=DELZ_N_N(n2);
 	if (!COM_NN_D(x,y) || COM_NN_D(x,y)==2)
 	{
-		DELN_N(x);
-		DELN_N(y);
+		DEL_N(x);
+		DEL_N(y);
 		x.count=0;
-		x=NEWN_N_N(x);
+		x=NEW_N_N(x);
 		return x;
 	}
 	for(register unsigned short i=0;i<y.count;i++)
@@ -30,8 +30,8 @@ natural SUB_NN_N(const natural n1, const natural n2)
 			};
 		};
 	};
-	DELN_N(y);
+	DEL_N(y);
 	y=DELZ_N_N(x);
-	DELN_N(x);
+	DEL_N(x);
 	return y;
 };

@@ -8,8 +8,8 @@ natural MUL_Nk_N(const natural, const unsigned short); //для MUL_ND_N
 unsigned short COM_NN_D(const natural, const natural); //для ADD_NN_N
 bool NZER_N_B(const natural); //для COM_NN_D
 natural DELZ_N_N(const natural); //для NZER_N_B
-void DELN_N(natural); //для DELZ_N_N
-natural NEWN_N_N(natural); //для DELZ_N_N
+void DEL_N(natural); //для DELZ_N_N
+natural NEW_N_N(natural); //для DELZ_N_N
 bool test(const natural, const natural); //для проверки
 #include "../modules/MUL_NN_N.cpp" //user function
 #include "../modules/MUL_ND_N.cpp" //для user function
@@ -18,8 +18,8 @@ bool test(const natural, const natural); //для проверки
 #include "../modules/COM_NN_D.cpp" //для ADD_NN_N
 #include "../modules/NZER_N_B.cpp" //для COM_NN_D
 #include "../modules/DELZ_N_N.cpp" //для NZER_N_B
-#include "../modules/DELN_N.cpp" //для DELZ_N_N
-#include "../modules/NEWN_N_N.cpp" //для DELZ_N_N
+#include "../modules/DEL_N.cpp" //для DELZ_N_N
+#include "../modules/NEW_N_N.cpp" //для DELZ_N_N
 #include "test.cpp" //для проверки
 using namespace std;
 
@@ -39,8 +39,8 @@ int main()
 		file>>x.count;
 		if (file.eof()) return 0;
 		_x.count=x.count;
-		x=NEWN_N_N(x);
-		_x=NEWN_N_N(_x);
+		x=NEW_N_N(x);
+		_x=NEW_N_N(_x);
 		for(register unsigned short j=0;j<x.count;j++)
 		{
 			file>>x.digits[j];
@@ -48,15 +48,15 @@ int main()
 		};
 		file>>y.count;
 		_y.count=y.count;
-		y=NEWN_N_N(y);
-		_y=NEWN_N_N(_y);
+		y=NEW_N_N(y);
+		_y=NEW_N_N(_y);
 		for(register unsigned short j=0;j<y.count;j++)
 		{
 			file>>y.digits[j];
 			_y.digits[j]=y.digits[j];
 		};
 		file>>result.count;
-		result=NEWN_N_N(result);
+		result=NEW_N_N(result);
 		for(register unsigned short j=0;j<result.count;j++)
 			file>>result.digits[j];
 		file.ignore(); 
@@ -75,12 +75,12 @@ int main()
 				cout<<comment[i];
 			return n;
 		};
-		DELN_N(x);
-		DELN_N(_x);
-		DELN_N(y);
-		DELN_N(_y);
-		DELN_N(z);
-		DELN_N(result);
+		DEL_N(x);
+		DEL_N(_x);
+		DEL_N(y);
+		DEL_N(_y);
+		DEL_N(z);
+		DEL_N(result);
 		n++;
 	};
 	return 0;
