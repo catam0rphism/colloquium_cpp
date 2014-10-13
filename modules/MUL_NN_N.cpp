@@ -18,7 +18,10 @@ natural MUL_NN_N(const natural n1, const natural n2)
 		DEL_N(p);
 		p=ADD_NN_N(sum,z);
 		DEL_N(sum);
+		DEL_N(z);
 		sum=p;
 	};
+	DEL_N(x);
+	DEL_N(y);
 	return sum;
 }
