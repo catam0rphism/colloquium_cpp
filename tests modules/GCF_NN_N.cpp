@@ -68,7 +68,6 @@ int main()
 		file.ignore();
 		file.getline(comment,256);
 		file.clear();
-		cout<<n<<endl;
 		z=GCF_NN_N(x,y);//user function
 		if (!test(x,_x) || !test(y,_y)) //Проверка на сохранность данных
 		{
