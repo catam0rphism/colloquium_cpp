@@ -33,6 +33,7 @@ natural DIV_NN_Nk(const natural n1, const natural n2)
 		break;
 	};
 	unsigned short k=0,d=0;
+	z.count=0;
 	z=NEW_N_N(z);
 	do
 	{
