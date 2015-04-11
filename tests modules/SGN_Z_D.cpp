@@ -2,18 +2,18 @@
 #include <iostream>
 #include "../struct.h"
 unsigned short SGN_Z_D(const integer); //user function
-integer DELZ_Z_Z(const integer); //для user function
-natural DELZ_N_N(const natural); //для DELZ_Z_Z
-integer NEW_Z_Z(integer); //для DELZ_Z_Z
-void DEL_Z(integer); //для DELZ_Z_Z
+bool NZER_N_B(const natural); //для user function
+integer NEW_Z_Z(integer); //для user function
+void DEL_Z(integer); //для user function
+natural DELZ_N_N(const natural); //для NZER_N_B
 natural NEW_N_N(natural); //для NEW_Z
 void DEL_N(natural); //для DEL_Z
 bool test(const unsigned short, const unsigned short); //для проверки
 #include "../modules/SGN_Z_D.cpp" //user function
-#include "../modules/DELZ_Z_Z.cpp" //для user function
-#include "../modules/NEW_Z_Z.cpp" //для DELZ_Z_Z
-#include "../modules/DEL_Z.cpp" //для DELZ_Z_Z
-#include "../modules/DELZ_N_N.cpp" //для DELZ_Z_Z
+#include "../modules/NZER_N_B.cpp" //для user function
+#include "../modules/NEW_Z_Z.cpp" //для user function
+#include "../modules/DEL_Z.cpp" //для user function
+#include "../modules/DELZ_N_N.cpp" //для NZER_N_B
 #include "../modules/DEL_N.cpp" //для DEL_Z
 #include "../modules/NEW_N_N.cpp" //для NEW_Z
 #include "test.cpp" //для проверки
