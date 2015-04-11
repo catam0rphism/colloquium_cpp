@@ -21,3 +21,8 @@ bool test(const bool f1, const bool f2)
 	if (f1!=f2) return 0;
 	else return 1;
 };
+bool test(const integer z1, const integer z2)
+{
+	if (z1.sign==z2.sign && test(z1.module,z2.module)) return 1;
+	else return 0;
+}

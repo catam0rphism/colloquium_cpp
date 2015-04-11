@@ -2,15 +2,14 @@
 #include <iostream>
 using namespace std;
 #include "../struct.h"
-natural NEW_N_N(natural n); //для user function
-natural DELZ_N_N(const natural n); //user function
+natural NEW_N_N(natural); //для user function
+natural DELZ_N_N(const natural); //user function
 bool test(const natural, const natural); //для проверки
 void DEL_N(natural); //для user function
 #include "../modules/DELZ_N_N.cpp" //user function
 #include "../modules/DEL_N.cpp" //для user function
 #include "test.cpp" //для проверки
 #include "../modules/NEW_N_N.cpp" //для user function
-//using namespace std;
 
 int main()
 {
