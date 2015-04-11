@@ -2,18 +2,18 @@
 #include <iostream>
 using namespace std;
 #include "../struct.h"
-integer DELZ_Z_Z(integer); //user function
+integer DELZ_Z_Z(const integer); //user function
 integer NEW_Z_Z(integer); //для user function
 void DEL_Z(integer); //для user function
 natural DELZ_N_N(const natural); //для user function
-natural NEW_N_N(natural); //для NEW_Z
+natural NEW_N_N(natural); //для NEW_Z_Z
 void DEL_N(natural); //для DEL_Z
 bool test(const integer, const integer); //для проверки
 #include "../modules/DELZ_Z_Z.cpp" //user function
 #include "../modules/NEW_Z_Z.cpp" //для user function
 #include "../modules/DEL_Z.cpp" //для user function
 #include "../modules/DELZ_N_N.cpp" //для user function
-#include "../modules/NEW_N_N.cpp" //для NEW_Z
+#include "../modules/NEW_N_N.cpp" //для NEW_Z_Z
 #include "../modules/DEL_N.cpp" //для DEL_Z
 #include "test.cpp" //для проверки
 
