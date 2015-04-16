@@ -1,10 +1,22 @@
 #ifndef STRUCT_H
 #define STRUCT_H
 
-struct natural //Натуральное число
+#include <vector>
+
+//Натуральное число
+struct natural
 {
-	unsigned short int count; //Количество цифр в числе
-	unsigned short int *digits; //Массив чисел
+    //Массив чисел
+    std::vector<short int>* digits;
+
+    //Количество разрядов в числе
+    // TODO: test it
+    int count() { return digits->length(); }
+
+    ~natural() {
+        digits->clean();
+        delete digits;
+    }
 };
 struct integer //Целое число
 {
@@ -17,9 +29,11 @@ struct fraction //Дробь
 	natural denominator; //Знаменатель дроби, представленный как натуральное число
 };
 struct polynom //Многочлен
-{
-	unsigned short degree; //Степень многочлена
-	fraction *coefficients; //Коэффициенты многочлена, представленные дробью
+{    
+    std::vector<fraction>* coefficients; //Коэффициенты многочлена, представленные дробью
+
+    //Степень многочлена
+    int degree() { return coefficients->length(); }
 };
 
 #endif // STRUCT_H
