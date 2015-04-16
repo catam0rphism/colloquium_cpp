@@ -1,3 +1,6 @@
+#ifndef STRUCT_H
+#define STRUCT_H
+
 struct natural //Натуральное число
 {
 	unsigned short int count; //Количество цифр в числе
@@ -18,3 +21,5 @@ struct polynom //Многочлен
 	unsigned short degree; //Степень многочлена
 	fraction *coefficients; //Коэффициенты многочлена, представленные дробью
 };
+
+#endif // STRUCT_H
