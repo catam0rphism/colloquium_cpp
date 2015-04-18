@@ -4,16 +4,19 @@
 
 #include <vector>
 
-//Натуральное число
+// #яХочуКлассы #нужноБольшеИнкапсуляции
+// Натуральное число
 struct natural {
+    // TODO: Добавить других конструкторов
     natural(const natural& number) {
         this->digits = digits;  // vector copy constructor
     }
 
-    //Массив чисел
+    // Массив цифр от младших разрядов к старшим
+    // Число 9426 будет представленно как { 6, 2, 4, 9 }
     std::vector<int16> digits;
 
-    //Количество разрядов в числе
+    // Количество разрядов в числе
     // TODO: test it
     int count() { return digits->length(); }
 
@@ -44,4 +47,4 @@ struct natural {
 //     int degree() { return coefficients->length(); }
 // };
 
-#endif // STRUCT_H
+#endif  // STRUCT_H
