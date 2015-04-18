@@ -9,8 +9,6 @@
 natural ADD_NN_N(const natural& a, const natural& b) {
     natural ltNum, gtNum;  // gtNum имеет больший порядок
 
-    int counter = 0;
-
     if (a.order() < b.order()) {
         ltNum = a;
         gtNum = b;
@@ -19,11 +17,7 @@ natural ADD_NN_N(const natural& a, const natural& b) {
         gtNum = a;
     }
 
-    std::cout << counter++ << std::endl;
-
-    natural res = gtNum;
-
-    std::cout << counter++ << std::endl;
+    natural res(gtNum);
 
     // Проходим по разрядам числа с меньшим порядком
     for (int i = 0; i < ltNum.order(); i++) {
