@@ -6,13 +6,12 @@
 
 natural ADD_1N_N(const natural& n) {
     natural res = n;
-    int lastIndex = n.order() - 1;
-    res.digits[lastIndex]++;
+    res.digits.back()++;
 
     // Сдвигаем разряд при переполнении
-    if (res.digits[lastIndex] == 10) {
-        res.digits[lastIndex]-= 10;
-        res.digits[lastIndex - 1]++;
+    if (res.digits.back() == 10) {
+        res.digits.back()-= 10;
+        *(res.digits.end()--)++;
     }
     return res;
 }
