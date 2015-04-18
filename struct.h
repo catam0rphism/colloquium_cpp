@@ -17,6 +17,8 @@ struct natural
         digits->clean();
         delete digits;
     }
+    
+    // TODO: переопределить операторы
 };
 struct integer //Целое число
 {
