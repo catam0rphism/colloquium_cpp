@@ -14,15 +14,15 @@ struct natural {
 
     // Массив цифр от младших разрядов к старшим
     // Число 9426 будет представленно как { 6, 2, 4, 9 }
-    std::vector<int16> digits;
+    std::vector<short> digits;
 
     // Количество разрядов в числе
     // TODO: test it
-    int order() { return digits->length(); }
+    int order() { return digits.length(); }
 
     ~natural() {
-        digits->clean();
-        delete digits;
+        digits.clear();
+        // delete digits;
     }
 
     // TODO: переопределить операторы
