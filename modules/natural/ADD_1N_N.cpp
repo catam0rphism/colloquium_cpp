@@ -4,7 +4,7 @@
 
 #include "../../struct.h"
 
-natural ADD_1N_N(const natural n) {
+natural ADD_1N_N(const natural& n) {
     natural res = n;
     int lastIndex = n.order() - 1;
     res.digits[lastIndex]++;
