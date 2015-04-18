@@ -23,6 +23,8 @@ natural ADD_NN_N(natural a, natural b) {
             else { res.digits[i + 1]++; }
         }
     }
+
+    return res;
 }
 
 #endif  // ADD_NN_N_CPP
