@@ -54,8 +54,7 @@ struct integer {
 };
 
 // Рациональное число
-struct fraction
-{
+struct fraction {
     //Числитель дроби
     integer numerator;
     //Знаменатель дроби
