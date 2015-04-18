@@ -47,17 +47,22 @@ struct natural {
     // TODO: переопределить операторы
 };
 
+// Целое число
+struct integer {
+    bool sign;
+    natural module;
+};
+
+// Рациональное число
+struct fraction
+{
+    //Числитель дроби
+    integer numerator;
+    //Знаменатель дроби
+    natural denominator;
+};
+
 // Посмотреть на это все позже =)
-// struct integer //Целое число
-// {
-// 	bool sign; //Знак числа
-// 	natural module; //Модуль целого числа, представленный как натуральное
-// };
-// struct fraction //Дробь
-// {
-// 	integer numerator; //Числитель дроби, представленный как целое число
-// 	natural denominator; //Знаменатель дроби, представленный как натуральное число
-// };
 // struct polynom //Многочлен
 // {    
 //     std::vector<fraction>* coefficients; //Коэффициенты многочлена, представленные дробью
