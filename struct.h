@@ -8,6 +8,7 @@
 // Натуральное число
 struct natural {
     // TODO: Добавить других конструкторов
+    natural() { }
     natural(const natural& number) {
         this->digits = digits;  // vector copy constructor
     }
@@ -17,8 +18,13 @@ struct natural {
     std::vector<short> digits;
 
     // Количество разрядов в числе
+    // Выделить в отдельную переменную?
     // TODO: test it
-    int order() { return digits.length(); }
+    int order() const { return digits.size(); }
+
+    natural & operator= (const natural & other) {
+        throw;
+    }
 
     ~natural() {
         digits.clear();

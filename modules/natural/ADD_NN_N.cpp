@@ -2,12 +2,14 @@
 #ifndef ADD_NN_N_CPP
 #define ADD_NN_N_CPP
 
-#include <algorithm>
+// #include <algorithm>
 
 #include "../../struct.h"
 
 natural ADD_NN_N(const natural& a, const natural& b) {
     natural ltNum, gtNum;  // gtNum имеет больший порядок
+
+    int counter = 0;
 
     if (a.order() < b.order()) {
         ltNum = a;
@@ -17,10 +19,14 @@ natural ADD_NN_N(const natural& a, const natural& b) {
         gtNum = a;
     }
 
+    std::cout << counter++ << std::endl;
+
     natural res = gtNum;
 
+    std::cout << counter++ << std::endl;
+
     // Проходим по разрядам числа с меньшим порядком
-    for (int i = 0; i <= ltNum.order(); i++) {
+    for (int i = 0; i < ltNum.order(); i++) {
         res.digits[i] += ltNum.digits[i];
 
         // Компенсируем переполнение
@@ -29,7 +35,7 @@ natural ADD_NN_N(const natural& a, const natural& b) {
 
             // Если в наибольшем разряде res образовалось число 
             // больше 10, добавляем еще один разряд
-            if (i == res.order()) { res.digits.push_back(1); }
+            if (i >= res.order()) { res.digits.push_back(1); }
             else { res.digits[i + 1]++; }
         }
     }
