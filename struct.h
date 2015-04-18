@@ -3,6 +3,7 @@
 #define STRUCT_H
 
 #include <vector>
+#include <iterator>
 #include <initializer_list>
 
 // #яХочуКлассы #нужноБольшеИнкапсуляции
@@ -11,10 +12,15 @@ struct natural {
     // TODO: Добавить других конструкторов
     natural() { }
     natural(std::initializer_list<short> digits) {
-        for (int* argPtr = digits.end(); argPtr != digits.begin(); argPtr--) {
-            this->digit.push_back(&argPtr);
+        std::vector<short> tmp(digits);
+
+        auto it = tmp.rbegin();
+        while (it != tmp.rend()) {
+            this->digits.push_back(*it);
+            it++;
         }
     }
+
     natural(const natural& number) {
         this->digits = number.digits;  // vector copy constructor
     }

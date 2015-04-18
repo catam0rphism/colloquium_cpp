@@ -4,12 +4,10 @@
 
 int main(int argc, char const *argv[])
 {
-    int counter = 0;
+    // int counter = 0;
 
-    natural a;
-    // std::cout << counter++ << std::endl;
-    a.digits = { 1, 2, 3, 4, 6 };
-
+    natural a({ 6, 4, 3, 2, 1});
+    
     // std::cout << counter++ << std::endl;
     natural b = a;
 
