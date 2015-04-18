@@ -3,14 +3,20 @@
 #define STRUCT_H
 
 #include <vector>
+#include <initializer_list>
 
 // #яХочуКлассы #нужноБольшеИнкапсуляции
 // Натуральное число
 struct natural {
     // TODO: Добавить других конструкторов
     natural() { }
+    natural(std::initializer_list<short> digits) {
+        for (int* argPtr = digits.end(); argPtr != digits.begin(); argPtr--) {
+            this->digit.push_back(&argPtr);
+        }
+    }
     natural(const natural& number) {
-        this->digits = digits;  // vector copy constructor
+        this->digits = number.digits;  // vector copy constructor
     }
 
     // Массив цифр от младших разрядов к старшим
@@ -19,11 +25,12 @@ struct natural {
 
     // Количество разрядов в числе
     // Выделить в отдельную переменную?
-    // TODO: test it
     int order() const { return digits.size(); }
 
-    natural & operator= (const natural & other) {
-        throw;
+    natural& operator= (const natural& other) {
+        // TODO: проверка самоприсвоения
+        digits = other.digits;
+        return *this;
     }
 
     ~natural() {
