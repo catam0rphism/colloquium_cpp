@@ -18,7 +18,7 @@ struct natural {
 
     // Количество разрядов в числе
     // TODO: test it
-    int count() { return digits->length(); }
+    int order() { return digits->length(); }
 
     ~natural() {
         digits->clean();

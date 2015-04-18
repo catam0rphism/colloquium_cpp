@@ -1,40 +1,28 @@
-natural ADD_NN_N(const natural n1, const natural n2)
-{
-	natural x,y;
-	x=DELZ_N_N(n1);
-	y=DELZ_N_N(n2);
-	if (COM_NN_D(x,y)==2)
-	{
-		natural z=x;
-		x=y;
-		y=z;
-	};
-	for(register unsigned short i=0;i<y.count;i++)
-	{
-		x.digits[i]+=y.digits[i];
-		register unsigned short j=i;
-		while (x.digits[j]>9 && j+1<x.count)
-		{
-			x.digits[j]%=10;
-			x.digits[j+1]++;
-			j++;
-		};
-	};
-	if (x.digits[x.count-1]>9)
-	{
-		DEL_N(y);
-		y.count=x.count+1;
-		NEW_N_N(y);
-		for(register unsigned short i=0;i<x.count-1;i++)
-			y.digits[i]=x.digits[i];
-		y.digits[x.count-1]=x.digits[x.count-1]%10;
-		y.digits[x.count]=1;
-		DEL_N(x);
-		return y;
-	}
-	else
-	{
-		DEL_N(y);
-		return x;
-	};
-};
+// Copyright 2015 Belkin Dmitriy
+#ifndef ADD_NN_N_CPP
+#define ADD_NN_N_CPP
+
+#include <algorithm>
+
+#include "../../struct.h"
+
+natural ADD_NN_N(natural a, natural b) {
+    // Порядок a всегда больше или равен порядку b
+    #warning Определить ли a и b как const и использовать временные переменные?
+    if (a.order() < b.order()) swap<natural>(&a, &b);
+
+    natural res = a;
+
+    for (int i = 0; i <= b.order(); i++) {
+        res.digits[i] += b.digits[i];
+
+        if (res.digits[i] >= 10) {
+            res.digits[i] -= 10;
+
+            if (i == res.order()) { res.digits.push_back(1); }
+            else { res.digits[i + 1]++; }
+        }
+    }
+}
+
+#endif  // ADD_NN_N_CPP
