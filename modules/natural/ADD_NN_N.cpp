@@ -6,19 +6,29 @@
 
 #include "../../struct.h"
 
-natural ADD_NN_N(natural a, natural b) {
-    // Порядок a всегда больше или равен порядку b
-    #warning Определить ли a и b как const и использовать временные переменные?
-    if (a.order() < b.order()) swap<natural>(&a, &b);
+natural ADD_NN_N(const natural& a, const natural& b) {
+    natural ltNum, gtNum;  // gtNum имеет больший порядок
 
-    natural res = a;
+    if (a.order() < b.order()) {
+        ltNum = a;
+        gtNum = b;
+    } else {
+        ltNum = b;
+        gtNum = a;
+    }
 
-    for (int i = 0; i <= b.order(); i++) {
-        res.digits[i] += b.digits[i];
+    natural res = gtNum;
 
+    // Проходим по разрядам числа с меньшим порядком
+    for (int i = 0; i <= ltNum.order(); i++) {
+        res.digits[i] += ltNum.digits[i];
+
+        // Компенсируем переполнение
         if (res.digits[i] >= 10) {
             res.digits[i] -= 10;
 
+            // Если в наибольшем разряде res образовалось число 
+            // больше 10, добавляем еще один разряд
             if (i == res.order()) { res.digits.push_back(1); }
             else { res.digits[i + 1]++; }
         }
