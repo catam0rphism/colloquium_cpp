@@ -4,7 +4,11 @@
 
 #include "../../struct.h"
 
+<<<<<<< HEAD
 natural ADD_1N_N(const natural &n) {
+=======
+natural ADD_1N_N(const natural& n) {
+>>>>>>> origin/master
     natural res = n;
     res.digits.back()++;
 
