@@ -6,8 +6,12 @@
 //Натуральное число
 struct natural
 {
+    natural(const natural& number) {
+        this->digits = digits; // vector copy constructor
+    }
+
     //Массив чисел
-    std::vector<short int>* digits;
+    std::vector<short int> digits;
 
     //Количество разрядов в числе
     // TODO: test it
