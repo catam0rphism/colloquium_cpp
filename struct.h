@@ -6,6 +6,33 @@
 #include <iterator>
 #include <initializer_list>
 
+enum /* class */ digit: std::int8_t { _0, _1, _2, _3, _4, _5, _6, _7, _8, _9 };
+
+static void inc(digit &a, bool &overflowFlag) {
+    if ((!overflowFlag && a == _9) ||
+        (overflowFlag && a == _8)) {
+        overflowFlag = true;
+        a = _0;
+    } else if (overflowFlag && a == _9) {
+        overflowFlag = true;
+        a = _1;
+    } else {  // нет переполнения
+        overflowFlag = false;
+        std::int8_t inc_a = a;
+        inc_a++;
+        a = static_cast<digit>(inc_a);
+    }
+}
+
+static digit add(const digit &a, const digit &b, bool &overflowFlag) {
+    std::int8_t sum = a + b + static_cast<std::int8_t>(overflowFlag);
+    // ибо нефиг складывать bool с всякими int'фми
+
+    overflowFlag = sum > _9;
+
+    return static_cast<digit>(overflowFlag ? sum - 10 : sum);
+}
+
 // #яХочуКлассы #нужноБольшеИнкапсуляции
 // Натуральное число
 struct natural {
@@ -14,9 +41,9 @@ struct natural {
     natural(const natural& number) {
         this->digits = number.digits;  // vector copy constructor
     }
-    
-    natural(std::initializer_list<short> digits) {
-        std::vector<short> tmp(digits);
+
+    natural(std::initializer_list<digit> digits) {
+        std::vector<digit> tmp(digits);
 
         auto it = tmp.rbegin();
         while (it != tmp.rend()) {
@@ -27,7 +54,7 @@ struct natural {
 
     // Массив цифр от младших разрядов к старшим
     // Число 9426 будет представленно как { 6, 2, 4, 9 }
-    std::vector<short> digits;
+    std::vector<digit> digits;
 
     // Количество разрядов в числе
     // Issue #1

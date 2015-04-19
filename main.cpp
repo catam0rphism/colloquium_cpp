@@ -3,18 +3,12 @@
 #include "modules/natural/natural.h"
 
 int main(int argc, char const *argv[]) {
-    enum dig {
-        _1 = 1,
-        _2 = 2,
-        _3 = 3,
-        _4 = 4,
-        _5 = 5
-    };
+    bool b;
+    digit foo = add(_9, _4, b);
 
-    std::cout << dig::_4 << std::endl;
-    std::cout << (dig)(dig::_4 + dig::_1) << std::endl;
-    std::cout << dig::_4 + dig::_3 << std::endl;
-
+    std::cout << b << " " << (int)foo << std::endl;
+    std::cout << _9 + _9 << std::endl;
+    std::cout << _4 + _5 << std::endl;
 
     // // int counter = 0;
 
