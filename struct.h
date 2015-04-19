@@ -6,14 +6,15 @@
 #include <iterator>
 #include <initializer_list>
 
-enum /* class */ digit: std::int8_t { _0, _1, _2, _3, _4, _5, _6, _7, _8, _9, _minDigit = _0, _maxDigit = _9 };
+enum /* class */ digit: std::int8_t { _0, _1, _2, _3, _4, _5, _6, _7, _8, _9,
+                                        _minDigit = _0, _maxDigit = _9 };
 
 static void inc(digit &a, bool &overflowFlag) {
-    if ((!overflowFlag && a == _9) ||
-        (overflowFlag && a == _8)) {
+    if ((!overflowFlag && a == _maxDigit) ||
+        (overflowFlag && a == static_cast<digit>(_maxDigit - 1)) {
         overflowFlag = true;
         a = _0;
-    } else if (overflowFlag && a == _9) {
+    } else if (overflowFlag && a == _maxDigit) {
         overflowFlag = true;
         a = _1;
     } else {  // нет переполнения

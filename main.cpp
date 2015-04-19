@@ -3,28 +3,21 @@
 #include "modules/natural/natural.h"
 
 int main(int argc, char const *argv[]) {
-    bool b;
-    digit foo = add(_9, _4, b);
+    // int counter = 0;
 
-    std::cout << b << " " << (int)foo << std::endl;
-    std::cout << _9 + _9 << std::endl;
-    std::cout << _4 + _5 << std::endl;
+    natural a({ _9, _9, _9, _9, _9});
 
-    // // int counter = 0;
+    // std::cout << counter++ << std::endl;
+    natural b = a;
 
-    // natural a({ 6, 4, 3, 2, 1});
+    std::cout << b.digits.size() << std::endl;
 
-    // // std::cout << counter++ << std::endl;
-    // natural b = a;
+    // std::cout << counter++ << std::endl;
+    auto c = ADD_NN_N(a, natural({ _1 }));
 
-    // std::cout << b.digits.size() << std::endl;
-
-    // // std::cout << counter++ << std::endl;
-    // auto c = ADD_NN_N(a, b);
-
-    // // std::cout << counter++ << std::endl;
-    // for (int i = 0; i <= c.order(); i++) {
-    //     std::cout << c.digits[i] << " ";
-    // }
+    // std::cout << counter++ << std::endl;
+    for (int i = c.order() - 1 ; i >= 0; i--) {
+        std::cout << c.digits[i] << " ";
+    }
     return 0;
 }
