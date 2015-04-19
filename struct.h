@@ -66,15 +66,15 @@ struct fraction {
 struct polynom {
     polynom() { }
     polynom(const polynom& other) {
-        this->polynom = other.polynom;
+        this->coefficients = other.coefficients;
     }
-    
+
     polynom(std::initializer_list<fraction> coefficients) {
         std::vector<fraction> tmp(coefficients);
 
         auto it = tmp.rbegin();
         while (it != tmp.rend()) {
-            this->fraction.push_back(*it);
+            this->coefficients.push_back(*it);
             it++;
         }
     }
