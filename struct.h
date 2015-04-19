@@ -11,6 +11,10 @@
 struct natural {
     // TODO: Добавить других конструкторов
     natural() { }
+    natural(const natural& number) {
+        this->digits = number.digits;  // vector copy constructor
+    }
+    
     natural(std::initializer_list<short> digits) {
         std::vector<short> tmp(digits);
 
@@ -21,15 +25,12 @@ struct natural {
         }
     }
 
-    natural(const natural& number) {
-        this->digits = number.digits;  // vector copy constructor
-    }
-
     // Массив цифр от младших разрядов к старшим
     // Число 9426 будет представленно как { 6, 2, 4, 9 }
     std::vector<short> digits;
 
     // Количество разрядов в числе
+    // Issue #1
     // Выделить в отдельную переменную?
     int order() const { return digits.size(); }
 
@@ -61,13 +62,40 @@ struct fraction {
     natural denominator;
 };
 
-// Посмотреть на это все позже =)
-// struct polynom //Многочлен
-// {    
-//     std::vector<fraction>* coefficients; //Коэффициенты многочлена, представленные дробью
+// Многочлен
+struct polynom {
+    polynom() { }
+    polynom(const polynom& other) {
+        this->polynom = other.polynom;
+    }
+    
+    polynom(std::initializer_list<fraction> coefficients) {
+        std::vector<fraction> tmp(coefficients);
 
-//     //Степень многочлена
-//     int degree() { return coefficients->length(); }
-// };
+        auto it = tmp.rbegin();
+        while (it != tmp.rend()) {
+            this->fraction.push_back(*it);
+            it++;
+        }
+    }
+
+    // Коэффициенты многочлена в порядке увеличения степени
+    // 18x^3 + 4x^2 + 3 <==> { 3, 0, 4, 18 }
+    std::vector<fraction> coefficients;
+
+    // Степень многочлена
+    int degree() { return coefficients.size(); }
+
+    polynom& operator= (const polynom& other) {
+        // TODO: проверка самоприсвоения
+        coefficients = other.coefficients;
+        return *this;
+    }
+
+    ~polynom() {
+        coefficients.clear();
+        // delete digits;
+    }
+};
 
 #endif  // STRUCT_H
