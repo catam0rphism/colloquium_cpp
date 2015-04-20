@@ -37,7 +37,7 @@ natural ADD_NN_N(const natural& a, const natural& b) {
         i++;
     }
     // Если разряды кончились, а переполнение осталось
-    if (overflowFlag && i == res.order() - 1) { res.digits.push_back(_1); } 
+    if (overflowFlag && i == res.order() - 1) { res.digits.push_back(_1); }
     return res;
 }
 
