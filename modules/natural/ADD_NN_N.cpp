@@ -30,7 +30,9 @@ natural ADD_NN_N(const natural& a, const natural& b) {
     int i = ltNum.order();
     while (overflowFlag && i < res.order() - 1) {
         // пока можем, избавляемся от переполнения (для сумм вида "99999 + 1")
-        res.digits[i + 1] = add(res.digits[i + 1], _0, overflowFlag);
+        // Обнуляем флаг переполнения чтобы инкремент не увеличил число на два
+        overflowFlag = false;
+        inc(res.digits[i + 1], overflowFlag);
         i++;
     }
     // Если разряды кончились, а переполнение осталось

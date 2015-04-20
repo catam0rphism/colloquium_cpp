@@ -13,7 +13,8 @@ natural ADD_1N_N(const natural& n) {
     // Сдвигаем разряд при переполнении
     int k = 1;
     while (overflowFlag && k <= res.order() - 1) {
-        res.digits[k] = add(res.digits[k], _0, overflowFlag);
+        overflowFlag = false;
+        inc(res.digits[k], overflowFlag);
         k++;
     }
 

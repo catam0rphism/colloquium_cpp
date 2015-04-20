@@ -43,7 +43,7 @@ static digit add(const digit &a, const digit &b, bool &overflowFlag) {
 // Натуральное число
 struct natural {
     // TODO: Добавить других конструкторов
-    natural() { }
+    natural(): natural({ _0 }) { }  // инициализация нулем
     natural(const natural& number) {
         this->digits = number.digits;  // vector copy constructor
     }
