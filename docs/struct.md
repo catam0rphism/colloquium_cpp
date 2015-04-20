@@ -15,6 +15,7 @@ inc(digit &a, bool &overflowFlag);
 Флаг переполнения необходимо передавать в качестве переменной, чтобы использовать в следующих разрядах.
 Поскольку цифра и флаг передаются по ссылке, после применения функции они изменяются.
 * Примеры вызова
+
 ```c++
 bool overflowFlag = false;
 digit a = _8;
@@ -28,6 +29,7 @@ inc(a, overflowFlag);  // a++ + 1; a == _0; overflowFlag == true
 ```c++ digit add(const digit &a, const digit &b, bool &overflowFlag)```
 Принимает цифры `const digit &a` и `const digit &b` и уже знакомый флаг переполнения. Возврощает результат сложения цифрой. Модифицирует флаг переполнения.
 * Примеры вызова
+
 ```c++
 digit result;
 bool overflowFlag = false;
