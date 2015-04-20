@@ -5,7 +5,7 @@
 int main(int argc, char const *argv[]) {
     // int counter = 0;
 
-    natural a({ _9, _9, _9, _9, _9});
+    natural a({ _9, _9, _9, _9, _9 });
 
     // std::cout << counter++ << std::endl;
     natural b = a;
@@ -13,7 +13,7 @@ int main(int argc, char const *argv[]) {
     std::cout << b.digits.size() << std::endl;
 
     // std::cout << counter++ << std::endl;
-    auto c = ADD_NN_N(a, natural({ _1 }));
+    auto c = ADD_1N_N(a);
 
     // std::cout << counter++ << std::endl;
     for (int i = c.order() - 1 ; i >= 0; i--) {

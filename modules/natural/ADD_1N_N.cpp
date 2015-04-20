@@ -6,15 +6,18 @@
 
 natural ADD_1N_N(const natural& n) {
     natural res = n;
+
     bool overflowFlag = false;
-    inc(res.digits.back(),overflowFlag);
+    inc(res.digits[0], overflowFlag);
 
     // Сдвигаем разряд при переполнении
-    int k = n.order() - 1;
-    while (overflowFlag && k >= 0) {
-        add(res.digits[k],_0,overflowFlag);
-        k--;
+    int k = 1;
+    while (overflowFlag && k <= res.order() - 1) {
+        res.digits[k] = add(res.digits[k], _0, overflowFlag);
+        k++;
     }
+
+    if (overflowFlag) { res.digits.push_back(_1); }
     return res;
 }
 
