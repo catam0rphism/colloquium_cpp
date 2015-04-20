@@ -62,6 +62,12 @@ digit mul(const digit &a, const digit &b, digit& demolition) {
     return static_cast<digit>(mulRes % 10);
 }
 
+ordinal ord(const digit &a,const digit &b) {
+    if(a == b) { return ordinal::EQ;
+    } else if (a > b) { return ordinal::GT;
+    } else { return ordinal::LT; }
+}
+
 // Результаты сравнений (меньше, больше, равно)
 enum class ordinal: std::int8_t { LT, GT, EQ };
 
