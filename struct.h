@@ -15,7 +15,7 @@ enum /* class */ digit: std::int8_t { _0, _1, _2, _3, _4, _5, _6, _7, _8, _9,
 // функции
 static void inc(digit &a, bool &overflowFlag) {
     if ((!overflowFlag && a == _maxDigit) ||
-        (overflowFlag && a == static_cast<digit>(_maxDigit - 1)) {
+        (overflowFlag && a == static_cast<digit>(_maxDigit - 1))) {
         overflowFlag = true;
         a = _0;
     } else if (overflowFlag && a == _maxDigit) {
