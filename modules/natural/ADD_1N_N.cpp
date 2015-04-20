@@ -8,16 +8,17 @@ natural ADD_1N_N(const natural& n) {
     natural res = n;
 
     bool overflowFlag = false;
-    inc(res[0], overflowFlag);
+    inc(res.digits[0], overflowFlag);
 
     // Сдвигаем разряд при переполнении
     int k = 1;
-    while (overflowFlag) {
+    while (overflowFlag && k <= res.order() - 1) {
         overflowFlag = false;
-        inc(res[k], overflowFlag);
+        inc(res.digits[k], overflowFlag);
         k++;
     }
 
+    if (overflowFlag) { res.digits.push_back(_1); }
     return res;
 }
 
