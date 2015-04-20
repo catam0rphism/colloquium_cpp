@@ -35,8 +35,11 @@ struct natural {
     // Количество разрядов в числе
     // Issue #1
     // Выделить в отдельную переменную?
-    int order() const { return digits.size(); }
-
+    int order() const {
+        int k = digits.size();
+        while (digits[k - 1] == _0 && k > 0) { k--; }
+        return k;
+    }
     natural& operator= (const natural& other) {
         // TODO: проверка самоприсвоения
         digits = other.digits;
