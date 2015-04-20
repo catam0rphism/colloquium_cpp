@@ -9,6 +9,10 @@
 enum /* class */ digit: std::int8_t { _0, _1, _2, _3, _4, _5, _6, _7, _8, _9,
                                         _minDigit = _0, _maxDigit = _9 };
 
+// Инкремент ЦИФРЫ. Работает по принципу полного сумматора т.е.
+// принимает цифру и перенос предыдущего сложения 
+// (если такового нет - false) перенос (overflowFlag) обновляется внутри
+// функции
 static void inc(digit &a, bool &overflowFlag) {
     if ((!overflowFlag && a == _maxDigit) ||
         (overflowFlag && a == static_cast<digit>(_maxDigit - 1)) {
@@ -25,6 +29,7 @@ static void inc(digit &a, bool &overflowFlag) {
     }
 }
 
+// складывает 2 цифры. Работает как инкремент.
 static digit add(const digit &a, const digit &b, bool &overflowFlag) {
     std::int8_t sum = a + b + static_cast<std::int8_t>(overflowFlag);
     // ибо нефиг складывать bool с всякими int'фми
