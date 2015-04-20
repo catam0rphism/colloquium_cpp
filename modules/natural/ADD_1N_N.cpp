@@ -2,7 +2,7 @@
 #ifndef ADD_1N_N_CPP
 #define ADD_1N_N_CPP
 
-#include "../../struct.h"
+#include "../../structs/struct.h"
 
 natural ADD_1N_N(const natural& n) {
     natural res = n;

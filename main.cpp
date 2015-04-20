@@ -1,6 +1,8 @@
 // Copyright 2015 Belkin Dmitriy
 #include <iostream>
+
 #include "modules/natural/natural.h"
+#include "structs/struct.h"
 
 int main(int argc, char const *argv[]) {
     // int counter = 0;
@@ -13,7 +15,7 @@ int main(int argc, char const *argv[]) {
     // std::cout << 'd' << std::endl;
 
     // std::cout << counter++ << std::endl;
-    auto c = ADD_NN_N({ _1, _2, _3, _4, _5, _6, _7, _8, _9 },{ _0 });
+    auto c = ADD_NN_N({ _1, _2, _3, _4, _5, _6, _7, _8, _9 }, { _0 });
 
     // std::cout << counter++ << std::endl;
     for (int i = c.order() - 1 ; i >= 0; i--) {

@@ -4,7 +4,7 @@
 
 // #include <algorithm>
 
-#include "../../struct.h"
+#include "../../structs/struct.h"
 #include "COM_NN_D.cpp"
 
 natural ADD_NN_N(const natural& a, const natural& b) {
