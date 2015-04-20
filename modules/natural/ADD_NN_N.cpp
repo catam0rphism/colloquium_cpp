@@ -5,11 +5,12 @@
 // #include <algorithm>
 
 #include "../../struct.h"
+#include "COM_NN_D.cpp"
 
 natural ADD_NN_N(const natural& a, const natural& b) {
     natural ltNum, gtNum;  // gtNum имеет больший порядок
 
-    if (a.order() < b.order()) {
+    if (COM_NN_D(a, b) == ordinal::LT) {
         ltNum = a;
         gtNum = b;
     } else {
@@ -24,8 +25,8 @@ natural ADD_NN_N(const natural& a, const natural& b) {
     for (int i = 0; i <= ltNum.order(); i++) {
         res.digits[i] = add(res.digits[i], ltNum.digits[i], overflowFlag);
     }
-    // прибавили все разряды меньшего к большему,
 
+    // прибавили все разряды меньшего к большему,
     // смотрим на переполнение последнего разряда
     int i = ltNum.order();
     while (overflowFlag && i < res.order() - 1) {
