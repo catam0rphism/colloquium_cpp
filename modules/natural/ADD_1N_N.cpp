@@ -10,9 +10,10 @@ natural ADD_1N_N(const natural& n) {
     inc(res.digits.back(),overflowFlag);
 
     // Сдвигаем разряд при переполнении
+    k = 1;
     while (overflowFlag && k != res.digit.order()) {
-        res.digits.back()-= 10;
-        *(res.digits.end()--)++;
+        inc(*(res.digits.end() - k), overflowFlag);
+        k++;
     }
     return res;
 }
