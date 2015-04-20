@@ -21,6 +21,7 @@ struct natural {
     natural(std::initializer_list<digit> digits) {
         std::vector<digit> tmp(digits);
 
+        // Костыль с reverse iterator
         auto it = tmp.rbegin();
         while (it != tmp.rend()) {
             this->digits.push_back(*it);
@@ -28,14 +29,15 @@ struct natural {
         }
     }
 
-    // Массив цифр от младших разрядов к старшим
-    // Число 9426 будет представленно как { 6, 2, 4, 9 }
-    std::vector<digit> digits;
 
     // Количество разрядов в числе
     // Issue #1
     // Выделить в отдельную переменную?
-    int order() const { return digits.size(); }
+    int order() const {
+        int k = digits.size();
+        while (digits[k - 1] == _0 && k > 0) { k--; }
+        return k;
+    }
 
     natural& operator= (const natural& other) {
         // TODO: проверка самоприсвоения
@@ -49,6 +51,19 @@ struct natural {
     }
 
     // TODO: переопределить операторы
+    digit& operator[](const int& digitInd) {
+        int k = order();
+        while (k <= digitInd) {
+            digits.push_back(_0);
+            k++;
+        }
+        return digits[digitInd];
+    }
+
+ private:
+    // Массив цифр от младших разрядов к старшим
+    // Число 9426 будет представленно как { 6, 2, 4, 9 }
+    std::vector<digit> digits;
 };
 
 // Целое число
