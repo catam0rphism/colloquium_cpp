@@ -15,7 +15,10 @@ int main(int argc, char const *argv[]) {
     // std::cout << 'd' << std::endl;
 
     // std::cout << counter++ << std::endl;
-    auto c = ADD_NN_N({ _1, _2, _3, _4, _5, _9, _9, _9, _9 }, { _1 });
+    natural c;
+
+    c[0] = _3;
+    c[2] = _1;
 
     // std::cout << counter++ << std::endl;
     for (int i = c.order() - 1 ; i >= 0; i--) {
