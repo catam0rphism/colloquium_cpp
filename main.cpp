@@ -22,7 +22,7 @@ int main(int argc, char const *argv[]) {
 
     // std::cout << counter++ << std::endl;
     for (int i = c.order() - 1 ; i >= 0; i--) {
-        std::cout << c[i] << " ";
+        std::cout << c.digits[i] << " ";
     }
     return 0;
 }
