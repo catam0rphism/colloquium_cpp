@@ -15,10 +15,10 @@ int main(int argc, char const *argv[]) {
     // std::cout << 'd' << std::endl;
 
     // std::cout << counter++ << std::endl;
-    natural c;
+    natural c = { _9, _9 };
+    natural one = { _1 };
 
-    c[0] = _3;
-    c[2] = _1;
+    c = c + (natural){ _1 };
 
     // std::cout << counter++ << std::endl;
     for (int i = c.order() - 1 ; i >= 0; i--) {

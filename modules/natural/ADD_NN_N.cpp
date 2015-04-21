@@ -39,4 +39,8 @@ natural ADD_NN_N(const natural& a, const natural& b) {
     return res;
 }
 
+natural natural::operator+(const natural& other) {
+    return ADD_NN_N(*this, other);
+}
+
 #endif  // ADD_NN_N_CPP

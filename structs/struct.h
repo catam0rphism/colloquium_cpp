@@ -30,8 +30,7 @@ struct natural {
     }
 
 
-    // Количество разрядов в числе
-    // Issue #1
+    // Количество значащих разрядов в числе
     // Выделить в отдельную переменную?
     int order() const {
         int k = digits.size();
@@ -59,6 +58,8 @@ struct natural {
         }
         return digits[digitInd];
     }
+
+    natural operator+(const natural& other);
 
  private:
     // Массив цифр от младших разрядов к старшим
