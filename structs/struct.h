@@ -29,6 +29,12 @@ struct natural {
         }
     }
 
+    // Уничтожитель незначащих нулей
+    void reduce() {
+        while ((digits.back() == _0) && (digits.size() != 0)) {
+            digits.pop_back();
+        }
+    }
 
     // Количество разрядов в числе
     // Issue #1
