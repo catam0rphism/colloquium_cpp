@@ -23,19 +23,21 @@ natural ADD_NN_N(const natural& a, const natural& b) {
     bool overflowFlag = false;
     // Проходим по разрядам числа с меньшим порядком
     for (int i = 0; i <= ltNum.order(); i++) {
-        res[i] = add(res[i], ltNum[i], overflowFlag);
+        res.digits[i] = add(res.digits[i], ltNum.digits[i], overflowFlag);
     }
 
     // прибавили все разряды меньшего к большему,
     // смотрим на переполнение последнего разряда
     int i = ltNum.order();
-    while (overflowFlag) {
+    while (overflowFlag && i < res.order() - 1) {
         // пока можем, избавляемся от переполнения (для сумм вида "99999 + 1")
         // Обнуляем флаг переполнения чтобы инкремент не увеличил число на два
         overflowFlag = false;
-        inc(res[i + 1], overflowFlag);
+        inc(res.digits[i + 1], overflowFlag);
         i++;
     }
+    // Если разряды кончились, а переполнение осталось
+    if (overflowFlag && i == res.order() - 1) { res.digits.push_back(_1); }
     return res;
 }
 
