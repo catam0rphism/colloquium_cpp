@@ -30,7 +30,7 @@ struct natural {
         }
     }
 
-    implicit natural(const std::string &input) {
+    explicit natural(const std::string &input) {
       auto it = input.rbegin();
       while (it != tmp.rend()) {
         if (('0' <= *it) && (*it <= '9')) {
