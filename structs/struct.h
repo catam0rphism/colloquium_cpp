@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <iterator>
+#include <string>
 #include <initializer_list>
 
 #include "digit.h"
@@ -29,6 +30,24 @@ struct natural {
         }
     }
 
+    explicit natural(const std::string &input) {
+      auto it = input.rbegin();
+      while (it != input.rend()) {
+        if (('0' <= *it) && (*it <= '9')) {
+            this->digits.push_back(static_cast<digit>(*it - '0'));
+            it++;
+        } else {
+              // TODO(timecatler): exception
+        }
+      }
+    }
+
+    // Уничтожитель незначащих нулей
+    void reduce() {
+        while ((digits.back() == _0) && (digits.size() != 0)) {
+            digits.pop_back();
+        }
+    }
 
     // Количество значащих разрядов в числе
     // Выделить в отдельную переменную?
