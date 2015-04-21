@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <iterator>
+#include <string>
 #include <initializer_list>
 
 #include "digit.h"
@@ -27,6 +28,18 @@ struct natural {
             this->digits.push_back(*it);
             it++;
         }
+    }
+
+    implicit natural(const std::string &input) {
+      auto it = input.rbegin();
+      while (it != tmp.rend()) {
+        if (('0' <= *it) && (*it <= '9')) {
+            this->digits.push_back(*it);
+            it++;
+        } else {
+              // TODO(timecatler): exception
+        }
+      }
     }
 
     // Уничтожитель незначащих нулей
