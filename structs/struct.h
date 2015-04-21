@@ -32,9 +32,9 @@ struct natural {
 
     explicit natural(const std::string &input) {
       auto it = input.rbegin();
-      while (it != tmp.rend()) {
+      while (it != input.rend()) {
         if (('0' <= *it) && (*it <= '9')) {
-            this->digits.push_back(*it);
+            this->digits.push_back(static_cast<digit>(*it - '0'));
             it++;
         } else {
               // TODO(timecatler): exception

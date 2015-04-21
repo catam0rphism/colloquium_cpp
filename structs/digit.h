@@ -2,11 +2,18 @@
 #ifndef DIGIT_H
 #define DIGIT_H
 
+#include <iostream>
+
 #include "ordinal.h"
 
 // Это наши цифры
 enum /* class */ digit: std::int8_t { _0, _1, _2, _3, _4, _5, _6, _7, _8, _9,
                             _minDigit = _0, _maxDigit = _9, _NotaDigit = -1 };
+
+std::ostream& operator<<(std::ostream &os, const digit &Digit) {
+    os << static_cast<int>(Digit);
+    return os;
+}
 
 // Инкремент ЦИФРЫ. Работает по принципу полного сумматора т.е.
 // принимает цифру и перенос предыдущего сложения 
