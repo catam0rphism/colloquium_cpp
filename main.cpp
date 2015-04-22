@@ -23,19 +23,9 @@ int main(int argc, char const *argv[]) {
 
     // std::cout << (1 == _1) << std::endl;
 
-    for (digit d1 = _minDigit; d1 <= _maxDigit; d1 = (digit)(d1 + 1)) {
-        for (digit d2 = _minDigit; d2 <= _maxDigit; d2 = (digit)(d2 + 1)) {
-            bool b = false;
-            std::cout << d1 << " - " << d2 << " <==> " << sub(d1, d2, b) << " ";
+    std::cout << (a == (natural){ _4 });
 
-            std::cout << b << " | ";
-        }
-        std::cout << std::endl;
-    }
 
-    std::cout << a[-1];
-
-    // std::cout << counter++ << std::endl;
     // for (int i = a.order() - 1 ; i >= 0; i--) {
     //     std::cout << a[i] << " ";
     // }
