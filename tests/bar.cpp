@@ -62,4 +62,20 @@ TEST_CASE ( "Натуральные числа", "[natural]" ) {
         REQUIRE ( COM_NN_D( SUB_NN_N(a, b), { _1, _1, _1 }) == ordinal::EQ );
     }
     #endif  // SUB_NN_N_CPP
+
+    #ifdef NZER_N_B_CPP
+    SECTION ("NZER_N_B [проверка на ноль]") {
+        natural zero = { _0 };
+        natural nzero = { _1, _0, _4, _2 };
+
+        REQUIRE ( NZER_N_B(zero) );
+        REQUIRE_FALSE ( NZER_N_B(nzero) );
+
+        zero = { _0, _0 };
+        REQUIRE ( NZER_N_B(zero) );
+
+        nzero = { _0, _0, _1, _0, _0 };
+        REQUIRE_FALSE ( NZER_N_B(nzero) );
+    }
+    #endif  // NZER_N_B_CPP
 }
