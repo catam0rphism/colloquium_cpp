@@ -6,5 +6,6 @@
 #include "ADD_1N_N.cpp"
 #include "ADD_NN_N.cpp"
 #include "SUB_NN_N.cpp"
+#include "NZER_N_B.cpp"
 
 #endif  // NATURAL_H
