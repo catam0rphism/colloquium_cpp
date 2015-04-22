@@ -30,13 +30,15 @@ struct natural {
         }
     }
 
-    explicit natural(const std::string &input) {
+    natural(const std::string &input) {
       auto it = input.rbegin();
       while (it != input.rend()) {
         if (('0' <= *it) && (*it <= '9')) {
             this->digits.push_back(static_cast<digit>(*it - '0'));
             it++;
         } else {
+            // if (*it == std::string::npos) return;
+            throw;
               // TODO(timecatler): exception
         }
       }
@@ -79,6 +81,8 @@ struct natural {
     }
 
     natural operator+(const natural& other);
+    void operator++( int );
+    bool operator==(const natural& other);
 
  private:
     // Массив цифр от младших разрядов к старшим

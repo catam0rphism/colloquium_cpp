@@ -21,4 +21,8 @@ natural ADD_1N_N(const natural& n) {
     return res;
 }
 
+void natural::operator++( int ) {
+    digits = ADD_1N_N(*this).digits;
+}
+
 #endif  // ADD_1N_N_CPP

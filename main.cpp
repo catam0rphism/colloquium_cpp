@@ -10,7 +10,7 @@ int main(int argc, char const *argv[]) {
     natural a({ _9, _9, _9, _9, _9 });
 
     // std::cout << counter++ << std::endl;
-    natural b = { _4, _2 };
+    natural b( "00000042" );
 
     // std::cout << 'd' << std::endl;
 
@@ -18,11 +18,11 @@ int main(int argc, char const *argv[]) {
     natural c = { _9, _9 };
     natural one = { _1 };
 
-    c = c + (natural){ _1 };
+    a = ADD_1N_N(a);
 
     // std::cout << counter++ << std::endl;
-    for (int i = c.order() - 1 ; i >= 0; i--) {
-        std::cout << c[i] << " ";
+    for (int i = a.order() - 1 ; i >= 0; i--) {
+        std::cout << a[i] << " ";
     }
     return 0;
 }

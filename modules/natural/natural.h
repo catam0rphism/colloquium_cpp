@@ -2,7 +2,8 @@
 #ifndef NATURAL_H
 #define NATURAL_H
 
-#include "ADD_NN_N.cpp"
+#include "COM_NN_D.cpp"
 #include "ADD_1N_N.cpp"
+#include "ADD_NN_N.cpp"
 
-#endif // NATURAL_H
+#endif  // NATURAL_H
