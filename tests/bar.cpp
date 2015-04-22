@@ -35,12 +35,10 @@ TEST_CASE ( "Натуральные числа", "[natural]" ) {
     SECTION ( "ADD_1N_N [инкремент]" ) {
         natural a = { _9, _9, _8 };
 
-        natural b = {_9, _9, _9 };
-
         a = ADD_1N_N(a);
-        REQUIRE ( a == b );
+        REQUIRE ( COM_NN_D(a, {_9, _9, _9 }) == ordinal::EQ );
 
-        a = ADD_1N_N(a);
+        a++;
         REQUIRE ( COM_NN_D(a, {_1, _0, _0, _0 }) == ordinal::EQ );
     }
 }
