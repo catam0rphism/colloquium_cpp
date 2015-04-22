@@ -41,4 +41,14 @@ TEST_CASE ( "Натуральные числа", "[natural]" ) {
         a++;
         REQUIRE ( COM_NN_D(a, {_1, _0, _0, _0 }) == ordinal::EQ );
     }
+    
+    SECTION ( "SUB_NN_N [разность большего и меньшего чисел]" ) {
+        natural a = { _1, _0, _0 };
+        natural b = { _1 };
+        
+        REQUIRE ( COM_NN_D( SUB_NN_N(a, b), { _9, _9 }) == ordinal::EQ );
+        
+        a = a - a;
+        REQUIRE ( COM_NN_D( SUB_NN_N(a, b), { _0 }) == ordinal::EQ );
+    }
 }

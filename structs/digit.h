@@ -49,9 +49,12 @@ digit add(const digit &a, const digit &b, bool &overflowFlag) {
 // вычитает из одной цифры другую
 // первый аргумент обязательно больше либо равен второму !!
 // если это не так, возвращает _NotaDigit т.е. "Не цифра"
-digit sub(const digit &a, const digit &b) {
-    if (a < b) { return _NotaDigit;
-    } else { return static_cast<digit>(a - b); }
+digit sub(const digit &a, const digit &b, bool &insufficienceFlag) {
+    digit tmp = a;
+    if(insufficienceFlag) { tmp = a - 1; }
+    
+    if (tmp < b) { return static_cast<digit>(10 + tmp - b); }
+    } else { return static_cast<digit>(tmp - b); }
 }
 
 // Умножает 2 числа, demolition - аналог флага переполнения
