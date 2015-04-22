@@ -18,11 +18,26 @@ int main(int argc, char const *argv[]) {
     natural c = { _9, _9 };
     natural one = { _1 };
 
-    a = ADD_1N_N(a);
+    a = { _2, _0, _0 };
+    a = SUB_NN_N(c + one, { _9, _9 });
+
+    // std::cout << (1 == _1) << std::endl;
+
+    for (digit d1 = _minDigit; d1 <= _maxDigit; d1 = (digit)(d1 + 1)) {
+        for (digit d2 = _minDigit; d2 <= _maxDigit; d2 = (digit)(d2 + 1)) {
+            bool b = false;
+            std::cout << d1 << " - " << d2 << " <==> " << sub(d1, d2, b) << " ";
+
+            std::cout << b << " | ";
+        }
+        std::cout << std::endl;
+    }
+
+    std::cout << a[-1];
 
     // std::cout << counter++ << std::endl;
-    for (int i = a.order() - 1 ; i >= 0; i--) {
-        std::cout << a[i] << " ";
-    }
+    // for (int i = a.order() - 1 ; i >= 0; i--) {
+    //     std::cout << a[i] << " ";
+    // }
     return 0;
 }

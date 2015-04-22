@@ -49,6 +49,6 @@ TEST_CASE ( "Натуральные числа", "[natural]" ) {
         REQUIRE ( COM_NN_D( SUB_NN_N(a, b), { _9, _9 }) == ordinal::EQ );
         
         a = a - a;
-        REQUIRE ( COM_NN_D( SUB_NN_N(a, b), { _0 }) == ordinal::EQ );
+        REQUIRE ( COM_NN_D( a, { _0 }) == ordinal::EQ );
     }
 }

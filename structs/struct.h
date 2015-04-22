@@ -72,15 +72,19 @@ struct natural {
 
     // TODO: переопределить операторы
     digit& operator[](const int& digitInd) {
-        int k = order();
-        while (k <= digitInd) {
-            digits.push_back(_0);
-            k++;
+        if (digitInd >= order()) {
+            int k = order();
+            while(digitInd >= k) {
+                digits.push_back( _0 );
+                k++;
+            }
         }
         return digits[digitInd];
     }
 
     natural operator+(const natural& other);
+    natural operator-(const natural& other);
+
     void operator++( int );
     bool operator==(const natural& other);
 

@@ -47,13 +47,15 @@ digit add(const digit &a, const digit &b, bool &overflowFlag) {
 }
 
 // вычитает из одной цифры другую
-// первый аргумент обязательно больше либо равен второму !!
-// если это не так, возвращает _NotaDigit т.е. "Не цифра"
+// insufficienceFlag - флаг недозаполнености (т.е. перенос при вычитании)
 digit sub(const digit &a, const digit &b, bool &insufficienceFlag) {
-    digit tmp = a;
+    std::int8_t tmp = a;
     if(insufficienceFlag) { tmp = a - 1; }
     
-    if (tmp < b) { return static_cast<digit>(10 + tmp - b); }
+    insufficienceFlag = false;
+    if (tmp < b) {
+        insufficienceFlag = true;
+        return static_cast<digit>(10 + tmp - b);
     } else { return static_cast<digit>(tmp - b); }
 }
 
