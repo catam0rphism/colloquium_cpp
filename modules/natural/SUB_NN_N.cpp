@@ -2,8 +2,6 @@
 #ifndef SUB_NN_N_CPP
 #define SUB_NN_N_CPP
 
-// #include <algorithm>
-
 #include "../../structs/struct.h"
 #include "COM_NN_D.cpp"
 
