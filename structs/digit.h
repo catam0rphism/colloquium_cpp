@@ -53,8 +53,8 @@ digit sub(const digit &a, const digit &b, bool &insufficienceFlag) {
     digit tmp = a;
     if(insufficienceFlag) { tmp = a - 1; }
     
-    if (tmp < b) { return static_cast<digit>(10+a-b); }
-    } else { return static_cast<digit>(a - b); }
+    if (tmp < b) { return static_cast<digit>(10 + tmp - b); }
+    } else { return static_cast<digit>(tmp - b); }
 }
 
 // Умножает 2 числа, demolition - аналог флага переполнения
