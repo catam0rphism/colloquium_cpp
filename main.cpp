@@ -3,6 +3,7 @@
 
 #include "modules/natural/natural.h"
 #include "structs/struct.h"
+#include "structs/operators.h"
 
 int main(int argc, char const *argv[]) {
     // int counter = 0;
@@ -10,7 +11,9 @@ int main(int argc, char const *argv[]) {
     natural a({ _9, _9, _9, _9, _9 });
 
     // std::cout << counter++ << std::endl;
-    natural b( "00000042" );
+    natural b("005000042");
+    std::cout << "42?" << std::endl;
+    std::cout << b << std::endl;
 
     // std::cout << 'd' << std::endl;
 
