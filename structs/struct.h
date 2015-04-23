@@ -51,6 +51,12 @@ struct natural {
         }
     }
 
+    void orderShift(int orderCount) {
+    		while(orderCount --> 0) {
+    			digits.insert(digits.begin(), _0);
+    		}
+    }
+
     // Количество значащих разрядов в числе
     // Выделить в отдельную переменную?
     int order() const {
