@@ -1,6 +1,6 @@
 // Copyright 2015 Vadim Bertysh
-#ifndef OPERATORS_H
-#define OPERATORS_H
+#ifndef OPERATORS_CPP
+#define OPERATORS_CPP
 
 #include <iostream>
 
@@ -29,4 +29,4 @@ std::ostream& operator<<(std::ostream &os, integer &integer) {
     return os;
 }
 
-#endif  // OPERATORS_H
+#endif  // OPERATORS_CPP
