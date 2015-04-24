@@ -121,7 +121,7 @@ struct fraction {
 
 // Многочлен
 struct polynom {
-    polynom() { }
+    polynom(): polynom({ _0 }) { }
     polynom(const polynom& other) {
         this->coefficients = other.coefficients;
     }
@@ -136,12 +136,25 @@ struct polynom {
         }
     }
 
-    // Коэффициенты многочлена в порядке увеличения степени
-    // 18x^3 + 4x^2 + 3 <==> { 3, 0, 4, 18 }
-    std::vector<fraction> coefficients;
+    void reduce() {
+        while ((coefficients.back() == _0) && (coefficients.size() != 0)) {
+            coefficients.pop_back();
+        }
+    }
 
     // Степень многочлена
-    int degree() { return coefficients.size(); }
+    int degree() const {
+        int k = coefficients.size();
+        while (coefficients[k - 1] == _0 && k > 0) { k--; }
+        return k;
+    }
+
+    void degreeShift(const unsigned &degreeCount) {
+        unsigned order = degreeCount;
+        while (order --> 0) {
+            coefficients.insert(coefficients.begin(), _0);
+        }
+    }
 
     polynom& operator= (const polynom& other) {
         // TODO: проверка самоприсвоения
@@ -151,8 +164,24 @@ struct polynom {
 
     ~polynom() {
         coefficients.clear();
-        // delete digits;
     }
+
+    digit& operator[](const int& coeffInd) {
+        if (coeffInd >= degree()) {
+            int k = degree();
+            while(coeffInd >= k) {
+                coefficients.push_back( _0 );
+                k++;
+            }
+        }
+        return coefficients[coeffInd];
+    }
+
+ private:
+    // Коэффициенты многочлена в порядке увеличения степени
+    // 18x^3 + 4x^2 + 3 <==> { 3, 0, 4, 18 }
+    std::vector<fraction> coefficients;
+
 };
 
 #endif  // STRUCT_H
