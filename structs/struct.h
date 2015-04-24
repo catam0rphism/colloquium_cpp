@@ -96,6 +96,9 @@ struct natural {
     void operator++( int );
     bool operator==(const natural& other);
 
+    static const natural one = natural({ _1 });
+    static const natural zero = natural({ _0 });
+
  private:
     // Массив цифр от младших разрядов к старшим
     // Число 9426 будет представленно как { 6, 2, 4, 9 }
