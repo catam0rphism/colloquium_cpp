@@ -13,12 +13,12 @@
 // #яХочуКлассы #нужноБольшеИнкапсуляции
 // Натуральное число
 struct natural {
-    // TODO: Добавить других конструкторов
     natural(): natural({ _0 }) { }  // инициализация нулем
     natural(const natural& number) {
         this->digits = number.digits;  // vector copy constructor
     }
 
+    // Конструктор из списка цифр в нормальном порядке: { _3, _4, _0 } <===> 340
     natural(std::initializer_list<digit> digits) {
         std::vector<digit> tmp(digits);
 
@@ -30,6 +30,7 @@ struct natural {
         }
     }
 
+    // Контруктор из строки "42" <===> 42
     natural(const std::string &input) {
       auto it = input.rbegin();
       while (it != input.rend()) {
