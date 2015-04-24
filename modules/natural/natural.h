@@ -7,5 +7,8 @@
 #include "ADD_NN_N.cpp"
 #include "SUB_NN_N.cpp"
 #include "NZER_N_B.cpp"
+#include "MUL_Nk_N.cpp"
+#include "MUL_ND_N.cpp"
+#include "MUL_NN_N.cpp"
 
 #endif  // NATURAL_H

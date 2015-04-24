@@ -78,4 +78,36 @@ TEST_CASE ( "Натуральные числа", "[natural]" ) {
         REQUIRE_FALSE ( NZER_N_B(nzero) );
     }
     #endif  // NZER_N_B_CPP
+
+    #ifdef  MUL_ND_N_CPP
+    SECTION("MUL_ND_N [умножение натурального числа на цифру]") {
+        natural zero = { _0 };
+        natural one = { _1 };
+        natural totallyRandomNumber("424242424242");
+        natural result9("3818181818178");
+
+        REQUIRE(COM_NN_D(MUL_ND_N(zero, _1), zero) == ordinal::EQ);
+        REQUIRE(COM_NN_D(MUL_ND_N(one, _9), { _9 }) == ordinal::EQ);
+        REQUIRE(COM_NN_D(MUL_ND_N(totallyRandomNumber, _9), result9) == ordinal::EQ);
+    }
+    #endif  // MUL_ND_N_CPP
+
+    #ifdef MUL_NN_N_CPP
+    SECTION("MUL_NN_N [умножение натурального числа на натуральное]") {
+        natural totallyRandomNumber("424242424242");
+        natural resultSquare("179981634526729109274564");
+
+        REQUIRE(COM_NN_D(MUL_NN_N(totallyRandomNumber, totallyRandomNumber),
+            resultSquare) == ordinal::EQ);
+    }
+    #endif  // MUL_NN_N_CPP
+
+    #ifdef MUL_NK_N_CPP
+    SECTION("MUL_Nk_N [умножение натурального числа на 10^k]") {
+        natural totallyRandomNumber("42");
+        natural result4("420000");
+        REQUIRE(COM_NN_D(MUL_Nk_N(totallyRandomNumber, 4), result4) == ordinal::EQ);
+        REQUIRE(COM_NN_D(MUL_Nk_N(totallyRandomNumber, 0), totallyRandomNumber) == ordinal::EQ);
+    }
+    #endif  // MUL_NK_N_CPP
 }

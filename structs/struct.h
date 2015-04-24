@@ -51,10 +51,11 @@ struct natural {
         }
     }
 
-    void orderShift(int orderCount) {
-    	while(orderCount --> 0) {
-    		digits.insert(digits.begin(), _0);
-    	}
+    void orderShift(const unsigned &orderCount) {
+        unsigned order = orderCount;
+        while (order --> 0) {
+            digits.insert(digits.begin(), _0);
+        }
     }
 
     // Количество значащих разрядов в числе
