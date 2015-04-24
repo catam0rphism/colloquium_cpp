@@ -11,7 +11,7 @@ int main(int argc, char const *argv[]) {
     natural a({ _9, _9, _9, _9, _9 });
 
     // std::cout << counter++ << std::endl;
-    natural b("005000042");
+    natural b("00000042");
     std::cout << "42?" << std::endl;
     std::cout << b << std::endl;
 
@@ -26,7 +26,12 @@ int main(int argc, char const *argv[]) {
 
     // std::cout << (1 == _1) << std::endl;
 
-    std::cout << (a == (natural){ _4 });
+    auto aa = natural( {_3, _3, _4, _2} );
+    std::cout << aa << std::endl;
+
+    auto bb = natural(3342);
+    std::cout << bb << std::endl;
+    std::cout << (aa == bb);
 
 
     // for (int i = a.order() - 1 ; i >= 0; i--) {

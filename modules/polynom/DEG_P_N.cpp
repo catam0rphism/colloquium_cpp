@@ -2,8 +2,6 @@
 #ifndef DEG_P_N_CPP
 #define DEG_P_N_CPP
 
-#include <string>
-
 #include "../../structs/struct.h"
 
 natural DEG_P_N(const polynom &pn) {

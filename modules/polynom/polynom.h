@@ -2,6 +2,6 @@
 #ifndef POLYNOM_H
 #define POLYNOM_H
 
-
+#include "DEG_P_N.cpp"
 
 #endif  // POLYNOM_H

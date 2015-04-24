@@ -23,7 +23,7 @@ std::ostream& operator<<(std::ostream &os, integer &integer) {
     if (integer.module.order() == 0) {
         os << 0;
     } else {
-        if (!integer.sign) os << "-";
+        if (!integer.isPositive) os << "-";
         os << integer.module;
     }
     return os;

@@ -43,4 +43,7 @@ natural natural::operator+(const natural& other) {
     return ADD_NN_N(*this, other);
 }
 
+const natural n_one = natural({ _1 });
+const natural n_zero = natural({ _0 });
+
 #endif  // ADD_NN_N_CPP

@@ -49,8 +49,11 @@ struct natural {
         if (input == 0) return;
         unsigned number = input;
         unsigned i = 0;
+        
+        digits = std::vector<digit>();
+
         while (number != 0) {
-            digits[i] = static_cast<digit>(number % 10);
+            digits.push_back(static_cast<digit>(number % 10));
             number /= 10;
             i++;
         }
@@ -107,9 +110,6 @@ struct natural {
     void operator++( int );
     bool operator==(const natural& other);
 
-    static const natural one = natural({ _1 });
-    static const natural zero = natural({ _0 });
-
  private:
     // Массив цифр от младших разрядов к старшим
     // Число 9426 будет представленно как { 6, 2, 4, 9 }
@@ -118,12 +118,22 @@ struct natural {
 
 // Целое число
 struct integer {
-    bool sign;
+    integer() { isPositive = true; module = natural(); }
+    integer(const int& a) {
+        isPositive = a >= 0;
+        module = natural(abs(a));
+    }
+
+    bool isPositive;
     natural module;
 };
 
 // Рациональное число
 struct fraction {
+    fraction(const int& a) {
+        numerator = integer(a);
+        denominator = natural({ _1 });
+    }
     //Числитель дроби
     integer numerator;
     //Знаменатель дроби
@@ -132,7 +142,7 @@ struct fraction {
 
 // Многочлен
 struct polynom {
-    polynom(): polynom({ _0 }) { }
+    polynom(): polynom({ fraction(0) }) { }
     polynom(const polynom& other) {
         this->coefficients = other.coefficients;
     }
@@ -147,24 +157,27 @@ struct polynom {
         }
     }
 
+#warning TODO: reduce!!!!
     void reduce() {
-        while ((coefficients.back() == _0) && (coefficients.size() != 0)) {
-            coefficients.pop_back();
-        }
+        // while ((coefficients.back() == 0) && (coefficients.size() != 0)) {
+        //     coefficients.pop_back();
+        // }
     }
 
+#warning TODO: degree!!!!
     // Степень многочлена
     int degree() const {
         int k = coefficients.size();
-        while (coefficients[k - 1] == _0 && k > 0) { k--; }
+        // while (coefficients[k - 1] == 0 && k > 0) { k--; }
         return k;
     }
 
+#warning TODO: degreeShift!!!!
     void degreeShift(const unsigned &degreeCount) {
-        unsigned order = degreeCount;
-        while (order --> 0) {
-            coefficients.insert(coefficients.begin(), _0);
-        }
+        // unsigned order = degreeCount;
+        // while (order --> 0) {
+        //     coefficients.insert(coefficients.begin(), 0);
+        // }
     }
 
     polynom& operator= (const polynom& other) {
@@ -177,11 +190,12 @@ struct polynom {
         coefficients.clear();
     }
 
-    digit& operator[](const int& coeffInd) {
+#warning TODO: index!!!!
+    fraction& operator[](const int& coeffInd) {
         if (coeffInd >= degree()) {
             int k = degree();
             while(coeffInd >= k) {
-                coefficients.push_back( _0 );
+                // coefficients.push_back( 0 );
                 k++;
             }
         }
