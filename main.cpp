@@ -3,6 +3,7 @@
 
 #include "modules/natural/natural.h"
 #include "structs/struct.h"
+#include "structs/operators.h"
 
 int main(int argc, char const *argv[]) {
     // int counter = 0;
