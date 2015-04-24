@@ -45,6 +45,17 @@ struct natural {
       }
     }
 
+    natural(const unsigned &input) {
+        if (input == 0) return;
+        unsigned number = input;
+        unsigned i = 0;
+        while (number != 0) {
+            digits[i] = static_cast<digit>(number % 10);
+            number /= 10;
+            i++;
+        }
+    }
+
     // Уничтожитель незначащих нулей
     void reduce() {
         while ((digits.back() == _0) && (digits.size() != 0)) {
