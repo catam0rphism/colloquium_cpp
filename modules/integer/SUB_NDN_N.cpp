@@ -1,4 +1,4 @@
-// Copyright 2015 Галеева, Межуева 4371
+// Copyright 2015 Р“Р°Р»РµРµРІР°, РњРµР¶СѓРµРІР° 4371
 #ifndef SUB_NDN_N
 #define SUB_NDN_N
 
@@ -15,7 +15,7 @@ natural SUB_NDN_N(const natural& a, const natural& b, const digit& n)
 		res = SUB_NN_N(res, mul_sub);
 		return res;
 	}
-	//else что возвращать в случае, когда произведение больше?
+	//else С‡С‚Рѕ РІРѕР·РІСЂР°С‰Р°С‚СЊ РІ СЃР»СѓС‡Р°Рµ, РєРѕРіРґР° РїСЂРѕРёР·РІРµРґРµРЅРёРµ Р±РѕР»СЊС€Рµ?
 }
 
 #endif
