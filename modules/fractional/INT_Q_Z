@@ -3,7 +3,7 @@
 #ifndef RED_Q_Q_CPP
 #define RED_Q_Q_CPP
 
-#include "struct.h"
+#include "../../structs/struct.h"
 #include "RED_Q_Q.cpp"
 using namespace std;
 
