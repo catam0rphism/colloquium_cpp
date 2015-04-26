@@ -1,6 +1,6 @@
 all:
 	g++ main.cpp -Wall -std=c++1y -o foo
-bar:
+t:
 	g++ ./tests/bar.cpp -std=c++1y -o test
 
 clean:
