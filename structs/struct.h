@@ -7,8 +7,8 @@
 #include <string>
 #include <initializer_list>
 
-#include "digit.h"
-#include "ordinal.h"
+#include "./digit.h"
+#include "./ordinal.h"
 
 // #яХочуКлассы #нужноБольшеИнкапсуляции
 // Натуральное число
@@ -82,7 +82,7 @@ struct natural {
     }
 
     natural& operator= (const natural& other) {
-        // TODO: проверка самоприсвоения
+        if (*this == other) return *this;
         digits = other.digits;
         return *this;
     }
@@ -124,15 +124,32 @@ struct integer {
         module = natural(abs(a));
     }
 
+    integer(const std::string &input) {
+        std::string cinput = input;
+        if (cinput[0] == '-') {
+            isPositive = false;
+            cinput.erase(cinput.begin());
+        } else {
+            if (cinput[0] == '+') {
+                cinput.erase(cinput.begin());
+            }
+        }
+        module = natural(cinput);
+    }
+
     bool isPositive;
     natural module;
 };
 
 // Рациональное число
 struct fraction {
-    fraction(const int& a) {
-        numerator = integer(a);
+    // Создаёт дробь 0/1
+    fraction() {
+        numerator = integer();
         denominator = natural({ _1 });
+    }
+    fraction(const int& a) : fraction() {
+        numerator = integer(a);
     }
     //Числитель дроби
     integer numerator;

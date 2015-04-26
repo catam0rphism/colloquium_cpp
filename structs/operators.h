@@ -29,4 +29,13 @@ std::ostream& operator<<(std::ostream &os, integer &integer) {
     return os;
 }
 
+std::ostream& operator<<(std::ostream &os, fraction &fraction) {
+    if (fraction.numerator.module.order() == 0) {
+        os << 0;
+    } else {
+        os << fraction.numerator << '/' << fraction.denominator;
+    }
+    return os;
+}
+
 #endif  // OPERATORS_H
