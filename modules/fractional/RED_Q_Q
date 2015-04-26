@@ -7,16 +7,13 @@
 #include "RED_Q_Q.cpp"
 
 
-void RED_Q_Q(fraction RED)
+void RED_Q_Q(fraction &RED)
 {
 	integer NOD;
 	
-	ABS_Z_N(RED.numenator); //Берём абсолютное значение от числителя
-	ABS_Z_N(RED.denominator); //Берём абсолютное значение от знаменателя
+	NOD = GCF_NN_N(ABS_Z_N(RED.numenator), RED.denominator); //Ищем НОД числителя и знаменатель
 	
-	NOD = GCF_NN_N(RED.numenator, RED.denominator); //Ищем НОД числителя и знаменатель
-	
-	RED.numenator = DIV_ZZ_Z(RED.numenator, NOD); //Делим числитель на НОД
+	RED.numenator = DIV_ZZ_Z(ABS_Z_N(RED.numenator), NOD); //Делим числитель на НОД
 	RED.denominator = DIV_ZZ_Z(RED.denominator, NOD);//Делим знаменатель на НОД
 }
 
