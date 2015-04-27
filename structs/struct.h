@@ -123,7 +123,9 @@ struct integer {
         isPositive = a >= 0;
         module = natural(abs(a));
     }
-
+    integer(const natural &natural) : natural() {
+        module = natural;
+    }
     integer(const std::string &input) {
         std::string cinput = input;
         if (cinput[0] == '-') {

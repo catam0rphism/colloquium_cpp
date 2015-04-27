@@ -1,14 +1,9 @@
 //Copyright 2015 Rusyaev Sergey, Vasil'eva Maria
 
-#include "stdafx.h"
-#include "struct.h"
-#include <iostream>
-
-
-int POZ_Z_D(const integer& a)
+int POZ_Z_D(const integer& a) // ПОчему не bool!?
 {
 	int k;
-	if (a.module == 0)
+	if (a.module == 0) // Не будет работать!
 	{
 		k = 0;
 	}
@@ -19,5 +14,5 @@ int POZ_Z_D(const integer& a)
 		else
 			k = 0;
 	}
-	return k;
+	return k; // Почему вообще есть весь код выше, а не просто return a.isPositive!?
 }
