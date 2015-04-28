@@ -15,5 +15,6 @@
 #include "SUB_NDN_N.cpp"
 #include "LCM_NN_N.cpp"
 #include "GCF_NN_N.cpp"
+#include "MOD_NN_N.cpp"
 
 #endif  // NATURAL_H
