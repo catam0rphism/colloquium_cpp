@@ -1,6 +1,6 @@
 // Copyright 2015 Rusyaev Sergey, Vasil'eva Maria
-#ifndef POZ_Z_D
-#define POZ_Z_D
+#ifndef POZ_Z_D_CPP
+#define POZ_Z_D_CPP
 
 #include "../../structs/struct.h"
 #include "../../structs/state.h"
@@ -29,4 +29,4 @@ IntegerState POZ_Z_D(const integer& a) {
     }
 }
 
-#endif  // POZ_Z_D
+#endif  // POZ_Z_D_CPP

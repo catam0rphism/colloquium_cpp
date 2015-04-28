@@ -1,6 +1,6 @@
 ﻿// Copyright 2015 Черников, Бимбетов 4372
-#ifndef SUB_ZZ_Z
-#define SUB_ZZ_Z
+#ifndef SUB_ZZ_Z_CPP
+#define SUB_ZZ_Z_CPP
 
 #include "../../structs/struct.h"
 
@@ -17,4 +17,4 @@ integer SUB_ZZ_Z(const integer& a, const integer& b) {
     return result;
 }
 
-#endif  // SUB_ZZ_Z
+#endif  // SUB_ZZ_Z_CPP
