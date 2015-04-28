@@ -109,6 +109,10 @@ struct natural {
 
     void operator++( int );
     bool operator==(const natural& other);
+    bool operator<(const natural &other);
+    bool operator>(const natural &other);
+    bool operator<=(const natural &other);
+    bool operator>=(const natural &other);
 
  private:
     // Массив цифр от младших разрядов к старшим
@@ -123,7 +127,7 @@ struct integer {
         isPositive = a >= 0;
         module = natural(abs(a));
     }
-    integer(const natural &natural) : natural() {
+    integer(const natural &natural) : integer() {
         module = natural;
     }
     integer(const std::string &input) {

@@ -1,6 +1,6 @@
 // Copyright 2015 Черников, Бимбетов 4372
-#ifndef ADD_ZZ_Z
-#define ADD_ZZ_Z
+#ifndef ADD_ZZ_Z_CPP
+#define ADD_ZZ_Z_CPP
 
 #include "../../structs/struct.h"
 
@@ -32,4 +32,4 @@ integer ADD_ZZ_Z(const integer& a, const integer& b) {
     return result;
 }
 
-#endif  // ADD_ZZ_Z
+#endif  // ADD_ZZ_Z_CPP
