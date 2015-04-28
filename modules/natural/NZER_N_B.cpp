@@ -1,5 +1,4 @@
 // Copyright 2015 Dedov Andrey
-
 #ifndef NZER_N_B_CPP
 #define NZER_N_B_CPP
 

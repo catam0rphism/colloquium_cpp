@@ -4,6 +4,10 @@
 
 #include "../../structs/struct.h"
 
+#include "DIV_NN_N.cpp"
+#include "MUL_NN_N.cpp"
+#include "SUB_NN_N.cpp"
+
 natural MOD_NN_N(const natural& a, const natural& b) {
     natural res;
     natural divident = a;

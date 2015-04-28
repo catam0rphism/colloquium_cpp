@@ -1,8 +1,14 @@
-// Copyright 2015 Γΰλεεβΰ, Μεζσεβΰ 4371
-#ifndef SUB_NDN_N
-#define SUB_NDN_N
+// Copyright 2015 Π“Π°Π»ΠµΠµΠ²Π°, ΠΠµΠ¶ΡƒΠµΠ²Π° 4371
+#ifndef SUB_NDN_N_CPP
+#define SUB_NDN_N_CPP
+
+#include <stdexcept>
 
 #include "../../structs/struct.h"
+
+#include "MUL_ND_N.cpp"
+#include "COM_NN_D.cpp"
+#include "SUB_NN_N.cpp"
 
 natural SUB_NDN_N(const natural& a, const natural& b, const digit& n) {
     natural res = a;
@@ -17,4 +23,4 @@ natural SUB_NDN_N(const natural& a, const natural& b, const digit& n) {
     }
 }
 
-#endif  // SUB_NDN_N
+#endif  // SUB_NDN_N_CPP

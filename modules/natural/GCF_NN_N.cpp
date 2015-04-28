@@ -4,6 +4,9 @@
 
 #include "../../structs/struct.h"
 
+#include "COM_NN_D.cpp"
+#include "MOD_NN_N.cpp"
+
 natural GCF_NN_N(const natural& a, const natural& b) {
     natural divident = a;
     natural divider = b;

@@ -1,5 +1,4 @@
-//Copyright 2015 Bratkovsky Dmitry
-
+// Copyright 2015 Bratkovsky Dmitry
 #ifndef COM_NN_D_CPP
 #define COM_NN_D_CPP
 
@@ -61,4 +60,4 @@ bool natural::operator<=(const natural &other) {
     return !(*this > other);
 }
 
-#endif // COM_NN_D_CPP
+#endif  // COM_NN_D_CPP
