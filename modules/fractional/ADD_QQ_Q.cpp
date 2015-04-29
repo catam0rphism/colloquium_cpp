@@ -3,10 +3,10 @@
 fraction ADD_QQ_Q(fraction a, fraction b)
 {
 	fraction sum = 0;
-	if (b.denominator == a.denominator)
+	if (b.denominator == a.denominator)//сравнение знаменателей слагаемых
 	{	
-		sum.denominator = b.denominator;
-		sum.numerator = ADD_ZZ_Z(a.numerator,b.numerator);
+		sum.denominator = b.denominator;//если равны, присвоить сумме знаменатель слагаемых
+		sum.numerator = ADD_ZZ_Z(a.numerator,b.numerator);//
 		return sum;
 	}
 	else{
