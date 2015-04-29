@@ -154,8 +154,27 @@ struct fraction {
         numerator = integer();
         denominator = natural({ _1 });
     }
-    fraction(const int& a) : fraction() {
+    explicit fraction(const int& a) : fraction() {
         numerator = integer(a);
+    }
+    // Поведение следующего конструктора при неверных
+    // входных данных не детерменировано.
+    // Создаёт рациональное по строке вида "numerator/denominator"
+    explicit fraction(const std::string &input) {
+        std::string s_numerator;
+        auto it = input.begin();
+        while (*it != '/') {
+            s_numerator.push_back(*it);
+            it++;
+        }
+        numerator = integer(s_numerator);
+        it++;
+        std::string s_denominator;
+        while (it != input.end()) {
+            s_denominator.push_back(*it);
+            it++;
+        }
+        denominator = natural(s_denominator);
     }
     //Числитель дроби
     integer numerator;
@@ -182,7 +201,8 @@ struct polynom {
 
 #warning TODO: reduce!!!!
     void reduce() {
-        // while ((coefficients.back() == 0) && (coefficients.size() != 0)) {
+        // while ((coefficients.back() == fraction(0))
+        //     && (coefficients.size() != 0)) {
         //     coefficients.pop_back();
         // }
     }
