@@ -45,7 +45,7 @@ struct natural {
       }
     }
 
-    natural(const unsigned &input) {
+    natural(const unsigned &input) : natural() {
         if (input == 0) return;
         unsigned number = input;
         unsigned i = 0;
@@ -145,6 +145,8 @@ struct integer {
 
     bool isPositive;
     natural module;
+
+    bool operator==(const integer& other);
 };
 
 // Рациональное число
@@ -180,6 +182,8 @@ struct fraction {
     integer numerator;
     //Знаменатель дроби
     natural denominator;
+
+    bool operator==(const fraction& other);
 };
 
 // Многочлен
@@ -199,28 +203,34 @@ struct polynom {
         }
     }
 
-#warning TODO: reduce!!!!
     void reduce() {
-        // while ((coefficients.back() == fraction(0))
-        //     && (coefficients.size() != 0)) {
-        //     coefficients.pop_back();
-        // }
+        int k = coefficients.size()-1;
+        natural n_zero;
+        natural curr = coefficients[k].numerator.module;
+        while (curr == n_zero && k > 0) {
+            coefficients.pop_back();
+            k--;
+            curr = coefficients[k].numerator.module;
+        }
     }
 
-#warning TODO: degree!!!!
     // Степень многочлена
     int degree() const {
-        int k = coefficients.size();
-        // while (coefficients[k - 1] == 0 && k > 0) { k--; }
+        int k = coefficients.size()-1;
+        natural n_zero;
+        natural curr = coefficients[k].numerator.module;
+        while (curr == n_zero && k > 0) {
+            k--;
+            curr = coefficients[k].numerator.module;
+        }
         return k;
     }
 
-#warning TODO: degreeShift!!!!
     void degreeShift(const unsigned &degreeCount) {
-        // unsigned order = degreeCount;
-        // while (order --> 0) {
-        //     coefficients.insert(coefficients.begin(), 0);
-        // }
+        unsigned order = degreeCount;
+        while (order --> 0) {
+            coefficients.insert(coefficients.begin(), fraction(0));
+        }
     }
 
     polynom& operator= (const polynom& other) {
@@ -233,12 +243,11 @@ struct polynom {
         coefficients.clear();
     }
 
-#warning TODO: index!!!!
     fraction& operator[](const int& coeffInd) {
-        if (coeffInd >= degree()) {
+        if (coeffInd > degree()) {
             int k = degree();
-            while(coeffInd >= k) {
-                // coefficients.push_back( 0 );
+            while (coeffInd > k) {
+                coefficients.push_back(fraction(0));
                 k++;
             }
         }
@@ -249,7 +258,6 @@ struct polynom {
     // Коэффициенты многочлена в порядке увеличения степени
     // 18x^3 + 4x^2 + 3 <==> { 3, 0, 4, 18 }
     std::vector<fraction> coefficients;
-
 };
 
 #endif  // STRUCT_H
