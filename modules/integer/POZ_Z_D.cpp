@@ -7,7 +7,7 @@
 
 IntegerState POZ_Z_D(const integer& a) {
     short k = 0;
-    if (a.order()) {         // если число не равно нулю
+    if (a.module.order()) {         // если число не равно нулю
         if (a.isPositive)   // определяем его знак
             k = 1;
         else
