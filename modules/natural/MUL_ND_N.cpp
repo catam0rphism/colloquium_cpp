@@ -28,4 +28,8 @@ natural MUL_ND_N(const natural &a, const digit &n) {
     }
 }
 
+natural natural::operator*(const digit& other) {
+    return MUL_ND_N(*this, other);
+}
+
 #endif
