@@ -6,7 +6,7 @@
 
 ordinal COM_NN_D(natural a, natural b)
 {
-    short r = 0;
+    short r = 0;  // TODO(Belkin Dmitriy): r не нужно
     if (a.order() == b.order())
     {
         for (int i = a.order()-1; (i >= 0) && (r != 1) && (r != 2); --i)
@@ -38,18 +38,15 @@ ordinal COM_NN_D(natural a, natural b)
 }
 
 bool natural::operator==(const natural &other) {
-    natural tmp(other);
-    return ordinal::EQ == COM_NN_D(*this, tmp);
+    return ordinal::EQ == COM_NN_D(*this, other);
 }
 
 bool natural::operator<(const natural &other) {
-    natural tmp(other);
-    return ordinal::LT == COM_NN_D(*this, tmp);
+    return ordinal::LT == COM_NN_D(*this, other);
 }
 
 bool natural::operator>(const natural &other) {
-    natural tmp(other);
-    return ordinal::GT == COM_NN_D(*this, tmp);
+    return ordinal::GT == COM_NN_D(*this, other);
 }
 
 bool natural::operator>=(const natural &other) {

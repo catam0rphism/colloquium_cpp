@@ -106,6 +106,10 @@ struct natural {
 
     natural operator+(const natural& other);
     natural operator-(const natural& other);
+    natural operator*(const natural& ohter);
+    natural operator*(const digit& other);
+    natural operator/(const natural& ohter);
+    natural operator%(const natural& ohter);
 
     void operator++( int );
     bool operator==(const natural& other);
@@ -184,6 +188,11 @@ struct fraction {
     natural denominator;
 
     bool operator==(const fraction& other);
+
+    fraction operator+(const fraction& other);
+    fraction operator-(const fraction& other);
+    fraction operator*(const fraction& ohter);
+    fraction operator/(const fraction& ohter);
 };
 
 // Многочлен

@@ -10,6 +10,8 @@ int main(int argc, char const *argv[]) {
 
     natural a({ _9, _9, _9, _9, _9 });
 
+    std::cout << (a == a) << std::endl;
+
     // std::cout << counter++ << std::endl;
     natural b("00000042");
     std::cout << "42?" << std::endl;
