@@ -1,16 +1,18 @@
-// Copyright 2015 4371
+// Copyright 2015 Comrads 4371
 #ifndef DIV_NN_N_CPP
 #define DIV_NN_N_CPP
 
-#include "../../structs/struct.h"
+#include <stdexcept>
 
+#include "../../structs/struct.h"
 #include "./COM_NN_D.cpp"
-#include "./DIV_NN_Dk.cpp"
+#include "./DIV_NN_N.cpp"
 #include "./MUL_NN_N.cpp"
 #include "./SUB_NN_N.cpp"
 #include "./ADD_NN_N.cpp"
 
 natural DIV_NN_N(const natural& a, const natural& b) {
+    if (b == _0) throw std::invalid_argument("Your divider is equal to zero");
     natural res;
     natural divident = a;
     natural divider = b;
