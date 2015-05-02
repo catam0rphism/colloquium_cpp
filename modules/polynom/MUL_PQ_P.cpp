@@ -3,7 +3,7 @@
 #define MUL_PQ_P_CPP
 
 #include "../../structs/struct.h"
-#include "../fraction/MUL_QQ_Q.cpp"
+#include "../fractional/MUL_QQ_Q.cpp"
 
 natural MUL_P_Q(const polynom &pn, const fraction &num2) {
     polynom result = pn;

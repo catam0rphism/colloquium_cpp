@@ -3,6 +3,7 @@
 #define SUB_PP_P_CPP
 
 #include "../../structs/struct.h"
+#include "../fractional/SUB_QQ_Q.cpp"
 
 polynom SUB_PP_P(polynom left, polynom right) {
     polynom result;
