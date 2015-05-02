@@ -3,5 +3,8 @@
 #define POLYNOM_H
 
 #include "DEG_P_N.cpp"
+#include "SUB_PP_P.cpp"
+#include "MUL_PQ_P.cpp"
+#include "MUL_Pxk_P.cpp"
 
 #endif  // POLYNOM_H
