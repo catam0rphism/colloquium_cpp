@@ -9,6 +9,7 @@
 
 #include "./digit.h"
 #include "./ordinal.h"
+#include "./state.h"
 
 // #яХочуКлассы #нужноБольшеИнкапсуляции
 // Натуральное число
@@ -30,7 +31,7 @@ struct natural {
         }
     }
 
-    // Контруктор из строки "42" <===> 42
+    // Контруктор из строки "42" ===> { _2, _4 } т.е. 42
     natural(const std::string &input) {
       auto it = input.rbegin();
       while (it != input.rend()) {
@@ -82,6 +83,7 @@ struct natural {
     }
 
     natural& operator= (const natural& other) {
+        // TODO(Belkin Dmitriy): можно ли оператор ==, который в другом файле
         if (*this == other) return *this;
         digits = other.digits;
         return *this;
@@ -113,10 +115,10 @@ struct natural {
 
     void operator++( int );
     bool operator==(const natural& other);
-    bool operator<(const natural &other);
-    bool operator>(const natural &other);
-    bool operator<=(const natural &other);
-    bool operator>=(const natural &other);
+    bool operator< (const natural& other);
+    bool operator> (const natural& other);
+    bool operator<=(const natural& other);
+    bool operator>=(const natural& other);
 
  private:
     // Массив цифр от младших разрядов к старшим

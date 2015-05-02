@@ -10,9 +10,10 @@
 #include "./ADD_NN_N.cpp"
 #include "./SUB_NN_N.cpp"
 #include "./ADD_1N_N.cpp"
+#include "./NZER_N_B.cpp"
 
 natural DIV_NN_Dk(const natural& a, const natural& b) {
-    if (b == _0) throw std::invalid_argument("Second operand is equal to zero");
+    if (NZER_N_B(b)) throw std::invalid_argument("Second operand is equal to zero");
 
     natural res = a;
     unsigned n;

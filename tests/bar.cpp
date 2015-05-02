@@ -108,6 +108,8 @@ TEST_CASE ( "Натуральные числа", "[natural]" ) {
         natural result4("420000");
         REQUIRE(COM_NN_D(MUL_Nk_N(totallyRandomNumber, 4), result4) == ordinal::EQ);
         REQUIRE(COM_NN_D(MUL_Nk_N(totallyRandomNumber, 0), totallyRandomNumber) == ordinal::EQ);
+    
+        REQUIRE()
     }
     #endif  // MUL_NK_N_CPP
 }
