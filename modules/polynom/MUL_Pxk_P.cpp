@@ -4,8 +4,8 @@
 
 #include "../../structs/struct.h"
 
-polinom MUL_Pxk_P(const polinom &value, const unsigned &power) {
-    polinom result = value;
+polynom MUL_Pxk_P(const polynom &value, const unsigned &power) {
+    polynom result = value;
     result.degreeShift(power);
     return result;
 }
