@@ -14,14 +14,19 @@ polynom DIV_PP_P(const polynom& left, const polynom& right) {
     polynom divider = right;  // делитель
     polynom result;  // неполное частное
     int diff = divident.degree() - divider.degree();  // разница степеней
-    while (diff >= 0) {
-        result[diff] = DIV_QQ_Q(LED_P_Q(divident), LED_P_Q(divider));
-        divident = SUB_PP_P(divident, MUL_Pxk_P(
-                   MUL_PQ_P(divider, result[diff]), diff))
-        divident.reduce();
-        diff = divident.degree() - divider.degree();
+
+    if (diff >= 0) {
+        while (diff >= 0) {
+            result[diff] = DIV_QQ_Q(LED_P_Q(divident), LED_P_Q(divider));
+
+            divident = SUB_PP_P(divident, MUL_Pxk_P(
+                       MUL_PQ_P(divider, result[diff]), diff))
+            divident.reduce();
+
+            diff = divident.degree() - divider.degree();
+        }
     }
-    return result;
+     return result;
 }
 
 #endif  // DIV_PP_P_CPP
