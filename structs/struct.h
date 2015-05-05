@@ -67,8 +67,8 @@ struct natural {
         }
     }
 
-    void orderShift(const unsigned &orderCount) {
-        unsigned order = orderCount;
+    void orderShift(const int& orderCount) {
+        int order = orderCount;
         while (order --> 0) {
             digits.insert(digits.begin(), _0);
         }
