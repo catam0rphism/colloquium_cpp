@@ -3,6 +3,7 @@
 #define SUB_ZZ_Z_CPP
 
 #include "../../structs/struct.h"
+#include "./ADD_ZZ_Z.cpp"
 
 // Z7 - Разность целых чисел(результат целое)
 

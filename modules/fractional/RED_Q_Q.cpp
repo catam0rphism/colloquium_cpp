@@ -4,17 +4,23 @@
 #define RED_Q_Q_CPP
 
 #include "../../structs/struct.h"
-#include "RED_Q_Q.cpp"
+#include "../natural/GCF_NN_N.cpp"
+#include "../integer/DIV_ZZ_Z.cpp"
+#include "../integer/ABS_Z_N.cpp"
+#include "../integer/TRANS_Z_N.cpp"
 
 
-void RED_Q_Q(fraction &RED)
+fraction RED_Q_Q(const fraction &RED)
 {
 	integer NOD;
+    fraction RED_C = RED;
 	
-	NOD = GCF_NN_N(ABS_Z_N(RED.numenator), RED.denominator); //Ищем НОД числителя и знаменатель
+	NOD = GCF_NN_N(ABS_Z_N(RED.numerator), RED.denominator); //Ищем НОД числителя и знаменатель
 	
-	RED.numenator = DIV_ZZ_Z(ABS_Z_N(RED.numenator), NOD); //Делим числитель на НОД
-	RED.denominator = DIV_ZZ_Z(RED.denominator, NOD);//Делим знаменатель на НОД
+	RED_C.numerator = DIV_ZZ_Z(ABS_Z_N(RED.numerator), NOD); //Делим числитель на НОД
+	RED_C.denominator = TRANS_Z_N(DIV_ZZ_Z(RED.denominator, NOD));//Делим знаменатель на НОД
+
+    return RED_C;
 }
 
 #endif //RED_Q_Q_CPP
