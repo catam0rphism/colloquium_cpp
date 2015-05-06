@@ -10,8 +10,6 @@
 #include "COM_NN_D.cpp"
 #include "SUB_NN_N.cpp"
 
-#define DEBUG_MODE
-
 natural SUB_NDN_N(const natural& a, const natural& b, const digit& n) {
     natural res = a;
     natural mul_sub = b;

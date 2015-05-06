@@ -11,8 +11,6 @@
 #include "./ordinal.h"
 #include "./state.h"
 
-#define DEBUG_MODE
-
 // #яХочуКлассы #нужноБольшеИнкапсуляции
 // Натуральное число
 struct natural {
@@ -86,7 +84,7 @@ struct natural {
 
     natural& operator= (const natural& other) {
         // TODO(Belkin Dmitriy): можно ли оператор ==, который в другом файле
-        if (*this == other) return *this;
+        // if (this == *other) return *this;
         digits = other.digits;
         return *this;
     }
