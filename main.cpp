@@ -5,36 +5,33 @@
 #include "structs/struct.h"
 #include "structs/operators.h"
 
+#define DEBUG_MODE
+
 int main(int argc, char const *argv[]) {
     // int counter = 0;
 
-    natural a({ _9, _9, _9, _9, _9 });
+    natural a = natural("123");
+    natural b = natural("2");
+    natural c = { _2 };
+    // auto d = COM_NN_D(a, b);
+    // std::cout << int(d) << std::endl;
 
-    std::cout << (a == a) << std::endl;
+    // auto d = MUL_Nk_N(c, 2);
+    // std::cout << d;
+    digit dem = _1;
+    // MUL_ND_N(d,be);
+    std::cout << mul(_6,_0,dem) << "!!!" << std::endl;
+    std::cout << dem << "!!" << std::endl;
+    natural res = DIV_NN_N(a, b);
+    // std::cout << res << std::endl;
+    // std::cout << (a / c) << std::endl;
 
-    // std::cout << counter++ << std::endl;
-    natural b("00000042");
-    std::cout << "42?" << std::endl;
-    std::cout << b << std::endl;
-
-    // std::cout << 'd' << std::endl;
-
-    // std::cout << counter++ << std::endl;
-    natural c = { _9, _9 };
-    natural one = { _1 };
-
-    a = { _2, _0, _0 };
-    a = SUB_NN_N(c + one, { _9, _9 });
-
-    // std::cout << (1 == _1) << std::endl;
-
-    auto aa = natural( {_3, _3, _4, _2} );
-    std::cout << aa << std::endl;
-
-    auto bb = natural(3342);
-    std::cout << bb << std::endl;
-    std::cout << (aa == bb);
-
+    // for (natural a = natural(1); a < natural(100); a = ADD_1N_N(a)) {
+    //     for(natural b = a; b < natural(100); b = ADD_1N_N(b)) {
+    //         auto c = DIV_NN_Dk(a, b);
+    //         std::cout << c.first << " " << c.second << std::endl;
+    //     }
+    // }
 
     // for (int i = a.order() - 1 ; i >= 0; i--) {
     //     std::cout << a[i] << " ";

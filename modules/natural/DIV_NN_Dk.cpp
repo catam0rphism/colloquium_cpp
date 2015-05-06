@@ -12,7 +12,7 @@
 #include "./ADD_1N_N.cpp"
 #include "./NZER_N_B.cpp"
 
-natural DIV_NN_Dk(const natural& a, const natural& b) {
+std::pair<digit,std::int16_t> DIV_NN_Dk(const natural& a, const natural& b) {
     if (NZER_N_B(b)) throw std::invalid_argument("Second operand is equal to zero");
 
     natural res = a;
@@ -35,8 +35,9 @@ natural DIV_NN_Dk(const natural& a, const natural& b) {
         k = ADD_1N_N(k);
     }
 
-    k = MUL_Nk_N(k, n);
-    return k;
+    // k = MUL_Nk_N(k, n);
+    auto result = std::make_pair(k[0], n);
+    return result;
 }
 
 #endif  // DIV_NN_Dk_CPP

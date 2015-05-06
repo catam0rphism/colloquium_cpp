@@ -108,8 +108,42 @@ TEST_CASE ( "Натуральные числа", "[natural]" ) {
         natural result4("420000");
         REQUIRE(COM_NN_D(MUL_Nk_N(totallyRandomNumber, 4), result4) == ordinal::EQ);
         REQUIRE(COM_NN_D(MUL_Nk_N(totallyRandomNumber, 0), totallyRandomNumber) == ordinal::EQ);
-    
-        REQUIRE()
     }
     #endif  // MUL_NK_N_CPP
+
+    #ifdef DIV_NN_Dk_CPP
+    SECTION("DIV_NN_Dk [Первая цифра деления, домноженая правильную степень 10]") {
+        natural a("815");
+        natural b("27");
+
+        auto p = DIV_NN_Dk(a, b);
+        REQUIRE( p.first == _3);
+        REQUIRE( p.second == 1);
+
+        a = natural("123");
+        b = natural("7");
+
+        p = DIV_NN_Dk(a, b);
+        REQUIRE( p.first == _1);
+        REQUIRE( p.second == 1);
+
+        a = natural("999");
+        b = natural("111");
+
+        p = DIV_NN_Dk(a, b);
+        REQUIRE( p.first == _9);
+        REQUIRE( p.second == 0);
+    }
+    #endif
+
+    // #ifdef DIV_NN_N_CPP
+    // SECTION("DIV_NN_N [Деление натуральных чисел]") {
+    //     natural a = { _1, _2, _3 };
+    //     natural b = { _1, _0, _0 };
+    //     natural c = { _2 };
+
+    //     REQUIRE(DIV_NN_N(a, b) == natural({ _1 }));
+    //     REQUIRE(DIV_NN_N(a, c) == natural("24"));
+    // }
+    // #endif
 }

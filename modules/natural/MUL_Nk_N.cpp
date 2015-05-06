@@ -4,7 +4,7 @@
 
 #include "../../structs/struct.h"
 
-natural MUL_Nk_N(const natural &value, const unsigned &power) {
+natural MUL_Nk_N(const natural &value, const int &power) {
     natural result = value;
     result.orderShift(power);
     return result;

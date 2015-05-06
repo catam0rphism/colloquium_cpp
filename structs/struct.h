@@ -67,8 +67,8 @@ struct natural {
         }
     }
 
-    void orderShift(const unsigned &orderCount) {
-        unsigned order = orderCount;
+    void orderShift(const int& orderCount) {
+        int order = orderCount;
         while (order --> 0) {
             digits.insert(digits.begin(), _0);
         }
@@ -84,7 +84,7 @@ struct natural {
 
     natural& operator= (const natural& other) {
         // TODO(Belkin Dmitriy): можно ли оператор ==, который в другом файле
-        if (*this == other) return *this;
+        // if (this == *other) return *this;
         digits = other.digits;
         return *this;
     }
@@ -98,6 +98,7 @@ struct natural {
     digit& operator[](const int& digitInd) {
         if (digitInd >= order()) {
             int k = order();
+            if (k == 0) k = 0; // wtf omfg  crazy stuff
             while(digitInd >= k) {
                 digits.push_back( _0 );
                 k++;

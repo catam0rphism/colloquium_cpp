@@ -4,26 +4,30 @@
 
 #include "../../structs/struct.h"
 
-ordinal COM_NN_D(natural a, natural b)
-{
-    short r = 0;  // TODO(Belkin Dmitriy): r не нужно
-    if (a.order() == b.order())
-    {
-        for (int i = a.order()-1; (i >= 0) && (r != 1) && (r != 2); --i)
-        {
-            if (a[i] > b[i])
+ordinal COM_NN_D(const natural& left, const natural& right) {
+    natural a(left);
+    natural b(right);
+
+    int r = 0;  // TODO(Belkin Dmitriy): r не нужно
+
+    if (a.order() == b.order()) {
+        for (int i = a.order(); (i >= 0) && (r != 1) && (r != 2); --i) {
+            if (a[i] > b[i]) {
                 r = 1;
-            if (a[i] < b[i])
+                break;
+            }
+            if (a[i] < b[i]) {
                 r = 2;
+                break;
+            }
         }
-    }
-    else 
+    } else {
         if (a.order() > b.order())
             r = 1;
         else
             r = 2;
-    switch (r)
-    {
+    }
+    switch (r) {
     case 0:
         return ordinal::EQ;
         break;
