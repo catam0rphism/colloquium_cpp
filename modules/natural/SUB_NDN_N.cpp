@@ -10,14 +10,17 @@
 #include "COM_NN_D.cpp"
 #include "SUB_NN_N.cpp"
 
+#define DEBUG_MODE
+
 natural SUB_NDN_N(const natural& a, const natural& b, const digit& n) {
     natural res = a;
     natural mul_sub = b;
+
     digit fact = n;
     mul_sub = MUL_ND_N(mul_sub, fact);
     if (COM_NN_D(res, mul_sub) == ordinal::GT) {
-        res = SUB_NN_N(res, mul_sub);
-        return res;
+        auto res_2 = SUB_NN_N(res, mul_sub);
+        return res_2;
     } else {
         throw std::invalid_argument("Your digit is too big");
     }

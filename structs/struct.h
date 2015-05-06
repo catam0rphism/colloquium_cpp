@@ -11,6 +11,8 @@
 #include "./ordinal.h"
 #include "./state.h"
 
+#define DEBUG_MODE
+
 // #яХочуКлассы #нужноБольшеИнкапсуляции
 // Натуральное число
 struct natural {
@@ -98,6 +100,7 @@ struct natural {
     digit& operator[](const int& digitInd) {
         if (digitInd >= order()) {
             int k = order();
+            if (k == 0) k = 0; // wtf omfg  crazy stuff
             while(digitInd >= k) {
                 digits.push_back( _0 );
                 k++;
