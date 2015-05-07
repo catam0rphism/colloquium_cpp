@@ -136,14 +136,14 @@ TEST_CASE ( "Натуральные числа", "[natural]" ) {
     }
     #endif
 
-    // #ifdef DIV_NN_N_CPP
-    // SECTION("DIV_NN_N [Деление натуральных чисел]") {
-    //     natural a = { _1, _2, _3 };
-    //     natural b = { _1, _0, _0 };
-    //     natural c = { _2 };
+    #ifdef DIV_NN_N_CPP
+    SECTION("DIV_NN_N [Деление натуральных чисел]") {
+        natural a = { _1, _2, _3 };
+        natural b = { _1, _0, _0 };
+        natural c = { _2 };
 
-    //     REQUIRE(DIV_NN_N(a, b) == natural({ _1 }));
-    //     REQUIRE(DIV_NN_N(a, c) == natural("24"));
-    // }
-    // #endif
+        REQUIRE(DIV_NN_N(a, b) == natural({ _1 }));
+        REQUIRE(DIV_NN_N(a, c) == natural("24"));
+    }
+    #endif
 }

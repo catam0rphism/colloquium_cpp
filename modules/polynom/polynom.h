@@ -4,6 +4,7 @@
 
 #include "ADD_PP_P.cpp"
 #include "DEG_P_N.cpp"
+#include "DER_P_P.cpp"
 #include "DIV_PP_P.cpp"
 #include "LED_P_Q.cpp"
 #include "MOD_PP_P.cpp"
