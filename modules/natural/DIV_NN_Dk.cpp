@@ -25,18 +25,34 @@ std::pair<digit,std::int16_t> DIV_NN_Dk(const natural& a, const natural& b) {
     //     n--;
     //     sub = MUL_Nk_N(b, n);
     // }
-    if(COM_NN_D(res, sub) != ordinal::GT) {
+    if (COM_NN_D(res, sub) != ordinal::GT) {
         n -= 1;
         sub = MUL_Nk_N(b, n);
     }
+
+
+    #ifdef DEBUG_MODE
+    std::cout << "FIRST DK COMP" << std::endl;
+    #endif  // DEBUG_MODE
+    
 
     while (COM_NN_D(res, sub) != ordinal::LT) {
         res = SUB_NN_N(res, sub);
         k = ADD_1N_N(k);
     }
 
+    #ifdef DEBUG_MODE
+    std::cout << "GOT A RESULT" << std::endl;
+    #endif  // DEBUG_MODE
+    
+
     // k = MUL_Nk_N(k, n);
     auto result = std::make_pair(k[0], n);
+
+    #ifdef DEBUG_MODE
+    std::cout << "NOT DK" << std::endl;
+    #endif  // DEBUG_MODE
+    
     return result;
 }
 

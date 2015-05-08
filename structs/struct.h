@@ -78,7 +78,7 @@ struct natural {
     // Выделить в отдельную переменную?
     int order() const {
         int k = digits.size();
-        while (digits[k - 1] == _0 && k > 0) { k--; }
+        while (digits[k-1] == _0 && k > 0) { k--; }
         return k;
     }
 

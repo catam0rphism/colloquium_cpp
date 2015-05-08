@@ -6,6 +6,8 @@
 
 #include "ordinal.h"
 
+#define DEBUG_MODE
+
 // Это наши цифры
 enum /* class */ digit: std::int8_t { _0, _1, _2, _3, _4, _5, _6, _7, _8, _9,
                             _minDigit = _0, _maxDigit = _9, _NotaDigit = -1 };
@@ -72,10 +74,27 @@ digit mul(const digit &a, const digit &b, digit& demolition) {
     return static_cast<digit>(mulRes % 10);
 }
 
-ordinal ord(const digit &a,const digit &b) {
-    if(a == b) { return ordinal::EQ;
-    } else if (a > b) { return ordinal::GT;
-    } else { return ordinal::LT; }
+ordinal ord(const digit &a, const digit &b) {
+
+   #ifdef DEBUG_MODE
+   std::cout << "EQ" << std::endl;
+   #endif  // DEBUG_MODE
+
+    if (a == b) { return ordinal::EQ;        
+    } else if (a > b) { 
+
+        #ifdef DEBUG_MODE
+        std::cout << "GT" << std::endl;
+        #endif  // DEBUG_MODE
+        
+        return ordinal::GT;
+    } else {
+
+        #ifdef DEBUG_MODE
+        std::cout << "LT" << std::endl;
+        #endif  // DEBUG_MODE
+        
+     return ordinal::LT; }
 }
 
 #endif  // DIGIT_H
