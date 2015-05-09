@@ -125,24 +125,24 @@ ordinal COM_NN_D(const natural& l, const natural& r) {
     return ordinal::EQ;
 }
 
-bool natural::operator==(const natural &other) {
-    return ordinal::EQ == COM_NN_D(*this, other);
+bool operator==(const natural &left, const natural& right) {
+    return ordinal::EQ == COM_NN_D(left, right);
 }
 
-bool natural::operator<(const natural &other) {
-    return ordinal::LT == COM_NN_D(*this, other);
+bool operator<(const natural &left, const natural& right) {
+    return ordinal::LT == COM_NN_D(left, right);
 }
 
-bool natural::operator>(const natural &other) {
-    return ordinal::GT == COM_NN_D(*this, other);
+bool operator>(const natural &left, const natural& right) {
+    return ordinal::GT == COM_NN_D(left, right);
 }
 
-bool natural::operator>=(const natural &other) {
-    return !(*this < other);
+bool operator>=(const natural &left, const natural& right) {
+    return !(left < right);
 }
 
-bool natural::operator<=(const natural &other) {
-    return !(*this > other);
+bool operator<=(const natural &left, const natural& right) {
+    return !(left > right);
 }
 
 #endif  // COM_NN_D_CPP

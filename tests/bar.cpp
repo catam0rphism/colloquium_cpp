@@ -86,9 +86,9 @@ TEST_CASE ( "Натуральные числа", "[natural]" ) {
         natural totallyRandomNumber("424242424242");
         natural result9("3818181818178");
 
-        REQUIRE(COM_NN_D(MUL_ND_N(zero, _1), zero) == ordinal::EQ);
-        REQUIRE(COM_NN_D(MUL_ND_N(one, _9), { _9 }) == ordinal::EQ);
-        REQUIRE(COM_NN_D(MUL_ND_N(totallyRandomNumber, _9), result9) == ordinal::EQ);
+        REQUIRE (COM_NN_D(MUL_ND_N(zero, _1), zero) == ordinal::EQ);
+        REQUIRE (COM_NN_D(MUL_ND_N(one, _9), { _9 }) == ordinal::EQ);
+        REQUIRE (COM_NN_D(MUL_ND_N(totallyRandomNumber, _9), result9) == ordinal::EQ);
     }
     #endif  // MUL_ND_N_CPP
 
@@ -112,7 +112,7 @@ TEST_CASE ( "Натуральные числа", "[natural]" ) {
     #endif  // MUL_NK_N_CPP
 
     #ifdef DIV_NN_Dk_CPP
-    SECTION("DIV_NN_Dk [Первая цифра деления, домноженая правильную степень 10]") {
+    SECTION("DIV_NN_Dk [Первая цифра деления и правильная степень 10]") {
         natural a("815");
         natural b("27");
 
@@ -133,17 +133,24 @@ TEST_CASE ( "Натуральные числа", "[natural]" ) {
         p = DIV_NN_Dk(a, b);
         REQUIRE( p.first == _9);
         REQUIRE( p.second == 0);
+
+        a = natural("6000");
+        b = natural("2");
+
+        p = DIV_NN_Dk(a,b);
+        REQUIRE( p.first == _3);
+        REQUIRE( p.second == 3);
     }
     #endif
 
-    #ifdef DIV_NN_N_CPP
-    SECTION("DIV_NN_N [Деление натуральных чисел]") {
-        natural a = { _1, _2, _3 };
-        natural b = { _1, _0, _0 };
-        natural c = { _2 };
+    // #ifdef DIV_NN_N_CPP
+    // SECTION("DIV_NN_N [Деление натуральных чисел]") {
+    //     natural a = { _1, _2, _3 };
+    //     natural b = { _1, _0, _0 };
+    //     natural c = { _2 };
 
-        REQUIRE(DIV_NN_N(a, b) == natural({ _1 }));
-        REQUIRE(DIV_NN_N(a, c) == natural("24"));
-    }
-    #endif
+    //     REQUIRE(DIV_NN_N(a, b) == natural({ _1 }));
+    //     REQUIRE(DIV_NN_N(a, c) == natural("24"));
+    // }
+    // #endif
 }

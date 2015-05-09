@@ -19,8 +19,8 @@ int main() {
     // auto d = MUL_Nk_N(c, 2);
     // std::cout << d;
     // MUL_ND_N(d,be);
-    for (int i = 0; i < 1000; ++i) {
-         natural res = DIV_NN_N(a, c);
+    for (int i = 2; i < 1000; ++i) {
+         auto res = DIV_NN_N(natural(i), c);
         // natural res = natural("61");
         // auto ri = res[0];
         std::cout << res << std::endl;

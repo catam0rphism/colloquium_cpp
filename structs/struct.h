@@ -11,7 +11,6 @@
 #include "./ordinal.h"
 #include "./state.h"
 
-// #яХочуКлассы #нужноБольшеИнкапсуляции
 // Натуральное число
 struct natural {
     natural(): natural({ _0 }) { }  // инициализация нулем
@@ -69,6 +68,7 @@ struct natural {
 
     void orderShift(const int& orderCount) {
         int order = orderCount;
+        if (order < 0) throw 42;
         while (order --> 0) {
             digits.insert(digits.begin(), _0);
         }
@@ -80,6 +80,16 @@ struct natural {
         int k = digits.size();
         while (digits[k-1] == _0 && k > 0) { k--; }
         return k;
+    }
+
+    // Вычисляет порядок и уничтожает лишние нули
+    int order() {
+        reduce();
+        int s = digits.size();
+        if (s == 1 && digits[0] == _0)
+            return 0;
+        
+        return s;
     }
 
     natural& operator= (const natural& other) {
@@ -107,19 +117,19 @@ struct natural {
         return digits[digitInd];
     }
 
-    natural operator+(const natural& other);
-    natural operator-(const natural& other);
-    natural operator*(const natural& ohter);
-    natural operator*(const digit& other);
-    natural operator/(const natural& ohter);
-    natural operator%(const natural& ohter);
+    natural operator + (const natural& other);
+    natural operator - (const natural& other);
+    natural operator * (const natural& ohter);
+    natural operator * (const digit& other);
+    natural operator / (const natural& ohter);
+    natural operator % (const natural& ohter);
 
     void operator++( int );
-    bool operator==(const natural& other);
-    bool operator< (const natural& other);
-    bool operator> (const natural& other);
-    bool operator<=(const natural& other);
-    bool operator>=(const natural& other);
+    friend bool operator == (const natural& left, const natural& right);
+    friend bool operator <  (const natural& left, const natural& right);
+    friend bool operator >  (const natural& left, const natural& right);
+    friend bool operator <= (const natural& left, const natural& right);
+    friend bool operator >= (const natural& left, const natural& right);
 
  private:
     // Массив цифр от младших разрядов к старшим

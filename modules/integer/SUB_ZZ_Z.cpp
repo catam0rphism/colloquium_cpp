@@ -1,4 +1,4 @@
-﻿// Copyright 2015 Черников, Бимбетов 4372
+// Copyright 2015 Черников, Бимбетов 4372
 #ifndef SUB_ZZ_Z_CPP
 #define SUB_ZZ_Z_CPP
 
