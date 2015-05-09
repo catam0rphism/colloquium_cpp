@@ -1,6 +1,8 @@
-// Copyright 2015 4371
+// Copyright 2015 4371 & Belkin Dmitriy
 #ifndef DIV_NN_Dk_CPP
 #define DIV_NN_Dk_CPP
+
+#define DEBUG_MODE
 
 #include <stdexcept>
 
@@ -14,20 +16,27 @@
 
 std::pair<digit,std::int16_t> DIV_NN_Dk(const natural& a, const natural& b) {
     if (NZER_N_B(b)) throw std::invalid_argument("Second operand is equal to zero");
+    if (b > a) {        
+        #ifdef DEBUG_MODE
+        std::cout << "b > a" << std::endl;
+        #endif  // DEBUG_MODE
+        return std::make_pair(_0, 0);
+    }
 
     natural res = a;
     std::int8_t n = a.order() - b.order();
 
-    natural sub = MUL_Nk_N(b, n);
+    natural mulB = MUL_Nk_N(b, n);
     natural k;  // ?
 
     // while (COM_NN_D(res, sub) != ordinal::GT) {
     //     n--;
     //     sub = MUL_Nk_N(b, n);
     // }
-    if (COM_NN_D(res, sub) != ordinal::GT) {
-        n -= 1;
-        sub = MUL_Nk_N(b, n);
+    if (a < mulB) {
+        n--;
+        #warning n может стать отрицательным =(
+        mulB = MUL_Nk_N(b, n);
     }
 
 
@@ -37,7 +46,7 @@ std::pair<digit,std::int16_t> DIV_NN_Dk(const natural& a, const natural& b) {
     
 
     while (COM_NN_D(res, sub) != ordinal::LT) {
-        res = SUB_NN_N(res, sub);
+        res = SUB_NN_N(res, mulB);
         k = ADD_1N_N(k);
     }
 
