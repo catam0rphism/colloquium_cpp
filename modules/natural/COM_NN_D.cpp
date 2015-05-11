@@ -45,6 +45,10 @@ bool natural::operator==(const natural &other) {
     return ordinal::EQ == COM_NN_D(*this, other);
 }
 
+bool natural::operator!=(const natural &other) {
+	return ordinal::EQ != COM_NN_D(*this, other);
+}
+
 bool natural::operator<(const natural &other) {
     return ordinal::LT == COM_NN_D(*this, other);
 }

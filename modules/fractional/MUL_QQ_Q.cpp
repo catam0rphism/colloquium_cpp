@@ -1,5 +1,6 @@
 //27.04.2015: Rombalskaya Alena, Zaplatkina Ksenya 4373
-
+#ifndef MUL_QQ_Q_CPP
+#define MUL_QQ_Q_CPP
 
 fraction MUL_QQ_Q(fraction Num1, fraction Num2)  //   умножение дробей
 {
@@ -9,4 +10,4 @@ fraction MUL_QQ_Q(fraction Num1, fraction Num2)  //   умножение дро�
 	Num3 = RED_Q_Q(Num3);     // упрощение полученной дроби
 	return (Num3);
 }
-
+#endif  // MUL_QQ_Q_CPP

@@ -18,7 +18,7 @@ natural ADD_1N_N(const natural& n) {
         k++;
     }
 
-    return res;
+    return natural(res);
 }
 
 void natural::operator++( int ) {
