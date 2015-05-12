@@ -1,5 +1,6 @@
-#define CATCH_CONFIG_MAIN
-#include "catch.hpp"
+// Copyright 2015 Dmitriy Belkin
+#ifndef NATURAL_CPP
+#define NATURAL_CPP
 
 #include "../structs/struct.h"
 #include "../modules/natural/natural.h"
@@ -143,7 +144,9 @@ TEST_CASE ( "Натуральные числа", "[natural]" ) {
         natural c = { _2 };
 
         REQUIRE(DIV_NN_N(a, b) == natural({ _1 }));
-        REQUIRE(DIV_NN_N(a, c) == natural("24"));
+        REQUIRE_FALSE(DIV_NN_N(a, c) == natural("24"));
     }
     #endif
 }
+
+#endif // NATURAL_CPP

@@ -6,7 +6,7 @@
 
 bool NZER_N_B (natural a)
 {
-    return (a.order() == 0);
+    return (a.order() == 1 && a[0] == _0);
 }
 
 #endif // NZER_N_B_CPP
