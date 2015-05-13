@@ -61,7 +61,7 @@ struct natural {
 
     // Уничтожитель незначащих нулей
     void reduce() {
-        while ((digits.back() == _0) && (digits.size() != 0)) {
+        while ((digits.back() == _0) && (digits.size() != 1)) {
             digits.pop_back();
         }
     }
@@ -77,7 +77,7 @@ struct natural {
 
     // Количество значащих разрядов в числе
     // Выделить в отдельную переменную?
-    int order() const {
+    int order() const { // TODO(Belkin Dmitriy): fix zero order
         int k = digits.size();
         while (digits[k-1] == _0 && k > 0) { k--; }
         return k;
@@ -169,6 +169,8 @@ struct integer {
 
     bool isPositive;
     natural module;
+
+	integer operator*(const integer& ohter);
 
     bool operator==(const integer& other);
 };
@@ -282,6 +284,15 @@ struct polynom {
         }
         return coefficients[coeffInd];
     }
+
+	fraction operator[](const int& coeffInd) const {
+		if (coeffInd > degree()) {
+			throw std::invalid_argument("No elemet with this index");
+			}
+		return fraction(coefficients[coeffInd]);
+	}
+
+	polynom& operator+=(const polynom& other);
 
  private:
     // Коэффициенты многочлена в порядке увеличения степени

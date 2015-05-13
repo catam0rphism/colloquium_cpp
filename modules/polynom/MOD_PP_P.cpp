@@ -2,10 +2,10 @@
 #ifndef MOD_PP_P_CPP
 #define MOD_PP_P_CPP
 
-#include "../structs/struct.h"
-#include "../integer/SUB_PP_P.cpp"
-#include "../polynom/MUL_PP_P.cpp"
-#include "../polynom/DIV_PP_P.cpp"
+#include "../../structs/struct.h"
+#include "./SUB_PP_P.cpp"
+#include "./MUL_PP_P.cpp"
+#include "./DIV_PP_P.cpp"
 
 polynom MOD_PP_P(const polynom& delimoe, const polynom& delitel) {
     polynom a = delimoe;

@@ -8,15 +8,22 @@
 #include "MOD_NN_N.cpp"
 
 natural GCF_NN_N(const natural& a, const natural& b) {
-    natural divident = a;
-    natural divider = b;
-    natural some_x;
-    while (COM_NN_D(divider, _1) != ordinal::LT) {
-        some_x = divider;
-        divider = MOD_NN_N(divident, divider);
-        divident = some_x;
-    }
-    return divider;
+
+    // natural divident = a;
+    // natural divider = b;
+    // natural some_x;
+    // while (divider >= _1) {
+    //     some_x = divider;
+    //     divider = MOD_NN_N(divident, divider);
+    //     divident = some_x;
+    // }
+    // return divider;
+
+    // return (b == _0) ? a : GCF_NN_N(b, a % b);
+
+    // Just deal with it!
+    // (c) Belkin Dmitriy
+	return (COM_NN_D(b, _0) == ordinal::EQ) ? a : GCF_NN_N(b, MOD_NN_N(a, b));
 }
 
 #endif  // GCF_NN_N_CPP

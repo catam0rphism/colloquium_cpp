@@ -35,9 +35,6 @@ natural DIV_NN_N(const natural& a, const natural& b) {
 
     while (_a >= b) {
         auto k = DIV_NN_Dk(_a, b);
-        std::cout << k.second << std::endl;
-
-
         auto sub = MUL_Nk_N(b, k.second);
         natural c = SUB_NDN_N(_a, sub, k.first);
         _a = c;
