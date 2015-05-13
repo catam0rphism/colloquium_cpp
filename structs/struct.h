@@ -79,7 +79,7 @@ struct natural {
     // Выделить в отдельную переменную?
     int order() const { // TODO(Belkin Dmitriy): fix zero order
         int k = digits.size();
-        while (digits[k-1] == _0 && k > 0) { k--; }
+        while (digits[k-1] == _0 && k > 1) { k--; }
         return k;
     }
 
