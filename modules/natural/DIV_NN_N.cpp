@@ -3,6 +3,7 @@
 #define DIV_NN_N_CPP
 
 #include <stdexcept>
+#include <iostream>
 
 #include "../../structs/struct.h"
 #include "../../structs/operators.h"
@@ -40,7 +41,7 @@ natural DIV_NN_N(const natural& a, const natural& b) {
 
         res = res + MUL_Nk_N(natural({ k.first }), k.second);
     }
-    return res;
+    return natural(res);
 }
 
 natural natural::operator/(const natural& other) {

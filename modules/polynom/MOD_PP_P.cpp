@@ -17,14 +17,12 @@ polynom MOD_PP_P(const polynom& delimoe, const polynom& delitel) {
     // определяем старшую степень полиномов
     int stpn1 = a.degree();
     int stpn2 = b.degree();
-
-	polynom ostatok;
     if (stpn1 < stpn2) {
-        ostatok = a;
+        polynom ostatok = a;
     } else {
         polynom chastnoe = DIV_PP_P(a, b);
         polynom vichet = MUL_PP_P(b, chastnoe);
-        ostatok = SUB_PP_P(a, vichet);
+        polynom ostatok = SUB_PP_P(a, vichet);
     }
         return ostatok;
 }

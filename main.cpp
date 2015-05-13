@@ -11,17 +11,7 @@
 
 #define DEBUG_MODE
 
-int main(int argc, char const *argv[]) {
-	natural zero;
-	std::cout << zero << std::endl;
+int main() {
 
-	natural one(1);
-	std::cout << one << std::endl;
-
-	natural twenty("20");
-	std::cout << twenty << std::endl;
-
-	std::string end;
-	getline(std::cin, end);
     return 0;
 }
