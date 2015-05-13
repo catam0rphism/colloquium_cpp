@@ -32,16 +32,17 @@ natural DIV_NN_N(const natural& a, const natural& b) {
 
     natural res;
     natural _a = a;
-
     while (_a >= b) {
-        auto k = DIV_NN_Dk(_a, b);
-        auto sub = MUL_Nk_N(b, k.second);
+
+        std::pair<digit, std::int16_t> k = DIV_NN_Dk(_a, b);
+
+        natural sub = MUL_Nk_N(b, k.second);
         natural c = SUB_NDN_N(_a, sub, k.first);
         _a = c;
 
         res = res + MUL_Nk_N(natural({ k.first }), k.second);
     }
-    return natural(res);
+    return res;
 }
 
 natural natural::operator/(const natural& other) {

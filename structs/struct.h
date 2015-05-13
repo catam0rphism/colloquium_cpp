@@ -31,7 +31,7 @@ struct natural {
     }
 
     // Контруктор из строки "42" ===> { _2, _4 } т.е. 42
-    natural(const std::string &input) {
+    explicit natural(const std::string &input) {
       auto it = input.rbegin();
       while (it != input.rend()) {
         if (('0' <= *it) && (*it <= '9')) {
