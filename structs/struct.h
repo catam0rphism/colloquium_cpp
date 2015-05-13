@@ -62,7 +62,7 @@ struct natural {
 
     // Уничтожитель незначащих нулей
     void reduce() {
-        while ((digits.back() == _0) && (digits.size() != 0)) {
+        while ((digits.back() == _0) && (digits.size() != 1)) {
             digits.pop_back();
         }
     }
@@ -76,7 +76,7 @@ struct natural {
 
     // Количество значащих разрядов в числе
     // Выделить в отдельную переменную?
-    int order() const {
+    int order() const { // TODO(Belkin Dmitriy): fix zero order
         int k = digits.size();
         while (digits[k - 1] == _0 && k > 1) { k--; }
         return k;
