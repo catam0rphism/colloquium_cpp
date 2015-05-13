@@ -68,7 +68,8 @@ struct natural {
 
     void orderShift(const int& orderCount) {
         int order = orderCount;
-        if (order < 0) throw 42;
+        if (order < 0) throw;
+        
         while (order --> 0) {
             digits.insert(digits.begin(), _0);
         }
@@ -104,7 +105,6 @@ struct natural {
         // delete digits;
     }
 
-    // TODO: переопределить операторы
     digit& operator[](const int& digitInd) {
         if (digitInd >= order()) {
             int k = order();
@@ -113,6 +113,13 @@ struct natural {
                 digits.push_back( _0 );
                 k++;
             }
+        }
+        return digits[digitInd];
+    }
+
+    digit& operator[](const int& digitInd) const {
+        if (digitInd >= order()) {
+            return _0;
         }
         return digits[digitInd];
     }

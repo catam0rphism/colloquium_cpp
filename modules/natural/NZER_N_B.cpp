@@ -4,7 +4,7 @@
 
 #include "../../structs/struct.h"
 
-bool NZER_N_B (natural a)
+bool NZER_N_B (const natural& a)
 {
     return (a.order() == 0);
 }

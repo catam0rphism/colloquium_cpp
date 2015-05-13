@@ -14,14 +14,6 @@ ordinal COM_NN_D(const natural& l, const natural& r) {
     std::cout << "COM_NN_D" << std::endl;
     #endif  // DEBUG_MODE
 
-    natural left = l;
-    natural right = r;
-
-
-    #ifdef DEBUG_MODE
-    std::cout << "COPIED" << std::endl;
-    #endif  // DEBUG_MODE
-
     // int r = 0;  // TODO(Belkin Dmitriy): r не нужно
 
     // if (a.order() == b.order()) {
@@ -53,36 +45,38 @@ ordinal COM_NN_D(const natural& l, const natural& r) {
     //     break;
     // default: throw;
     // }
-    if (left.order() > right.order()) return ordinal::GT;
+    if (l.order() > r.order()) {
 
-    #ifdef DEBUG_MODE
-    std::cout << "GT" << std::endl;
-    #endif  // DEBUG_MODE
-    
-    if (left.order() < right.order()) return ordinal::LT;
+        #ifdef DEBUG_MODE
+        std::cout << "GT" << std::endl;
+        #endif  // DEBUG_MODE
 
-    #ifdef DEBUG_MODE
-    std::cout << "LT" << std::endl;
-    #endif  // DEBUG_MODE
-    
-    if (left.order() == right.order()) {
+        return ordinal::GT;
+    }
+    else if (l.order() < r.order()) {
+        #ifdef DEBUG_MODE
+        std::cout << "LT" << std::endl;
+        #endif  // DEBUG_MODE
 
+        return ordinal::LT;
+    }
+    else if (l.order() == r.order()) {
         #ifdef DEBUG_MODE
         std::cout << "EQ" << std::endl;
         #endif  // DEBUG_MODE
         
-        for (int i = left.order(); i >= 0; i--) {
+        for (int i = l.order(); i >= 0; i--) {
 
             #ifdef DEBUG_MODE
             std::cout << "COMPARE" << std::endl;
             #endif  // DEBUG_MODE
                         
-            if (left[i] != right[i]) {
+            if (l[i] != r[i]) {
 
                 #ifdef DEBUG_MODE
                 std::cout << "COMPARE END" << std::endl;
                 #endif  // DEBUG_MODE
-                auto temp = ord(left[i], right[i]);
+                auto temp = ord(l[i], r[i]);
 
                 #ifdef DEBUG_MODE
                 std::cout << "CACHED" << std::endl;

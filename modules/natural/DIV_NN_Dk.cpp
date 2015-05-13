@@ -45,7 +45,7 @@ std::pair<digit,std::int16_t> DIV_NN_Dk(const natural& a, const natural& b) {
     #endif  // DEBUG_MODE
     
 
-    while (COM_NN_D(res, sub) != ordinal::LT) {
+    while (COM_NN_D(res, mulB) != ordinal::LT) {
         res = SUB_NN_N(res, mulB);
         k = ADD_1N_N(k);
     }
