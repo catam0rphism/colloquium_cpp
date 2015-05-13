@@ -17,9 +17,7 @@
 std::pair<digit,std::int16_t> DIV_NN_Dk(const natural& a, const natural& b) {
     if (NZER_N_B(b)) throw std::invalid_argument("Second operand is equal to zero");
     if (b > a) {        
-        #ifdef DEBUG_MODE
-        std::cout << "b > a" << std::endl;
-        #endif  // DEBUG_MODE
+    
         return std::make_pair(_0, 0);
     }
 
@@ -40,9 +38,7 @@ std::pair<digit,std::int16_t> DIV_NN_Dk(const natural& a, const natural& b) {
     }
 
 
-    #ifdef DEBUG_MODE
-    std::cout << "FIRST DK COMP" << std::endl;
-    #endif  // DEBUG_MODE
+
     
 
     while (COM_NN_D(res, mulB) != ordinal::LT) {
@@ -50,17 +46,13 @@ std::pair<digit,std::int16_t> DIV_NN_Dk(const natural& a, const natural& b) {
         k = ADD_1N_N(k);
     }
 
-    #ifdef DEBUG_MODE
-    std::cout << "GOT A RESULT" << std::endl;
-    #endif  // DEBUG_MODE
+
     
 
     // k = MUL_Nk_N(k, n);
     auto result = std::make_pair(k[0], n);
 
-    #ifdef DEBUG_MODE
-    std::cout << "NOT DK" << std::endl;
-    #endif  // DEBUG_MODE
+
     
     return result;
 }

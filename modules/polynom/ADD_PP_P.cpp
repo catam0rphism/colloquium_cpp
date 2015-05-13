@@ -24,8 +24,8 @@ polynom ADD_PP_P(const polynom& left, const polynom& right) {
     return result;
 }
 
-polynom& polynom::operator+=(const polynom& other) {
-	return ADD_PP_P(*this, other);
-}
+// polynom& polynom::operator+=(const polynom& other) {
+// 	return ADD_PP_P(*this, other);
+// }
 
 #endif  // ADD_PP_P_CPP

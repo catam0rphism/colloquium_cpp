@@ -117,7 +117,7 @@ struct natural {
         return digits[digitInd];
     }
 
-    digit& operator[](const int& digitInd) const {
+    digit operator[](const int& digitInd) const {
         if (digitInd >= order()) {
             return _0;
         }
@@ -170,7 +170,7 @@ struct integer {
     bool isPositive;
     natural module;
 
-	integer operator*(const integer& ohter);
+    integer operator*(const integer& ohter);
 
     bool operator==(const integer& other);
 };
@@ -285,14 +285,14 @@ struct polynom {
         return coefficients[coeffInd];
     }
 
-	fraction operator[](const int& coeffInd) const {
-		if (coeffInd > degree()) {
-			throw std::invalid_argument("No elemet with this index");
-			}
-		return fraction(coefficients[coeffInd]);
-	}
+    fraction operator[](const int& coeffInd) const {
+        if (coeffInd > degree()) {
+            throw std::invalid_argument("No elemet with this index");
+            }
+        return fraction(coefficients[coeffInd]);
+    }
 
-	polynom& operator+=(const polynom& other);
+    // polynom& operator+=(const polynom& other);
 
  private:
     // Коэффициенты многочлена в порядке увеличения степени

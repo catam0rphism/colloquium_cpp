@@ -76,23 +76,15 @@ digit mul(const digit &a, const digit &b, digit& demolition) {
 
 ordinal ord(const digit &a, const digit &b) {
 
-   #ifdef DEBUG_MODE
-   std::cout << "EQ" << std::endl;
-   #endif  // DEBUG_MODE
-
     if (a == b) { return ordinal::EQ;        
     } else if (a > b) { 
 
-        #ifdef DEBUG_MODE
-        std::cout << "GT" << std::endl;
-        #endif  // DEBUG_MODE
+    
         
         return ordinal::GT;
     } else {
 
-        #ifdef DEBUG_MODE
-        std::cout << "LT" << std::endl;
-        #endif  // DEBUG_MODE
+    
         
      return ordinal::LT; }
 }
