@@ -1,4 +1,4 @@
-﻿// Copyright 2015 Shcherbakov Ivan, Kozlova Alisa
+// Copyright 2015 Shcherbakov Ivan, Kozlova Alisa
 #ifndef DIV_ZZ_Z_CPP
 #define DIV_ZZ_Z_CPP
 #include "../../structs/struct.h"

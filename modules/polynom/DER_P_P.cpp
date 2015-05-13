@@ -1,4 +1,4 @@
-﻿// Copyright 2015  Elizabeth Karpova
+// Copyright 2015  Elizabeth Karpova
 #ifndef DER_P_P_CPP
 #define DER_P_P_CPP
 #include "../../structs/operators.h"
