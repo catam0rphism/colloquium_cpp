@@ -233,6 +233,22 @@ TEST_CASE( "Целые числа", "[integer]" ) {
     }
 #endif
 
+#ifdef COM_ZZ_D_CPP
+    SECTION("COM_ZZ_D [сравнение]") {
+        integer zero;
+        integer antizero("-0");
+        REQUIRE(COM_ZZ_D(zero, antizero) == ordinal::EQ);
+
+        integer a(42);
+        integer b(-42);
+        REQUIRE(COM_ZZ_D(a, b) == ordinal::GT);
+        REQUIRE(COM_ZZ_D(b, a) == ordinal::LT);
+        REQUIRE(COM_ZZ_D(a, a) == ordinal::EQ);
+        REQUIRE(COM_ZZ_D(b, b) == ordinal::EQ);
+    }
+#endif // COM_ZZ_D_CPP
+
+
 #ifdef DIV_ZZ_Z_CPP
     SECTION( "DIV_ZZ_Z [деление]" ) {
         integer a(-16);
