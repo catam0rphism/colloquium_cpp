@@ -209,7 +209,7 @@ struct fraction {
     //Знаменатель дроби
     natural denominator;
 
-    bool operator==(const fraction& other);
+    friend bool operator == (const fraction& left, const fraction& right);
 
     fraction operator+(const fraction& other);
     fraction operator-(const fraction& other);

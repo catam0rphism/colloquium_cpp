@@ -6,6 +6,7 @@
 #include "../structs/struct.h"
 #include "../modules/natural/natural.h"
 #include "../modules/integer/integer.h"
+#include "../modules/fractional/fractional.h"
 
 TEST_CASE("Натуральные числа", "[natural]") {
 
