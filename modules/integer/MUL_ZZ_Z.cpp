@@ -9,10 +9,10 @@
 integer MUL_ZZ_Z(const integer& a, const integer& b)
 {
 	integer result;
-	if ((a.module.order() == 0) || (b.module.order() == 0))
+	if ((NZER_N_B(a.module)) || (NZER_N_B(b.module)))
 		return result;
 	result.module = MUL_NN_N(a.module, b.module);
-	if(!(a.isPositive && b.isPositive))
+	if(a.isPositive ^ b.isPositive)  // ^ == XOR
 		result.isPositive = false;
 	return result;
 }

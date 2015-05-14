@@ -15,7 +15,10 @@ ordinal COM_ZZ_D(const integer& left, const integer& right) {
         rightState == IntegerState::Zero) return ordinal::EQ;
     // Разные знаки
     // TODO(Vadim Bertysh): проверить работоспособность
-    if (leftState != rightState) return static_cast<ordinal>(leftState);
+    if (leftState != rightState) {
+        if (leftState == IntegerState::Negative) return ordinal::LT;
+        else return ordinal::GT;
+    }
     // Оба отрицательные
     if (leftState == IntegerState::Negative) return COM_NN_D(right.module, left.module);
     // Оба положительные

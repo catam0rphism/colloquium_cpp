@@ -16,7 +16,7 @@ integer DIV_ZZ_Z(const integer& a, const integer& b)
         result.isPositive = true;  //частное положительное
     else
         result.isPositive = false;  //частное отрицательное
-    result = DIV_NN_N(A.module, B.module);  //обычный остаток, пример: (−17):(−5) = 4 (ост. 3) или 17:5 = 4 (ост. 3)
+    result.module = DIV_NN_N(A.module, B.module);  //обычный остаток, пример: (−17):(−5) = 4 (ост. 3) или 17:5 = 4 (ост. 3)
     if ((((!A.isPositive) && (B.isPositive)) || ((!A.isPositive) && (!B.isPositive))) && (MOD_NN_N(A.module, B.module).order() != 0)) //если первый отрицательный, а второй положительный и не делятся нацело
             result = ADD_1N_N(result.module); //прибавляем единицу      
     return result; //возвращаем ответ

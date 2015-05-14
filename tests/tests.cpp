@@ -1,5 +1,6 @@
 // Copyright 2015 Dmitriy Belkin
 // Copyright 2015 Vadim Bertysh
+// Copyright 2015 Inna Lizunova, 4373
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
@@ -7,6 +8,7 @@
 #include "../modules/natural/natural.h"
 #include "../modules/integer/integer.h"
 #include "../modules/fractional/fractional.h"
+#include "../modules/polynom/polynom.h"
 
 TEST_CASE("Натуральные числа", "[natural]") {
 
@@ -330,4 +332,141 @@ TEST_CASE( "Целые числа", "[integer]" ) {
         REQUIRE(SUB_ZZ_Z(b, c) == a);
     }
 #endif
+}
+
+TEST_CASE("Рациональные числа", "[fractional]") {
+
+#ifdef RED_Q_Q_CPP
+	SECTION("RED_Q_Q [сокращение дроби]") {
+		fraction a("437/506");
+		fraction b("19/22");
+		REQUIRE(RED_Q_Q(a) == b);
+
+		a = fraction("-272/128");
+		b = fraction("-17/8");
+		REQUIRE(RED_Q_Q(a) == b);
+
+		a = fraction("1/3");
+		REQUIRE(RED_Q_Q(a) == a);
+
+		a = fraction("-62/1");
+		REQUIRE(RED_Q_Q(a) == a);
+	}
+#endif  // RED_Q_Q_CPP
+
+#ifdef INT_Q_B_CPP
+	SECTION("INT_Q_B [проверка на целое]") {
+		fraction a(-8);
+		REQUIRE(INT_Q_B(a));
+
+		a = fraction("24/6");
+		REQUIRE(INT_Q_B(a));
+
+		a = fraction("7/6");
+		REQUIRE_FALSE(INT_Q_B(a));
+
+		a = fraction("-15/25");
+		REQUIRE_FALSE(INT_Q_B(a));
+		
+	}
+#endif  // INT_Q_B_CPP
+
+#ifdef TRANS_Z_Q_CPP
+	SECTION("TRANS_Z_Q [преобразование целого в дробное]") {
+		integer a(-42);
+		fraction b(-42);
+		REQUIRE(TRANS_Z_Q(a) == b);
+
+		a = integer(5);
+		b = fraction(5)
+		REQUIRE(TRANS_Z_Q(a) == b);
+	}
+#endif  // TRANS_Z_Q_CPP
+
+#ifdef TRANS_Q_Z_CPP
+	SECTION("TRANS_Q_Z [преобразование дробного в целое]") {
+		fraction a(-42);
+		integer b(-42);
+		REQUIRE(TRANS_Q_Z(a) == b);
+		
+		a = fraction(5);
+		b = integer(5);
+		REQUIRE(TRANS_Q_Z(a) == b);
+
+		a = fraction("9/3");
+		b = integer(3);
+		REQUIRE(TRANS_Q_Z(a) == b);
+
+		a = fraction("-100/50");
+		b = integer(-2);
+		REQUIRE(TRANS_Q_Z(a) == b);
+	}
+#endif  // TRANS_Q_Z_CPP
+
+#ifdef  ADD_QQ_Q_CPP
+	SECTION("ADD_QQ_Q [сложение дробей]") {
+		fraction a("5/8");
+		fraction b("9/24");
+		fraction c("24/24"); //fraction c("1/1");
+		REQUIRE(ADD_QQ_Q(a, b) == c);
+
+		a = fraction("5/12");
+		b = fraction("-3/4");
+		c = fraction("-4/12"); //c = fraction("-1/3");
+		REQUIRE(ADD_QQ_Q(a, b) == c);
+	}
+#endif  // ADD_QQ_Q_CPP
+
+#ifdef SUB_QQ_Q_CPP
+	SECTION("SUB_QQ_Q [вычитание дробей]") {
+		fraction a("5/12");
+		fraction b("-3/4");
+		fraction c("14/12"); //fraction c("7/6");
+		REQUIRE(SUB_QQ_Q(a, b) == c);
+
+		a = fraction("40/63");
+		b = fraction("5/18");
+		c = fraction("45/126"); //c = fraction("5/14");
+		REQUIRE(SUB_QQ_Q(a, b) == c);
+	}
+#endif  // SUB_QQ_Q_CPP
+
+#ifdef MUL_QQ_Q_CPP
+	SECTION("MUL_QQ_Q [умножение дробей]") {
+		fraction a("6/14");
+		fraction b("7/5");
+		fraction c("6/10");
+		REQUIRE(MUL_QQ_Q(a, b) == c);
+
+		a = fraction("-3/11");
+		b = fraction("13/18");
+		c = fraction("-13/66");
+		REQUIRE(MUL_QQ_Q(a, b) == c);
+
+		a = fraction("-2/5");
+		b = fraction("-15/16");
+		c = fraction("3/8");
+		REQUIRE(MUL_QQ_Q(a, b) == c);
+
+	}
+#endif  // MUL_QQ_Q_CPP
+
+#ifdef DIV_QQ_Q_CPP
+	SECTION("DIV_QQ_Q [деление дробей]") {
+		fraction a("6/14");
+		fraction b("5/7");
+		fraction c("6/10");
+		REQUIRE(DIV_QQ_Q(a, b) == c);
+
+		a = fraction("-3/11");
+		b = fraction("18/13");
+		c = fraction("-13/66");
+		REQUIRE(DIV_QQ_Q(a, b) == c);
+
+		a = fraction("-2/5");
+		b = fraction("-16/15");
+		c = fraction("3/8");
+		REQUIRE(DIV_QQ_Q(a, b) == c);
+	}
+#endif // DIV_QQ_Q_CPP
 }

@@ -12,6 +12,10 @@
 #define DEBUG_MODE
 
 int main() {
-
+    integer a(-16);
+    integer b(4);
+    std::cout << DIV_ZZ_Z(a, b);
+    string end;
+    getline(cin, end);
     return 0;
 }
