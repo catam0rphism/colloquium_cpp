@@ -33,7 +33,7 @@ std::pair<digit,std::int16_t> DIV_NN_Dk(const natural& a, const natural& b) {
     // }
     if (a < mulB) {
         n--;
-        #warning n может стать отрицательным =(
+        //#warning n может стать отрицательным =(
         mulB = MUL_Nk_N(b, n);
     }
 

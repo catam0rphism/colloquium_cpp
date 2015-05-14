@@ -172,7 +172,7 @@ struct integer {
 
     integer operator*(const integer& ohter);
 
-    bool operator==(const integer& other);
+	friend bool operator == (const integer& left, const integer& right);
 };
 
 // Рациональное число
