@@ -2,9 +2,7 @@
 #ifndef GCF_NN_N_CPP
 #define GCF_NN_N_CPP
 
-#include <iostream>
 #include "../../structs/struct.h"
-#include "../../structs/operators.h"
 #include "COM_NN_D.cpp"
 #include "MOD_NN_N.cpp"
 

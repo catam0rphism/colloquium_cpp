@@ -1,6 +1,7 @@
 // Copyright 2015 Dmitriy Belkin
 // Copyright 2015 Vadim Bertysh
 // Copyright 2015 Inna Lizunova, 4373
+// Copyright 2015 Karpova Liza, 4373
 #define CATCH_CONFIG_MAIN
 #include "catch.hpp"
 
@@ -464,4 +465,242 @@ TEST_CASE("Рациональные числа", "[fractional]") {
         REQUIRE(DIV_QQ_Q(a, b) == c);
     }
 #endif  // DIV_QQ_Q_CPP
+}
+
+TEST_CASE("Полиномы", "[polynom]") {
+
+#ifdef DER_P_P_CPP
+    SECTION("DER_P_P [производная]") {
+        polynom p1, pR;
+
+        p1 = polynom({ 5, 9, 4, 7, 0, 4, -15 });
+        pR = polynom({ 30, 45, 16, 21, 0, 4 });
+        REQUIRE(DER_P_P(p1) == pR);
+        REQUIRE_FALSE(DER_P_P(p1) == p1);
+
+        p1 = polynom({ 9 });
+        pR = polynom({ 0 });
+        REQUIRE(DER_P_P(p1) == pR); // (9)' = 0
+        REQUIRE(DER_P_P(pR) == pR); // (0)' = 0		
+    }
+#endif  // DER_P_P_CPP
+
+#ifdef ADD_PP_P_CPP
+    SECTION("ADD_PP_P [сложение]") {
+        polynom p1, p2, pR;
+
+        p1 = { 7, 8, -9 };
+        p2 = { 14, 0, 7, 4 };
+        pR = { 14, 7, 15, -5 };
+        REQUIRE(ADD_PP_P(p1, p2) == pR);
+        REQUIRE(ADD_PP_P(p2, p1) == pR);
+
+        // сложение с 0
+        p2 = { 0 };
+        REQUIRE(ADD_PP_P(p1, p2) == p1);
+        REQUIRE(ADD_PP_P(p2, p1) == p1);
+
+    }
+#endif  // ADD_PP_P_CPP
+
+#ifdef DEG_P_N_CPP
+    SECTION("DEG_P_N [степень]") {
+        polynom p1, p2;
+        natural pN;
+
+        p1 = { 8, 7, 15, 0, 56, 96, 0, 0, 4, 78, 45, 0, 69, 3, 45, 0, 1 };
+        pN = { _1, _6 };
+        p2 = { 8, 5, 9, 0, 0, 0, 1, 5, 0, 4 };
+        REQUIRE(DEG_P_N(p1) == pN);
+        REQUIRE_FALSE(DEG_P_N(p2) == pN);
+
+        // нулевой полином
+        p1 = { 0 };
+        pN = { 0 };
+        REQUIRE(DEG_P_N(p1) == pN);
+    }
+#endif  // DEG_P_N_CPP
+
+#ifdef SUB_PP_P_CPP
+    SECTION("SUB_PP_P [вычитание]") {
+        polynom p1, p2, pR;
+
+        // обычное вычитание
+        p1 = { 4, 0, 3, -6, 0 };
+        p2 = { 9, 0, 0, -2, 3, -9 };
+        pR = { -9, 4, 0, 5, -9, 9 };
+        REQUIRE(SUB_PP_P(p1, p2) == pR);
+        REQUIRE_FALSE(SUB_PP_P(p2, p1) == pR);
+
+        // один из полиномов 0
+        p1 = { 0 };
+        p2 = { 9, 0, 0, -2, 3, -9 };
+        pR = { -9, 0, 0, 2, -3, 9 };
+        REQUIRE(SUB_PP_P(p1, p2) == pR);
+        REQUIRE_FALSE(SUB_PP_P(p2, p1) == pR);
+
+        // р1 = р2
+        p1 = p2 = { 1, 2, 3, 4, 5, 6 };
+        pR = { 0, 0, 0, 0, 0, 0 };
+        REQUIRE(SUB_PP_P(p1, p2) == pR);
+
+        // х^2
+        p1 = { 0, 0, 0, -2, 0, 0 };
+        p2 = { 9, 5, 6, -2, 3, -9 };
+        pR = { 9, 5, 6, 0, 3, -9 };
+        REQUIRE(SUB_PP_P(p2, p1) == pR);
+        REQUIRE_FALSE(SUB_PP_P(p1, p2) == pR);
+    }
+#endif  // SUB_PP_P_CPP
+
+#ifdef MUL_PQ_P_CPP
+    SECTION("MUL_PQ_P [умножение на рациональное число]") {
+        polynom p1, pR;
+        fraction pF(111), pF_1(1), pF_0(0);
+
+        p1 = { 1, 2, 3, 4, 5, 6, 0, 0, 9 };
+        pR = { 111, 222, 333, 444, 555, 666, 0, 0, 999 };
+
+        REQUIRE(MUL_PQ_P(p1, pF) == pR); // *111/1
+        REQUIRE(MUL_PQ_P(p1, pF_1) == p1); // *1/1
+        REQUIRE_FALSE(MUL_PQ_P(p1, pF_0) == p1); // *0/1
+    }
+#endif  // MUL_PQ_P_CPP
+
+#ifdef MUL_Pxk_P_CPP
+    SECTION("MUL_Pxk_P [умножение на х^k]") {
+        polynom p1, pR;
+        unsigned k = 0;
+
+        // *x^0
+        p1 = { 1, 2, 3, 4 };
+        REQUIRE(MUL_Pxk_P(p1, k) == p1);
+
+        // *x^1
+        k = 1;
+        pR = { 1, 2, 3, 4, 0 };
+        REQUIRE(MUL_Pxk_P(p1, k) == pR);
+
+        // *x^4
+        k = 4;
+        pR = { 1, 2, 3, 4, 0, 0, 0, 0 };
+        REQUIRE(MUL_Pxk_P(p1, k) == pR);
+    }
+#endif  // MUL_Pxk_P_CPP
+
+#ifdef LED_P_Q_CPP
+    SECTION("LED_P_Q [старший коэффициент]") {
+        polynom p1;	fraction pF(4);
+
+        p1 = { 4, 3, 2, 1, 7 };
+        REQUIRE(LED_P_Q(p1) == pF);
+
+        p1 = { 0, 0, 5, 9, 7, 8 };
+        fraction pF_g;
+        REQUIRE_FALSE(LED_P_Q(p1) == pF_g);
+    }
+#endif  // LED_P_Q_CPP
+
+/*#ifdef FAC_P_PQ_CPP
+    SECTION(" FAC_P_PQ [степень]") {
+    }
+#endif  // FAC_P_PQ_CPP*/
+
+#ifdef MUL_PP_P_CPP
+    SECTION("MUL_PP_P [умножение полиномов]") {
+        polynom p1, p2, pR;
+
+        p1 = { 1, 2, 3, 2, 3, 1 };
+        p2 = { 2, 1 };
+        pR = { 2, 5, 8, 7, 8, 5, 1 };
+        REQUIRE(MUL_PP_P(p1, p2) == pR);
+        REQUIRE(MUL_PP_P(p2, p1) == pR);
+
+        p2 = { 0 }; // *0
+        REQUIRE(MUL_PP_P(p1, p2) == p2);
+        REQUIRE(MUL_PP_P(p2, p1) == p2);
+
+        p1 = p2; // 0*0
+        REQUIRE(MUL_PP_P(p1, p2) == p1);
+
+        p2 = { 1 }; // *1
+        REQUIRE(MUL_PP_P(p1, p2) == p1);
+
+        p1 = p2; // 1*1
+        REQUIRE(MUL_PP_P(p1, p2) == p1);
+    }
+#endif  // MUL_PP_P_CPP
+    
+#ifdef DIV_PP_P_CPP
+    SECTION("DIV_PP_P [деление полиномов (частное)]") {
+        polynom p1, p2, pR;
+
+        p1 = { 3, 2, 0, 1, 1, 1 };
+        p2 = { 1, 2, 1, 0 };
+        pR = { 3, -4, 5 };
+        REQUIRE(DIV_PP_P(p1, p2) == pR);
+
+        // деление полинома на самого себя
+        p1 = { 1, 2, 1, 0 };
+        p2 = { 1, 2, 1, 0 };
+        pR = { 1 };
+        REQUIRE(DIV_PP_P(p1, p2) == pR);
+
+        // деление на 0
+        p1 = { 1, 2, 1, 0 };
+        p2 = { 0 };
+        REQUIRE_THROWS(DIV_PP_P(p1, p2));
+
+        // deg p2 > deg p1
+        p2 = { 3, 2, 0, 1, 1, 1 };
+        p1 = { 1, 2, 1, 0 };
+        pR = { 0 };
+        REQUIRE(DIV_PP_P(p1, p2) == pR);
+
+        // деление на 1
+        p1 = { 1, 2, 1, 0 };
+        p2 = { 1 };
+        REQUIRE(DIV_PP_P(p1, p2) == p1);
+
+        //деление с "фуфу" коэффициентами
+        p1 = { 5, 3, 1 };
+        p2 = { 2, -1 };
+        pR = { fraction("5/2"), fraction("11/4") };
+        REQUIRE(DIV_PP_P(p1, p2) == pR);
+    }
+#endif  // DIV_PP_P_CPP
+    
+#ifdef MOD_PP_P_CPP
+    SECTION("MOD_PP_P [деление полиномов (остаток)]") {
+        polynom p1, p2, pR;
+
+        p1 = { 3, 2, 0, 1, 1, 1 };
+        p2 = { 1, 2, 1, 0 };
+        pR = { -5, -4, 1 };
+        REQUIRE(MOD_PP_P(p1, p2) == pR);
+
+        // деление полинома на самого себя
+        p1 = { 1, 2, 1, 0 };
+        p2 = { 1, 2, 1, 0 };
+        pR = { 0 };
+        REQUIRE(MOD_PP_P(p1, p2) == pR);
+
+        // деление на 1
+        p1 = { 1, 2, 1, 0 };
+        p2 = { 1 };
+        pR = { 0 };
+        REQUIRE(MOD_PP_P(p1, p2) == pR);
+
+        p1 = { 2, -11, 19, -13, 3 };
+        p2 = { 2, -3, 1 };
+        pR = { 0 };
+        REQUIRE(MOD_PP_P(p1, p2) == pR);
+
+        //деление с "фуфу" коэффициентами
+        p1 = { 5, 3, 1 };
+        p2 = { 2, -1 };
+        pR = { fraction("15/4") };
+        REQUIRE(MOD_PP_P(p1, p2) == pR);
+    }
+#endif  // MOD_PP_P_CPP
 }

@@ -239,6 +239,16 @@ struct polynom {
         }
     }
 
+    polynom(std::initializer_list<int> coefficients) {
+        std::vector<int> tmp(coefficients);
+
+        auto it = tmp.rbegin();
+        while (it != tmp.rend()) {
+            this->coefficients.push_back(fraction(*it));
+            it++;
+        }
+    }
+
     void reduce() {
         int k = coefficients.size()-1;
         natural n_zero;
@@ -298,6 +308,7 @@ struct polynom {
     }
 
     // polynom& operator+=(const polynom& other);
+    friend bool operator == (const natural& left, const natural& right);
 
  private:
     // Коэффициенты многочлена в порядке увеличения степени

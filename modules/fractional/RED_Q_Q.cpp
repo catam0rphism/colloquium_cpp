@@ -3,9 +3,7 @@
 #ifndef RED_Q_Q_CPP
 #define RED_Q_Q_CPP
 
-#include <iostream>
 #include "../../structs/struct.h"
-#include "../../structs/operators.h"
 #include "../natural/GCF_NN_N.cpp"
 #include "../integer/DIV_ZZ_Z.cpp"
 #include "../natural/DIV_NN_N.cpp"
