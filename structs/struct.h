@@ -154,13 +154,13 @@ struct integer {
     integer(const natural &natural) : integer() {
         module = natural;
     }
-    integer(const std::string &input) {
+    integer(const std::string &input) : integer() {
         std::string cinput = input;
-        if (cinput[0] == '-') {
+        if (*cinput.begin() == '-') {
             isPositive = false;
             cinput.erase(cinput.begin());
         } else {
-            if (cinput[0] == '+') {
+            if (*cinput.begin() == '+') {
                 cinput.erase(cinput.begin());
             }
         }
@@ -191,6 +191,7 @@ struct fraction {
     explicit fraction(const std::string &input) {
         std::string s_numerator;
         auto it = input.begin();
+
         while (*it != '/') {
             s_numerator.push_back(*it);
             it++;
@@ -198,6 +199,7 @@ struct fraction {
         numerator = integer(s_numerator);
         it++;
         std::string s_denominator;
+
         while (it != input.end()) {
             s_denominator.push_back(*it);
             it++;
@@ -216,6 +218,7 @@ struct fraction {
     fraction operator*(const fraction& ohter);
     fraction operator/(const fraction& ohter);
 };
+
 
 // Многочлен
 struct polynom {
@@ -287,7 +290,7 @@ struct polynom {
 
     fraction operator[](const int& coeffInd) const {
         if (coeffInd > degree()) {
-            throw std::invalid_argument("No elemet with this index");
+            throw std::invalid_argument("No element with this index");
             }
         return fraction(coefficients[coeffInd]);
     }

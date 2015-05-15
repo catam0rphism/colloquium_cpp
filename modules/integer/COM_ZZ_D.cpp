@@ -16,17 +16,21 @@ ordinal COM_ZZ_D(const integer& left, const integer& right) {
     // Разные знаки
     // TODO(Vadim Bertysh): проверить работоспособность
     if (leftState != rightState) {
-        if (leftState == IntegerState::Negative) return ordinal::LT;
-        else return ordinal::GT;
+        if (leftState == IntegerState::Negative)
+            return ordinal::LT;
+        else
+            return ordinal::GT;
     }
     // Оба отрицательные
-    if (leftState == IntegerState::Negative) return COM_NN_D(right.module, left.module);
+    if (leftState == IntegerState::Negative)
+        return COM_NN_D(right.module, left.module);
     // Оба положительные
-    if (leftState == IntegerState::Positive) return COM_NN_D(left.module, right.module);
+    if (leftState == IntegerState::Positive)
+        return COM_NN_D(left.module, right.module);
 }
 
 bool operator == (const integer& left, const integer& right) {
     return COM_ZZ_D(left, right) == ordinal::EQ;
 }
 
-#endif // COM_ZZ_D_CPP
+#endif  // COM_ZZ_D_CPP

@@ -11,198 +11,196 @@
 #include "../modules/polynom/polynom.h"
 
 TEST_CASE("Натуральные числа", "[natural]") {
-
 #ifdef COM_NN_D_CPP
-	SECTION("COM_NN_D [сравнение]") {
-		natural a, b;
+    SECTION("COM_NN_D [сравнение]") {
+        natural a, b;
 
-		a = { _4, _2 };
+        a = { _4, _2 };
 
-		// рефлексивность
-		REQUIRE(a == a);
+        // рефлексивность
+        REQUIRE(a == a);
 
-		a = { _9, _8 };
-		b = { _8, _9 };
+        a = { _9, _8 };
+        b = { _8, _9 };
 
-		// Симметричность
-		REQUIRE(COM_NN_D(a, b) == ordinal::GT);
-		REQUIRE(COM_NN_D(b, a) == ordinal::LT);
+        // Симметричность
+        REQUIRE(COM_NN_D(a, b) == ordinal::GT);
+        REQUIRE(COM_NN_D(b, a) == ordinal::LT);
 
-		natural c = { _7 };
+        natural c = { _7 };
 
-		// транзитивность
-		REQUIRE(COM_NN_D(b, c) == ordinal::GT);
-		REQUIRE(COM_NN_D(a, c) == ordinal::GT);
+        // транзитивность
+        REQUIRE(COM_NN_D(b, c) == ordinal::GT);
+        REQUIRE(COM_NN_D(a, c) == ordinal::GT);
 
-		a = { _0, _1, _2 };
-		b = { _1, _0, _0 };
+        a = { _0, _1, _2 };
+        b = { _1, _0, _0 };
 
-		REQUIRE(COM_NN_D(a, b) == ordinal::LT);
-	}
+        REQUIRE(COM_NN_D(a, b) == ordinal::LT);
+    }
 #endif  // COM_NN_D_CPP
 
 #ifdef ADD_1N_N_CPP
-	SECTION("ADD_1N_N [инкремент]") {
-		natural a = { _9, _9, _8 };
+    SECTION("ADD_1N_N [инкремент]") {
+        natural a = { _9, _9, _8 };
 
-		a = ADD_1N_N(a);
-		REQUIRE(COM_NN_D(a, { _9, _9, _9 }) == ordinal::EQ);
+        a = ADD_1N_N(a);
+        REQUIRE(COM_NN_D(a, { _9, _9, _9 }) == ordinal::EQ);
 
-		a++;
-		REQUIRE(COM_NN_D(a, { _1, _0, _0, _0 }) == ordinal::EQ);
-	}
+        a++;
+        REQUIRE(COM_NN_D(a, { _1, _0, _0, _0 }) == ordinal::EQ);
+    }
 #endif  // ADD_1N_N_CPP
 
 #ifdef SUB_NN_N_CPP
-	SECTION("SUB_NN_N [разность большего и меньшего чисел]") {
-		natural a = { _1, _0, _0 };
-		natural b = { _1 };
+    SECTION("SUB_NN_N [разность большего и меньшего чисел]") {
+        natural a = { _1, _0, _0 };
+        natural b = { _1 };
 
-		REQUIRE(COM_NN_D(SUB_NN_N(a, b), { _9, _9 }) == ordinal::EQ);
+        REQUIRE(COM_NN_D(SUB_NN_N(a, b), { _9, _9 }) == ordinal::EQ);
 
-		a = a - a;
-		REQUIRE(COM_NN_D(a, { _0 }) == ordinal::EQ);
+        a = a - a;
+        REQUIRE(COM_NN_D(a, { _0 }) == ordinal::EQ);
 
-		a = { _5, _3, _9 };
-		b = { _4, _2, _8 };
-		REQUIRE(COM_NN_D(SUB_NN_N(a, b), { _1, _1, _1 }) == ordinal::EQ);
-	}
+        a = { _5, _3, _9 };
+        b = { _4, _2, _8 };
+        REQUIRE(COM_NN_D(SUB_NN_N(a, b), { _1, _1, _1 }) == ordinal::EQ);
+    }
 #endif  // SUB_NN_N_CPP
 
 #ifdef NZER_N_B_CPP
-	SECTION("NZER_N_B [проверка на ноль]") {
-		natural zero = { _0 };
-		natural nzero = { _1, _0, _4, _2 };
+    SECTION("NZER_N_B [проверка на ноль]") {
+        natural zero = { _0 };
+        natural nzero = { _1, _0, _4, _2 };
 
-		REQUIRE(NZER_N_B(zero));
-		REQUIRE_FALSE(NZER_N_B(nzero));
+        REQUIRE(NZER_N_B(zero));
+        REQUIRE_FALSE(NZER_N_B(nzero));
 
-		zero = { _0, _0 };
-		REQUIRE(NZER_N_B(zero));
+        zero = { _0, _0 };
+        REQUIRE(NZER_N_B(zero));
 
-		nzero = { _0, _0, _1, _0, _0 };
-		REQUIRE_FALSE(NZER_N_B(nzero));
-	}
+        nzero = { _0, _0, _1, _0, _0 };
+        REQUIRE_FALSE(NZER_N_B(nzero));
+    }
 #endif  // NZER_N_B_CPP
 
 #ifdef  MUL_ND_N_CPP
-	SECTION("MUL_ND_N [умножение натурального числа на цифру]") {
-		natural zero = { _0 };
-		natural one = { _1 };
-		natural totallyRandomNumber("424242424242");
-		natural result9("3818181818178");
+    SECTION("MUL_ND_N [умножение натурального числа на цифру]") {
+        natural zero = { _0 };
+        natural one = { _1 };
+        natural totallyRandomNumber("424242424242");
+        natural result9("3818181818178");
 
-		REQUIRE(COM_NN_D(MUL_ND_N(zero, _1), zero) == ordinal::EQ);
-		REQUIRE(COM_NN_D(MUL_ND_N(one, _9), { _9 }) == ordinal::EQ);
-		REQUIRE(COM_NN_D(MUL_ND_N(totallyRandomNumber, _9), result9) == ordinal::EQ);
-	}
+        REQUIRE(COM_NN_D(MUL_ND_N(zero, _1), zero) == ordinal::EQ);
+        REQUIRE(COM_NN_D(MUL_ND_N(one, _9), { _9 }) == ordinal::EQ);
+        REQUIRE(COM_NN_D(MUL_ND_N(totallyRandomNumber, _9), result9) == ordinal::EQ);
+    }
 #endif  // MUL_ND_N_CPP
 
 #ifdef MUL_NN_N_CPP
-	SECTION("MUL_NN_N [умножение натурального числа на натуральное]") {
-		natural totallyRandomNumber("424242424242");
-		natural resultSquare("179981634526729109274564");
+    SECTION("MUL_NN_N [умножение натурального числа на натуральное]") {
+        natural totallyRandomNumber("424242424242");
+        natural resultSquare("179981634526729109274564");
 
-		REQUIRE(COM_NN_D(MUL_NN_N(totallyRandomNumber, totallyRandomNumber),
-			resultSquare) == ordinal::EQ);
-	}
+        REQUIRE(COM_NN_D(MUL_NN_N(totallyRandomNumber, totallyRandomNumber),
+            resultSquare) == ordinal::EQ);
+    }
 #endif  // MUL_NN_N_CPP
 
 #ifdef MUL_NK_N_CPP
-	SECTION("MUL_Nk_N [умножение натурального числа на 10^k]") {
-		natural totallyRandomNumber("42");
-		natural result4("420000");
-		REQUIRE(COM_NN_D(MUL_Nk_N(totallyRandomNumber, 4), result4) == ordinal::EQ);
-		REQUIRE(COM_NN_D(MUL_Nk_N(totallyRandomNumber, 0), totallyRandomNumber) == ordinal::EQ);
-	}
+    SECTION("MUL_Nk_N [умножение натурального числа на 10^k]") {
+        natural totallyRandomNumber("42");
+        natural result4("420000");
+        REQUIRE(COM_NN_D(MUL_Nk_N(totallyRandomNumber, 4), result4) == ordinal::EQ);
+        REQUIRE(COM_NN_D(MUL_Nk_N(totallyRandomNumber, 0), totallyRandomNumber) == ordinal::EQ);
+    }
 #endif  // MUL_NK_N_CPP
 
 #ifdef DIV_NN_Dk_CPP
-	SECTION("DIV_NN_Dk [Первая цифра деления и правильная степень 10]") {
-		natural a("815");
-		natural b("27");
+    SECTION("DIV_NN_Dk [Первая цифра деления и правильная степень 10]") {
+        natural a("815");
+        natural b("27");
 
-		auto p = DIV_NN_Dk(a, b);
-		REQUIRE(p.first == _3);
-		REQUIRE(p.second == 1);
+        auto p = DIV_NN_Dk(a, b);
+        REQUIRE(p.first == _3);
+        REQUIRE(p.second == 1);
 
-		a = natural("123");
-		b = natural("7");
+        a = natural("123");
+        b = natural("7");
 
-		p = DIV_NN_Dk(a, b);
-		REQUIRE(p.first == _1);
-		REQUIRE(p.second == 1);
+        p = DIV_NN_Dk(a, b);
+        REQUIRE(p.first == _1);
+        REQUIRE(p.second == 1);
 
-		a = natural("999");
-		b = natural("111");
+        a = natural("999");
+        b = natural("111");
 
-		p = DIV_NN_Dk(a, b);
-		REQUIRE(p.first == _9);
-		REQUIRE(p.second == 0);
+        p = DIV_NN_Dk(a, b);
+        REQUIRE(p.first == _9);
+        REQUIRE(p.second == 0);
 
-		a = natural("6000");
-		b = natural("2");
+        a = natural("6000");
+        b = natural("2");
 
-		p = DIV_NN_Dk(a, b);
-		REQUIRE(p.first == _3);
-		REQUIRE(p.second == 3);
-	}
+        p = DIV_NN_Dk(a, b);
+        REQUIRE(p.first == _3);
+        REQUIRE(p.second == 3);
+    }
 #endif
 
 #ifdef DIV_NN_N_CPP
-	SECTION("DIV_NN_N [Деление натуральных чисел]") {
-		natural a = { _1, _2, _3 };
-		natural b = { _1, _0, _0 };
-		natural c = { _2 };
+    SECTION("DIV_NN_N [Деление натуральных чисел]") {
+        natural a = { _1, _2, _3 };
+        natural b = { _1, _0, _0 };
+        natural c = { _2 };
 
-		REQUIRE(DIV_NN_N(a, b) == natural({ _1 }));
-		REQUIRE_FALSE(DIV_NN_N(a, c) == natural("24"));
+        REQUIRE(DIV_NN_N(a, b) == natural({ _1 }));
+        REQUIRE_FALSE(DIV_NN_N(a, c) == natural("24"));
 
-		natural zero;
-		REQUIRE_THROWS(DIV_NN_N(a, zero));
-	}
+        natural zero;
+        REQUIRE_THROWS(DIV_NN_N(a, zero));
+    }
 #endif
 
 #ifdef MOD_NN_N_CPP
-	SECTION("MOD_NN_N [остаток от деления натуральных]") {
-		natural a = { _1, _2, _3 };
-		natural b = { _1, _0, _0 };
-		natural c = { _2, _3 };
-		REQUIRE(MOD_NN_N(a, b) == c);
-	}
+    SECTION("MOD_NN_N [остаток от деления натуральных]") {
+        natural a = { _1, _2, _3 };
+        natural b = { _1, _0, _0 };
+        natural c = { _2, _3 };
+        REQUIRE(MOD_NN_N(a, b) == c);
+    }
 #endif
 
 #ifdef GCF_NN_N_CPP
-	SECTION("GCF_NN_N [НОД натуральных]") {
-		natural a("42");
-		natural b("21");
-		REQUIRE(GCF_NN_N(a, b) == b);
+    SECTION("GCF_NN_N [НОД натуральных]") {
+        natural a("42");
+        natural b("21");
+        REQUIRE(GCF_NN_N(a, b) == b);
 
-		natural zero;
-		REQUIRE(GCF_NN_N(a, zero) == a);
-	}
+        natural zero;
+        REQUIRE(GCF_NN_N(a, zero) == a);
+    }
 #endif
 
 #ifdef LCM_NN_N_CPP
-	SECTION("LCM_NN_N [НОК натуральных]") {
-		natural a("8");
-		natural b("9");
-		REQUIRE(LCM_NN_N(a, b) == MUL_NN_N(a, b));
+    SECTION("LCM_NN_N [НОК натуральных]") {
+        natural a("8");
+        natural b("9");
+        REQUIRE(LCM_NN_N(a, b) == MUL_NN_N(a, b));
 
-		natural c("42");
-		natural d("168");
-		REQUIRE(LCM_NN_N(a, c) == d);
+        natural c("42");
+        natural d("168");
+        REQUIRE(LCM_NN_N(a, c) == d);
 
-		natural zero;
-		REQUIRE(LCM_NN_N(c, zero) == zero);
-	}
+        natural zero;
+        REQUIRE(LCM_NN_N(c, zero) == zero);
+    }
 #endif
 }
 
-TEST_CASE( "Целые числа", "[integer]" ) {
-
+TEST_CASE("Целые числа", "[integer]") {
 #ifdef ABS_Z_N_CPP
-    SECTION( "ABS_Z_N [модуль]" ) {
+    SECTION("ABS_Z_N [модуль]") {
         integer a("-423");
         natural b("423");
         REQUIRE(ABS_Z_N(a) == b);
@@ -217,7 +215,7 @@ TEST_CASE( "Целые числа", "[integer]" ) {
 #endif
 
 #ifdef ADD_ZZ_Z_CPP
-    SECTION( "ADD_ZZ_Z [сложение]" ) {
+    SECTION("ADD_ZZ_Z [сложение]") {
         integer a(23);
         integer b(-3);
         // Работоспособность
@@ -230,7 +228,7 @@ TEST_CASE( "Целые числа", "[integer]" ) {
         // Коммутативность
         REQUIRE(ADD_ZZ_Z(a, b) == ADD_ZZ_Z(b, a));
 
-		integer c(42);
+        integer c(42);
         // Ассоциативность
         REQUIRE(ADD_ZZ_Z(ADD_ZZ_Z(a, b), c) == ADD_ZZ_Z(a, ADD_ZZ_Z(b, c)));
     }
@@ -249,16 +247,16 @@ TEST_CASE( "Целые числа", "[integer]" ) {
         REQUIRE(COM_ZZ_D(a, a) == ordinal::EQ);
         REQUIRE(COM_ZZ_D(b, b) == ordinal::EQ);
     }
-#endif // COM_ZZ_D_CPP
+#endif  // COM_ZZ_D_CPP
 
 
 #ifdef DIV_ZZ_Z_CPP
-    SECTION( "DIV_ZZ_Z [деление]" ) {
+    SECTION("DIV_ZZ_Z [деление]") {
         integer a(-16);
         integer b(4);
         integer c(-4);
         REQUIRE(DIV_ZZ_Z(a, b) == c);
-		REQUIRE(DIV_ZZ_Z(a, c) == b);
+        REQUIRE(DIV_ZZ_Z(a, c) == b);
 
         integer negone(-1);
         REQUIRE(DIV_ZZ_Z(b, c) == negone);
@@ -269,7 +267,7 @@ TEST_CASE( "Целые числа", "[integer]" ) {
 #endif
 
 #ifdef INV_Z_Z_CPP
-    SECTION( "INV_Z_Z [умножение на -1]" ) {
+    SECTION("INV_Z_Z [умножение на -1]") {
         integer a(4);
         integer b(-4);
         REQUIRE(INV_Z_Z(a) == b);
@@ -282,7 +280,7 @@ TEST_CASE( "Целые числа", "[integer]" ) {
 #endif
 
 #ifdef MOD_ZZ_Z_CPP
-    SECTION( "MOD_ZZ_Z [остаток от деления]" ) {
+    SECTION("MOD_ZZ_Z [остаток от деления]") {
         integer a(16);
         integer nega(-16);
         integer b(3);
@@ -298,7 +296,7 @@ TEST_CASE( "Целые числа", "[integer]" ) {
 #endif
 
 #ifdef MUL_ZZ_Z_CPP
-    SECTION( "MUL_ZZ_Z [умножение]" ) {
+    SECTION("MUL_ZZ_Z [умножение]") {
         integer a(7);
         integer b(-6);
         integer nega(-7);
@@ -312,7 +310,7 @@ TEST_CASE( "Целые числа", "[integer]" ) {
 #endif
 
 #ifdef POZ_Z_D_CPP
-    SECTION( "POZ_Z_D [положительность]" ) {
+    SECTION("POZ_Z_D [положительность]") {
         integer a(42);
         integer b(-42);
         integer zero;
@@ -323,7 +321,7 @@ TEST_CASE( "Целые числа", "[integer]" ) {
 #endif
 
 #ifdef SUB_ZZ_Z_CPP
-    SECTION( "SUB_ZZ_Z [вычитание]" ) {
+    SECTION("SUB_ZZ_Z [вычитание]") {
         integer a(42);
         integer b(21);
         integer c(-21);
@@ -335,138 +333,135 @@ TEST_CASE( "Целые числа", "[integer]" ) {
 }
 
 TEST_CASE("Рациональные числа", "[fractional]") {
-
 #ifdef RED_Q_Q_CPP
-	SECTION("RED_Q_Q [сокращение дроби]") {
-		fraction a("437/506");
-		fraction b("19/22");
-		REQUIRE(RED_Q_Q(a) == b);
+    SECTION("RED_Q_Q [сокращение дроби]") {
+        fraction a("437/506");
+        fraction b("19/22");
+        REQUIRE(RED_Q_Q(a) == b);
 
-		a = fraction("-272/128");
-		b = fraction("-17/8");
-		REQUIRE(RED_Q_Q(a) == b);
+        a = fraction("-272/128");
+        b = fraction("-17/8");
+        REQUIRE(RED_Q_Q(a) == b);
 
-		a = fraction("1/3");
-		REQUIRE(RED_Q_Q(a) == a);
+        a = fraction("1/3");
+        REQUIRE(RED_Q_Q(a) == a);
 
-		a = fraction("-62/1");
-		REQUIRE(RED_Q_Q(a) == a);
-	}
+        a = fraction("-62/1");
+        REQUIRE(RED_Q_Q(a) == a);
+    }
 #endif  // RED_Q_Q_CPP
 
 #ifdef INT_Q_B_CPP
-	SECTION("INT_Q_B [проверка на целое]") {
-		fraction a(-8);
-		REQUIRE(INT_Q_B(a));
+    SECTION("INT_Q_B [проверка на целое]") {
+        fraction a(-8);
+        REQUIRE(INT_Q_B(a));
 
-		a = fraction("24/6");
-		REQUIRE(INT_Q_B(a));
+        a = fraction("24/6");
+        REQUIRE(INT_Q_B(a));
 
-		a = fraction("7/6");
-		REQUIRE_FALSE(INT_Q_B(a));
+        a = fraction("7/6");
+        REQUIRE_FALSE(INT_Q_B(a));
 
-		a = fraction("-15/25");
-		REQUIRE_FALSE(INT_Q_B(a));
-		
-	}
+        a = fraction("-15/25");
+        REQUIRE_FALSE(INT_Q_B(a));
+    }
 #endif  // INT_Q_B_CPP
 
 #ifdef TRANS_Z_Q_CPP
-	SECTION("TRANS_Z_Q [преобразование целого в дробное]") {
-		integer a(-42);
-		fraction b(-42);
-		REQUIRE(TRANS_Z_Q(a) == b);
+    SECTION("TRANS_Z_Q [преобразование целого в дробное]") {
+        integer a(-42);
+        fraction b(-42);
+        REQUIRE(TRANS_Z_Q(a) == b);
 
-		a = integer(5);
-		b = fraction(5)
-		REQUIRE(TRANS_Z_Q(a) == b);
-	}
+        a = integer(5);
+        b = fraction(5);
+        REQUIRE(TRANS_Z_Q(a) == b);
+    }
 #endif  // TRANS_Z_Q_CPP
 
 #ifdef TRANS_Q_Z_CPP
-	SECTION("TRANS_Q_Z [преобразование дробного в целое]") {
-		fraction a(-42);
-		integer b(-42);
-		REQUIRE(TRANS_Q_Z(a) == b);
-		
-		a = fraction(5);
-		b = integer(5);
-		REQUIRE(TRANS_Q_Z(a) == b);
+    SECTION("TRANS_Q_Z [преобразование дробного в целое]") {
+        fraction a(-42);
+        integer b(-42);
+        REQUIRE(TRANS_Q_Z(a) == b);
 
-		a = fraction("9/3");
-		b = integer(3);
-		REQUIRE(TRANS_Q_Z(a) == b);
+        a = fraction(5);
+        b = integer(5);
+        REQUIRE(TRANS_Q_Z(a) == b);
 
-		a = fraction("-100/50");
-		b = integer(-2);
-		REQUIRE(TRANS_Q_Z(a) == b);
-	}
+        a = fraction("9/3");
+        b = integer(3);
+        REQUIRE(TRANS_Q_Z(a) == b);
+
+        a = fraction("-100/50");
+        b = integer(-2);
+        REQUIRE(TRANS_Q_Z(a) == b);
+    }
 #endif  // TRANS_Q_Z_CPP
 
 #ifdef  ADD_QQ_Q_CPP
-	SECTION("ADD_QQ_Q [сложение дробей]") {
-		fraction a("5/8");
-		fraction b("9/24");
-		fraction c("24/24"); //fraction c("1/1");
-		REQUIRE(ADD_QQ_Q(a, b) == c);
+    SECTION("ADD_QQ_Q [сложение дробей]") {
+        fraction a("5/8");
+        fraction b("9/24");
+        fraction c("24/24");  // fraction c("1/1");
+        REQUIRE(ADD_QQ_Q(a, b) == c);
 
-		a = fraction("5/12");
-		b = fraction("-3/4");
-		c = fraction("-4/12"); //c = fraction("-1/3");
-		REQUIRE(ADD_QQ_Q(a, b) == c);
-	}
+        a = fraction("5/12");
+        b = fraction("-3/4");
+        c = fraction("-4/12");  // c = fraction("-1/3");
+        REQUIRE(ADD_QQ_Q(a, b) == c);
+    }
 #endif  // ADD_QQ_Q_CPP
 
 #ifdef SUB_QQ_Q_CPP
-	SECTION("SUB_QQ_Q [вычитание дробей]") {
-		fraction a("5/12");
-		fraction b("-3/4");
-		fraction c("14/12"); //fraction c("7/6");
-		REQUIRE(SUB_QQ_Q(a, b) == c);
+    SECTION("SUB_QQ_Q [вычитание дробей]") {
+        fraction a("5/12");
+        fraction b("-3/4");
+        fraction c("14/12");  // fraction c("7/6");
+        REQUIRE(SUB_QQ_Q(a, b) == c);
 
-		a = fraction("40/63");
-		b = fraction("5/18");
-		c = fraction("45/126"); //c = fraction("5/14");
-		REQUIRE(SUB_QQ_Q(a, b) == c);
-	}
+        a = fraction("40/63");
+        b = fraction("5/18");
+        c = fraction("45/126");  // c = fraction("5/14");
+        REQUIRE(SUB_QQ_Q(a, b) == c);
+    }
 #endif  // SUB_QQ_Q_CPP
 
 #ifdef MUL_QQ_Q_CPP
-	SECTION("MUL_QQ_Q [умножение дробей]") {
-		fraction a("6/14");
-		fraction b("7/5");
-		fraction c("6/10");
-		REQUIRE(MUL_QQ_Q(a, b) == c);
+    SECTION("MUL_QQ_Q [умножение дробей]") {
+        fraction a("6/14");
+        fraction b("7/5");
+        fraction c("6/10");
+        REQUIRE(MUL_QQ_Q(a, b) == c);
 
-		a = fraction("-3/11");
-		b = fraction("13/18");
-		c = fraction("-13/66");
-		REQUIRE(MUL_QQ_Q(a, b) == c);
+        a = fraction("-3/11");
+        b = fraction("13/18");
+        c = fraction("-13/66");
+        REQUIRE(MUL_QQ_Q(a, b) == c);
 
-		a = fraction("-2/5");
-		b = fraction("-15/16");
-		c = fraction("3/8");
-		REQUIRE(MUL_QQ_Q(a, b) == c);
-
-	}
+        a = fraction("-2/5");
+        b = fraction("-15/16");
+        c = fraction("3/8");
+        REQUIRE(MUL_QQ_Q(a, b) == c);
+    }
 #endif  // MUL_QQ_Q_CPP
 
 #ifdef DIV_QQ_Q_CPP
-	SECTION("DIV_QQ_Q [деление дробей]") {
-		fraction a("6/14");
-		fraction b("5/7");
-		fraction c("6/10");
-		REQUIRE(DIV_QQ_Q(a, b) == c);
+    SECTION("DIV_QQ_Q [деление дробей]") {
+        fraction a("6/14");
+        fraction b("5/7");
+        fraction c("6/10");
+        REQUIRE(DIV_QQ_Q(a, b) == c);
 
-		a = fraction("-3/11");
-		b = fraction("18/13");
-		c = fraction("-13/66");
-		REQUIRE(DIV_QQ_Q(a, b) == c);
+        a = fraction("-3/11");
+        b = fraction("18/13");
+        c = fraction("-13/66");
+        REQUIRE(DIV_QQ_Q(a, b) == c);
 
-		a = fraction("-2/5");
-		b = fraction("-16/15");
-		c = fraction("3/8");
-		REQUIRE(DIV_QQ_Q(a, b) == c);
-	}
-#endif // DIV_QQ_Q_CPP
+        a = fraction("-2/5");
+        b = fraction("-16/15");
+        c = fraction("3/8");
+        REQUIRE(DIV_QQ_Q(a, b) == c);
+    }
+#endif  // DIV_QQ_Q_CPP
 }
