@@ -32,7 +32,7 @@ int main(int argc, char const *argv[])
     
     fractional my_exp;
 
-    const int ACCURACY = 8;
+    const int ACCURACY = 20;
     for (int i = 0; i < ACCURACY; ++i)
     {
         fractional d(pow(x,i), fact(i));
