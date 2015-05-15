@@ -18,11 +18,11 @@ natural MUL_ND_N(const natural &a, const digit &n) {
         digit dem = _0;
         // умножаем каждую цифру числа на n методом mul
         // переполнение самого старшего разряда учитывается
-        for (int i = 0; i <= res.order() + 1; i++) { // magic number =)
-            // auto temp = res[i];
+        for (int i = 0; i <= res.order() + 2; i++) { // magic number =)
+            //auto temp = res[i];
             res[i] = mul(a[i], n, dem);
         }
-        // // удаляем возможные незначащие нули
+        // удаляем возможные незначащие нули
         res.reduce();
         return res;
     }

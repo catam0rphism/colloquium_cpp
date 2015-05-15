@@ -4,11 +4,12 @@
 #define INT_Q_B_CPP
 
 #include "../../structs/struct.h"
+#include "../../structs/operators.h"
 #include "./RED_Q_Q.cpp"
 
-bool INT_Q_B(fraction Q_2) {
-    fraction F = Q_2;  // сохранение значения аргумента
-    RED_Q_Q(F);  // Сокращение дроби
+bool INT_Q_B(const fraction& fract) {
+    fraction F = fract;  // сохранение значения аргумента
+    F = RED_Q_Q(F);  // Сокращение дроби
     return (F.denominator == natural(1));  // сравнение знаменателя с единицей и возврат результата
 }
 

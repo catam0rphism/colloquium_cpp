@@ -6,6 +6,7 @@
 #include <iostream>
 
 #include "../../structs/struct.h"
+#include "../../structs/operators.h"
 #include "./COM_NN_D.cpp"
 #include "./DIV_NN_Dk.cpp"
 #include "./MUL_NN_N.cpp"

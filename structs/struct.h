@@ -133,6 +133,7 @@ struct natural {
 
     void operator++( int );
     friend bool operator == (const natural& left, const natural& right);
+    friend bool operator != (const natural& left, const natural& right);
     friend bool operator <  (const natural& left, const natural& right);
     friend bool operator >  (const natural& left, const natural& right);
     friend bool operator <= (const natural& left, const natural& right);
@@ -212,6 +213,7 @@ struct fraction {
     natural denominator;
 
     friend bool operator == (const fraction& left, const fraction& right);
+    friend bool operator != (const fraction& left, const fraction& right);
 
     fraction operator+(const fraction& other);
     fraction operator-(const fraction& other);

@@ -56,6 +56,10 @@ bool operator==(const natural &left, const natural& right) {
     return ordinal::EQ == COM_NN_D(left, right);
 }
 
+bool operator!=(const natural &left, const natural& right) {
+    return !(left == right);
+}
+
 bool operator<(const natural &left, const natural& right) {
     return ordinal::LT == COM_NN_D(left, right);
 }

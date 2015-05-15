@@ -2,6 +2,12 @@
 #ifndef ADD_QQ_Q_CPP
 #define ADD_QQ_Q_CPP
 
+#include "../../structs/struct.h"
+#include "../natural/LCM_NN_N.cpp"
+#include "../integer/ADD_ZZ_Z.cpp"
+#include "../integer/MUL_ZZ_Z.cpp"
+#include "../integer/TRANS_N_Z.cpp"
+
 fraction ADD_QQ_Q(fraction a, fraction b) {
     fraction sum;
     if (b.denominator == a.denominator) {

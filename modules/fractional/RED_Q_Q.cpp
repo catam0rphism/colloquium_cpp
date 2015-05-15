@@ -3,26 +3,28 @@
 #ifndef RED_Q_Q_CPP
 #define RED_Q_Q_CPP
 
+#include <iostream>
 #include "../../structs/struct.h"
+#include "../../structs/operators.h"
 #include "../natural/GCF_NN_N.cpp"
 #include "../integer/DIV_ZZ_Z.cpp"
+#include "../natural/DIV_NN_N.cpp"
 #include "../integer/ABS_Z_N.cpp"
-#include "../integer/TRANS_Z_N.cpp"
+#include "../integer/TRANS_N_Z.cpp"
 
 
 fraction RED_Q_Q(const fraction &RED) {
-    integer NOD;
-    fraction RED_C = RED;
+    natural NOD;
+    fraction res;
 
     // Ищем НОД числителя и знаменателя
     NOD = GCF_NN_N(ABS_Z_N(RED.numerator), RED.denominator);
-
     // Делим числитель на НОД
-    RED_C.numerator = DIV_ZZ_Z(ABS_Z_N(RED.numerator), NOD);
+    res.numerator = DIV_ZZ_Z(RED.numerator, TRANS_N_Z(NOD));
     //Делим знаменатель на НОД
-    RED_C.denominator = TRANS_Z_N(DIV_ZZ_Z(RED.denominator, NOD));
+    res.denominator = DIV_NN_N(RED.denominator, NOD);
 
-    return RED_C;
+    return res;
 }
 
 #endif  // RED_Q_Q_CPP

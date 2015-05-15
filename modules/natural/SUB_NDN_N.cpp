@@ -6,6 +6,7 @@
 #include <iostream>
 
 #include "../../structs/struct.h"
+#include "../../structs/operators.h"
 
 #include "MUL_ND_N.cpp"
 #include "COM_NN_D.cpp"
@@ -27,8 +28,8 @@ natural SUB_NDN_N(const natural& a, const natural& b, const digit& n) {
     if(tmp <= a) {
         natural res = SUB_NN_N(a, tmp);        
         return res;
-    }
-    else throw std::invalid_argument("Result is negative"); // TODO: except
+    } else
+        throw std::invalid_argument("Result is negative"); // TODO: except
 }
 
 #endif  // SUB_NDN_N_CPP

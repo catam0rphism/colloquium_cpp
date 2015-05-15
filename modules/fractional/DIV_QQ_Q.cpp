@@ -21,10 +21,10 @@ fraction DIV_QQ_Q(const fraction &a, const fraction &b) {
     c.numerator = MUL_ZZ_Z(a.numerator, bden);  // получаем числитель результирующей дроби
     c.denominator = ABS_Z_N(MUL_ZZ_Z(aden, b.numerator));  // получаем знаменатель результирующей дроби
     // получаем знак результирующей дроби:
-    if (c.numerator.isPositive == c.numerator.isPositive)
-        c.numerator.isPositive = 1;
-    else
+    if (a.numerator.isPositive ^ b.numerator.isPositive)
         c.numerator.isPositive = 0;
+    else
+        c.numerator.isPositive = 1;
     return c;
 }
 
