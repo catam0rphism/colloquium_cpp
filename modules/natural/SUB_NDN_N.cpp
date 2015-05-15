@@ -28,7 +28,7 @@ natural SUB_NDN_N(const natural& a, const natural& b, const digit& n) {
         natural res = SUB_NN_N(a, tmp);        
         return res;
     }
-    else throw; // TODO: except
+    else throw std::invalid_argument("Result is negative"); // TODO: except
 }
 
 #endif  // SUB_NDN_N_CPP
