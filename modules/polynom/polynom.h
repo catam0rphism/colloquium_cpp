@@ -3,6 +3,7 @@
 #define POLYNOM_H
 
 #include "ADD_PP_P.cpp"
+#include "COM_PP_D.cpp"
 #include "DEG_P_N.cpp"
 #include "DER_P_P.cpp"
 #include "DIV_PP_P.cpp"

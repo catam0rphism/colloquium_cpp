@@ -4,6 +4,7 @@
 
 #include "./ABS_Z_N.cpp"
 #include "./ADD_ZZ_Z.cpp"
+#include "./COM_ZZ_D.cpp"  // Он страшный
 #include "./DIV_ZZ_Z.cpp"
 #include "./INV_Z_Z.cpp"
 #include "./MOD_ZZ_Z.cpp"

@@ -6,7 +6,7 @@
 
 bool NZER_N_B (const natural& a)
 {
-    // Oreturn (a.order() == 0);
+    //return (a.order() == 0);
     return (a.order() == 1 && a[0] == _0);
 }
 

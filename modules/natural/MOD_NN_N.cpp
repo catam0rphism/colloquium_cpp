@@ -14,18 +14,13 @@ natural MOD_NN_N(const natural& a, const natural& b) {
     if (NZER_N_B(b))
         throw std::invalid_argument("Your divider is equal to zero");
 
-    natural res;
     natural divident = a;
     natural divider = b;
-    natural fact;
-
-    // Е*ать! гении.
-
-    fact = DIV_NN_N(divident, divider);
+    natural fact = DIV_NN_N(divident, divider);
     divider = MUL_NN_N(divider, fact);
-    res = SUB_NN_N(divident, divider);
+    natural res = SUB_NN_N(divident, divider);
 
-    return res;
+    return natural(res);
 }
 
 natural natural::operator%(const natural& other) {

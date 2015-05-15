@@ -3,12 +3,10 @@
 #define GCF_NN_N_CPP
 
 #include "../../structs/struct.h"
-
 #include "COM_NN_D.cpp"
 #include "MOD_NN_N.cpp"
 
 natural GCF_NN_N(const natural& a, const natural& b) {
-
     // natural divident = a;
     // natural divider = b;
     // natural some_x;
@@ -18,8 +16,6 @@ natural GCF_NN_N(const natural& a, const natural& b) {
     //     divident = some_x;
     // }
     // return divider;
-
-    // return (b == _0) ? a : GCF_NN_N(b, a % b);
 
     // Just deal with it!
     // (c) Belkin Dmitriy

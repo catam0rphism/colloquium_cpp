@@ -41,6 +41,10 @@ std::ostream& operator<<(std::ostream &os, fraction &fraction) {
 
 std::ostream& operator<<(std::ostream &os, polynom &polynom) {
     std::int16_t count = polynom.degree();
+    if (count == 0 && POZ_Z_D(polynom[count].numerator) == IntegerState::Zero) {
+        os << 0;
+        return os;
+    }
     while (count >= 0) {
         if (POZ_Z_D(polynom[count].numerator) != IntegerState::Zero) {
             if (POZ_Z_D(polynom[count].numerator) == IntegerState::Positive)

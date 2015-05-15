@@ -13,10 +13,13 @@ polynom DIV_PP_P(const polynom& left, const polynom& right) {
     polynom divident = left;  // делимое
     polynom divider = right;  // делитель
     polynom result;  // неполное частное
+    /*if (divider.degree() == 0 && divider[0] == fraction(1))
+        return divident;*/
     int diff = divident.degree() - divider.degree();  // разница степеней
 
-
     while (diff >= 0) {
+        if (diff == 0 && result[diff] == DIV_QQ_Q(LED_P_Q(divident), LED_P_Q(divider)))
+            return result;
         result[diff] = DIV_QQ_Q(LED_P_Q(divident), LED_P_Q(divider));
 
 		divident = SUB_PP_P(divident, MUL_Pxk_P(

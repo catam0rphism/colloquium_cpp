@@ -133,6 +133,7 @@ struct natural {
 
     void operator++( int );
     friend bool operator == (const natural& left, const natural& right);
+    friend bool operator != (const natural& left, const natural& right);
     friend bool operator <  (const natural& left, const natural& right);
     friend bool operator >  (const natural& left, const natural& right);
     friend bool operator <= (const natural& left, const natural& right);
@@ -154,13 +155,13 @@ struct integer {
     integer(const natural &natural) : integer() {
         module = natural;
     }
-    integer(const std::string &input) {
+    integer(const std::string &input) : integer() {
         std::string cinput = input;
-        if (cinput[0] == '-') {
+        if (*cinput.begin() == '-') {
             isPositive = false;
             cinput.erase(cinput.begin());
         } else {
-            if (cinput[0] == '+') {
+            if (*cinput.begin() == '+') {
                 cinput.erase(cinput.begin());
             }
         }
@@ -172,7 +173,7 @@ struct integer {
 
     integer operator*(const integer& ohter);
 
-    bool operator==(const integer& other);
+	friend bool operator == (const integer& left, const integer& right);
 };
 
 
@@ -201,6 +202,7 @@ struct fraction {
     explicit fraction(const std::string &input) {
         std::string s_numerator;
         auto it = input.begin();
+
         while (*it != '/') {
             s_numerator.push_back(*it);
             it++;
@@ -208,6 +210,7 @@ struct fraction {
         numerator = integer(s_numerator);
         it++;
         std::string s_denominator;
+
         while (it != input.end()) {
             s_denominator.push_back(*it);
             it++;
@@ -219,7 +222,8 @@ struct fraction {
     //Знаменатель дроби
     natural denominator;
 
-    bool operator==(const fraction& other);
+    friend bool operator == (const fraction& left, const fraction& right);
+    friend bool operator != (const fraction& left, const fraction& right);
 
     fraction operator+(const fraction& other);
     fraction operator-(const fraction& other);
@@ -242,6 +246,16 @@ struct polynom {
         auto it = tmp.rbegin();
         while (it != tmp.rend()) {
             this->coefficients.push_back(*it);
+            it++;
+        }
+    }
+
+    polynom(std::initializer_list<int> coefficients) {
+        std::vector<int> tmp(coefficients);
+
+        auto it = tmp.rbegin();
+        while (it != tmp.rend()) {
+            this->coefficients.push_back(fraction(*it));
             it++;
         }
     }
@@ -299,12 +313,13 @@ struct polynom {
 
     fraction operator[](const int& coeffInd) const {
         if (coeffInd > degree()) {
-            throw std::invalid_argument("No elemet with this index");
+            throw std::invalid_argument("No element with this index");
             }
         return fraction(coefficients[coeffInd]);
     }
 
     // polynom& operator+=(const polynom& other);
+    friend bool operator == (const natural& left, const natural& right);
 
  private:
     // Коэффициенты многочлена в порядке увеличения степени
