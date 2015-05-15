@@ -25,4 +25,8 @@ natural MUL_NN_N(const natural &a, const natural &b) {
     return res;
 }
 
+natural natural::operator*(const natural& other) {
+    return MUL_NN_N(*this, other);
+}
+
 #endif

@@ -24,6 +24,7 @@ natural GCF_NN_N(const natural& a, const natural& b) {
     // Just deal with it!
     // (c) Belkin Dmitriy
     return (COM_NN_D(b, _0) == ordinal::EQ) ? a : GCF_NN_N(b, MOD_NN_N(a, b));
+    // Хвостовая рекурсия
 }
 
 #endif  // GCF_NN_N_CPP

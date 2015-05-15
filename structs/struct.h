@@ -175,12 +175,22 @@ struct integer {
     bool operator==(const integer& other);
 };
 
+
 // Рациональное число
 struct fraction {
     // Создаёт дробь 0/1
     fraction() {
         numerator = integer();
         denominator = natural({ _1 });
+    }
+    fraction(const natural& num, const natural& denum) {
+        numerator = integer(num);
+        denominator = denum;
+    }
+    fraction(const integer& num, const integer& denum):
+        fraction(num.module, denum.module) {
+        numerator.isPositive = num.isPositive xor denum.isPositive;
+        
     }
     explicit fraction(const int& a) : fraction() {
         numerator = integer(a);
@@ -216,6 +226,8 @@ struct fraction {
     fraction operator*(const fraction& ohter);
     fraction operator/(const fraction& ohter);
 };
+
+typedef fraction fractional;
 
 // Многочлен
 struct polynom {
