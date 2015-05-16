@@ -190,7 +190,7 @@ struct fraction {
     }
     fraction(const integer& num, const integer& denum):
         fraction(num.module, denum.module) {
-        numerator.isPositive = num.isPositive xor denum.isPositive;
+        numerator.isPositive = num.isPositive ^ denum.isPositive;
         
     }
     explicit fraction(const int& a) : fraction() {

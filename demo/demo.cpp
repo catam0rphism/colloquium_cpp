@@ -46,5 +46,8 @@ int main(int argc, char const *argv[])
     // auto foo = RED_Q_Q(my_exp);
 
     std::cout << std::endl << "e^" << x << " = " << my_exp << std::endl;
+    std::cin.ignore();
+    std::string end;
+    getline(std::cin, end);
     return 0;
 }

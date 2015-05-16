@@ -18,7 +18,7 @@ natural MUL_ND_N(const natural &a, const digit &n) {
         digit dem = _0;
         // умножаем каждую цифру числа на n методом mul
         // переполнение самого старшего разряда учитывается
-        for (int i = 0; i <= res.order() + 2; i++) { // magic number =)
+        for (int i = 0; i <= res.order() + 42; i++) { // magic number =)
             //auto temp = res[i];
             res[i] = mul(a[i], n, dem);
         }

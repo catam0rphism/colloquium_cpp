@@ -18,7 +18,8 @@ fraction RED_Q_Q(const fraction &RED) {
     // Ищем НОД числителя и знаменателя
     NOD = GCF_NN_N(ABS_Z_N(RED.numerator), RED.denominator);
     // Делим числитель на НОД
-    res.numerator = DIV_ZZ_Z(RED.numerator, TRANS_N_Z(NOD));
+    res.numerator.module = DIV_NN_N(RED.numerator.module, NOD);
+    res.numerator.isPositive = RED.numerator.isPositive;
     //Делим знаменатель на НОД
     res.denominator = DIV_NN_N(RED.denominator, NOD);
 

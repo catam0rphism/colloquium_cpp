@@ -18,17 +18,17 @@ polynom DIV_PP_P(const polynom& left, const polynom& right) {
     int diff = divident.degree() - divider.degree();  // разница степеней
 
     while (diff >= 0) {
-        if (diff == 0 && result[diff] == DIV_QQ_Q(LED_P_Q(divident), LED_P_Q(divider)))
-            return result;
         result[diff] = DIV_QQ_Q(LED_P_Q(divident), LED_P_Q(divider));
 
 		divident = SUB_PP_P(divident, MUL_Pxk_P(
 			MUL_PQ_P(divider, result[diff]), diff));
         divident.reduce();
 
+        if (diff == 0)
+            return result;
+
         diff = divident.degree() - divider.degree();
     }
-
      return result;
 }
 

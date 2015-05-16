@@ -349,6 +349,10 @@ TEST_CASE("Рациональные числа", "[fractional]") {
 
         a = fraction("-62/1");
         REQUIRE(RED_Q_Q(a) == a);
+
+        a = fraction("42/42");
+        b = fraction(1);
+        REQUIRE(RED_Q_Q(a) == b);
     }
 #endif  // RED_Q_Q_CPP
 
